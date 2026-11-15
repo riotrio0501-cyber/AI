@@ -2,3 +2,18 @@ numpy
 pillow
 pyyaml
 pyopenjtalk-plus
+torch
+transformers
+huggingface_hub
+safetensors
+# style-bert-vits2 は依存の pyopenjtalk-dict がビルドできないため --no-deps で別途入れる（README参照）
+cmudict
+cn2an
+g2p-en
+jieba
+loguru
+num2words
+numba
+pydantic>=2.0
+pypinyin
+pyworld-prebuilt

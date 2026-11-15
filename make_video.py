@@ -53,9 +53,10 @@ class Segment:
 
 
 def build_segments(script: dict, series: dict) -> list[Segment]:
-    speed = script.get("voice_speed", series["voice_speed"])
+    v = voice_config(script, series)
+    speed = v.get("speed", 1.0)
     segs = [Segment("hook", script["hook"].get("reading") or script["hook"]["narration"],
-                    script["hook"]["captions"], speed=series["hook_voice_speed"])]
+                    script["hook"]["captions"], speed=v.get("hook_speed", speed))]
     for i, f in enumerate(script["facts"], 1):
         segs.append(Segment("fact", f.get("reading") or f["narration"], f["captions"], i, speed))
     segs.append(Segment("outro", script["outro"].get("reading") or script["outro"]["narration"],
@@ -82,9 +83,28 @@ def validate(script: dict, path: Path) -> list[str]:
 
 # ---------------------------------------------------------------- 音声
 
-def tts(text: str, speed: float) -> np.ndarray:
-    x, sr = pyopenjtalk.tts(text, speed=speed)
-    x = x.astype(np.float32) / 32768.0
+def voice_config(script: dict, series: dict) -> dict:
+    v = dict(series.get("voice", {}))
+    v.update(script.get("voice", {}))  # 県ファイルで上書き可
+    return v
+
+
+def voice_credit(v: dict) -> str | None:
+    if v.get("engine", "openjtalk") == "sbv2":
+        import tts_sbv2
+        return tts_sbv2.credit(v.get("model", "koharune-ami"))
+    return None
+
+
+def tts(text: str, speed: float, v: dict) -> np.ndarray:
+    if v.get("engine", "openjtalk") == "sbv2":
+        import tts_sbv2
+        x, sr = tts_sbv2.tts(text, model=v.get("model", "koharune-ami"), style=v.get("style", "Neutral"),
+                             style_weight=v.get("style_weight", 1.0), speed=speed,
+                             sdp_ratio=v.get("sdp_ratio", 0.25))
+    else:
+        x, sr = pyopenjtalk.tts(text, speed=speed)
+        x = x.astype(np.float32) / 32768.0
     if sr != SR:
         n = int(len(x) * SR / sr)
         x = np.interp(np.linspace(0, len(x) - 1, n), np.arange(len(x)), x).astype(np.float32)
@@ -157,11 +177,11 @@ def synth_bgm(total: float, seed: int) -> np.ndarray:
     return (y * fade).astype(np.float32)
 
 
-def build_audio(segs: list[Segment], series: dict, seed: int) -> tuple[np.ndarray, float]:
+def build_audio(segs: list[Segment], series: dict, seed: int, v: dict) -> tuple[np.ndarray, float]:
     gap = series["gap_sec"]
     t = 0.15  # 冒頭のごく短い間
     for s in segs:
-        s.audio = tts(s.narration, s.speed)
+        s.audio = tts(s.narration, s.speed, v)
         s.start = t
         s.dur = len(s.audio) / SR + gap
         t += s.dur
@@ -371,6 +391,14 @@ def ease_out_back(x):
 
 # ---------------------------------------------------------------- 映像
 
+def credits_for(script: dict, series: dict) -> list[str]:
+    out = [series["credit"]]
+    vc = voice_credit(voice_config(script, series))
+    if vc:
+        out.append(vc)
+    return out
+
+
 class Renderer:
     def __init__(self, script: dict, series: dict, segs: list[Segment], total: float):
         self.W, self.H = series["size"]
@@ -394,7 +422,8 @@ class Renderer:
         # 固定パーツ
         hdr = series["header"].format(prefecture=script["prefecture"])
         self.header = pill(hdr, 58, bg=main + (235,))
-        self.credit = pill(series["credit"], 24, bg=(0, 0, 0, 90), fg=(255, 255, 255, 200), padx=18, pady=8)
+        self.credits = [pill(c, 22, bg=(0, 0, 0, 90), fg=(255, 255, 255, 200), padx=16, pady=7)
+                        for c in credits_for(script, series)]
         self.badges = {i: pill(f"その{i}", 54, bg=(255, 255, 255, 240), fg=mix(dark, main, 0.3), padx=34, pady=14)
                        for i in (1, 2, 3)}
         rng = np.random.default_rng(script["code"])
@@ -457,7 +486,8 @@ class Renderer:
             a = np.asarray(c.getchannel("A"), np.float32) * min(1, k * 1.6)
             c.putalpha(Image.fromarray(a.astype(np.uint8)))
         im.alpha_composite(c, ((W - c.width) // 2, int(H * 0.47 - c.height / 2)))
-        im.alpha_composite(self.credit, ((W - self.credit.width) // 2, 1560))
+        for i, c in enumerate(self.credits):
+            im.alpha_composite(c, ((W - c.width) // 2, 1545 + i * 46))
         return im.convert("RGB")
 
     def progress(self, d: ImageDraw.ImageDraw, idx: int):
@@ -482,7 +512,9 @@ def make(path: Path, series: dict, args) -> bool:
         print("  --strict のため中止（要確認が残っています）")
         return False
     segs = build_segments(script, series)
-    audio, total = build_audio(segs, series, seed=script["code"])
+    v = voice_config(script, series)
+    print(f"  声: {v.get('engine')} / {v.get('model', '-')}")
+    audio, total = build_audio(segs, series, seed=script["code"], v=v)
     for s in segs:
         lab = f"その{s.index}" if s.kind == "fact" else s.kind
         print(f"  {lab:6s} {s.start:5.1f}–{s.start + s.dur:5.1f}s  ({s.dur:.1f}s)")
@@ -514,6 +546,11 @@ def make(path: Path, series: dict, args) -> bool:
     p.stdin.close()
     p.wait()
     wav.unlink()
+    post = out_dir / f"{name}_投稿文.txt"
+    hdr = series["header"].format(prefecture=script["prefecture"])
+    post.write_text(f"{hdr}\n\nあなたの県のあるあるもコメントで教えて！\n\n"
+                    f"#{script['prefecture']} #県民あるある #ご当地ネタ\n\n"
+                    + "\n".join(credits_for(script, series)) + "\n", encoding="utf-8")
     print(f"  ✔ {mp4.relative_to(ROOT)}")
     return p.returncode == 0
 
