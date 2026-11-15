@@ -1,0 +1,11 @@
+# シリーズ共通設定（全県の動画で共通）
+header: "{prefecture}民しか知らないこと3選"
+fps: 30
+size: [1080, 1920]
+voice_speed: 1.12         # ナレーション速度（県ファイルで voice_speed を書けば上書き）
+hook_voice_speed: 1.3     # フックは0〜1.5秒に収めたいので少し速く
+gap_sec: 0.35             # シーン間の無音
+highlight_color: "#FFD54A" # { } で囲んだ文字の色
+bgm_volume: 0.13          # BGM音量（0〜1）。ナレーション中は自動でさらに下げる
+credit: "地図出典：地球地図日本（国土地理院）"
+duration_range: [30, 40]
