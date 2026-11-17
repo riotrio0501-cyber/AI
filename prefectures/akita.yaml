@@ -1,0 +1,54 @@
+prefecture: 秋田県
+code: 5
+color:
+  main: "#EC6A9C"
+  dark: "#2B0817"
+  note: "ババヘラアイスのピンク"
+
+hook:
+  narration: "秋田県民なら、全部わかる。"
+  captions:
+    - "[秋田県民]なら/{全部}わかる"
+
+facts:
+  - title: "ババヘラアイス"
+    narration: "その1。秋田の夏といえば、道ばたのババヘラアイス。おばあちゃんがヘラで、アイスをバラの花の形に盛ってくれる。"
+    captions:
+      - "①道ばたの/[ババヘラアイス]"
+      - "おばあちゃんが/ヘラで盛る"
+      - "形は{バラの花}"
+    status: ok
+    evidence:
+      - url: https://www.jreast.co.jp/akita/meettheheart/column/article12.html
+        memo: "JR東日本秋田支社の記事。ばば（おばあちゃん）がヘラで盛ることが名前の由来。男鹿市が発祥とされる。バラの形に盛る販売スタイル。"
+
+  - title: "横手やきそば"
+    narration: "その2。横手やきそばには、半熟の目玉焼きと、福神漬けがのっている。紅しょうがじゃないのが、横手流。"
+    captions:
+      - "②横手やきそばに"
+      - "[目玉焼き]と[福神漬け]"
+      - "紅しょうがじゃ{ない}"
+    status: ok
+    evidence:
+      - url: https://www.tohokukanko.jp/attractions/detail_1007184.html
+        memo: "東北観光推進機構。キャベツと豚ひき肉、半熟目玉焼きと福神漬けをのせるのが定番。紅生姜ではなく福神漬け。"
+      - url: https://www.jpo.go.jp/system/trademark/gaiyo/chidan/shoukai/ichiran/5546212.html
+        memo: "特許庁。地域団体商標「横手やきそば」（協同組合横手やきそば暖簾会）。"
+
+  - title: "きりたんぽ発祥はどっち"
+    narration: "その3。きりたんぽの発祥は、大館か、鹿角か。どっちの町も、自分こそ本場だと言っていて、決着はついていない。"
+    reading: "その3。きりたんぽの発祥は、おおだてか、かづのか。どっちの町も、自分こそ本場だと言っていて、決着はついていない。"
+    captions:
+      - "③きりたんぽ発祥は"
+      - "[大館]か[鹿角]か"
+      - "どっちも{本場}を名乗る"
+    status: ok
+    evidence:
+      - url: https://www.maff.go.jp/j/syokuiku/kodomo_navi/cuisine/cuisine1_5.html
+        memo: "農水省。大館市・鹿角市をきりたんぽが生まれた地として併記。大館市は「本場大館きりたんぽまつり」、鹿角市は「きりたんぽ発祥まつり」を開催。"
+
+outro:
+  narration: "あなたの県のあるあるも、コメントで教えて。"
+  captions:
+    - "あなたの県も"
+    - "[コメント]で教えて"
