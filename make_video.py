@@ -69,7 +69,8 @@ def validate(script: dict, path: Path) -> list[str]:
     if len(script.get("facts", [])) != 3:
         warns.append(f"ネタが{len(script.get('facts', []))}個です（3個の想定）")
     for i, f in enumerate(script.get("facts", []), 1):
-        if f.get("status", "要確認") != "ok":
+        # ok = 根拠あり / 説 = 諸説ありとして「〜という説」等の言い方で紹介（根拠メモは必須）
+        if f.get("status", "要確認") not in ("ok", "説"):
             warns.append(f"ネタ{i}「{f.get('title', '')}」が status: {f.get('status', '未記入')}")
         if not f.get("evidence"):
             warns.append(f"ネタ{i}「{f.get('title', '')}」に根拠(evidence)がありません")
@@ -548,7 +549,8 @@ def make(path: Path, series: dict, args) -> bool:
     wav.unlink()
     post = out_dir / f"{name}_投稿文.txt"
     hdr = series["header"].format(prefecture=script["prefecture"])
-    post.write_text(f"{hdr}\n\nあなたの県のあるあるもコメントで教えて！\n\n"
+    q = script.get("comment_question", "")
+    post.write_text(f"{hdr}\n\n" + (f"{q}\n" if q else "") + "あなたの県のあるあるもコメントで教えて！\n\n"
                     f"#{script['prefecture']} #県民あるある #ご当地ネタ\n\n"
                     + "\n".join(credits_for(script, series)) + "\n", encoding="utf-8")
     print(f"  ✔ {mp4.relative_to(ROOT)}")
