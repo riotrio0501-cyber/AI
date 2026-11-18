@@ -50,6 +50,7 @@ class Segment:
     start: float = 0.0
     dur: float = 0.0
     cap_times: list[float] = field(default_factory=list)
+    photo: object = None      # 写真パス / {"file":..., "focus":[x,y]} / {"emoji": "🍜"} / それらのリスト
 
 
 def build_segments(script: dict, series: dict) -> list[Segment]:
@@ -58,7 +59,8 @@ def build_segments(script: dict, series: dict) -> list[Segment]:
     segs = [Segment("hook", script["hook"].get("reading") or script["hook"]["narration"],
                     script["hook"]["captions"], speed=v.get("hook_speed", speed))]
     for i, f in enumerate(script["facts"], 1):
-        segs.append(Segment("fact", f.get("reading") or f["narration"], f["captions"], i, speed))
+        segs.append(Segment("fact", f.get("reading") or f["narration"], f["captions"], i, speed,
+                            photo=f.get("photo")))
     segs.append(Segment("outro", script["outro"].get("reading") or script["outro"]["narration"],
                         script["outro"]["captions"], speed=speed))
     return segs
@@ -309,7 +311,7 @@ def parse_markup(s: str) -> list[tuple[str, int]]:
     return out
 
 
-BREAK_AFTER = set("はがをにでともの、」）")
+BREAK_AFTER = set("はがをにでともの、」）×・")
 
 
 def wrap(chars, fnt, max_w) -> list[list[tuple[str, int]]]:
@@ -327,19 +329,22 @@ def wrap(chars, fnt, max_w) -> list[list[tuple[str, int]]]:
     if fnt.getlength(text) <= max_w:
         return [chars]
     n = len(chars)
-    best, best_score = n // 2, 1e9
+    best, best_score = None, 1e9
     for i in range(2, n - 1):
         # 強調ブロックの途中では折り返さない
         if chars[i - 1][1] != 0 and chars[i][1] == chars[i - 1][1]:
             continue
+        # 良い切れ目（助詞・記号の後、色の変わり目）だけを候補にする
+        if not (chars[i - 1][0] in BREAK_AFTER or chars[i][1] != chars[i - 1][1]):
+            continue
         l = fnt.getlength(text[:i])
         r = fnt.getlength(text[i:])
-        good = chars[i - 1][0] in BREAK_AFTER or chars[i][1] != chars[i - 1][1]
-        score = abs(l - r) + (0 if good else 400)
-        if max(l, r) > max_w:
-            score += 1000
+        score = abs(l - r) + (1000 if max(l, r) > max_w else 0)
         if score < best_score:
             best, best_score = i, score
+    if best is None:
+        # 良い切れ目がない（単語の途中になる）ときは改行せず、文字を小さくして1行に収める
+        return [chars]
     return [chars[:best], chars[best:]]
 
 
@@ -400,6 +405,70 @@ def credits_for(script: dict, series: dict) -> list[str]:
     return out
 
 
+def photo_credits(script: dict) -> list[str]:
+    out = []
+    for f in script["facts"]:
+        for it in photo_items(f.get("photo")):
+            c = photo_credit(it)
+            if c and "file" in it:
+                meta = (ROOT / it["file"]).with_suffix(".json")
+                page = json.loads(meta.read_text(encoding="utf-8")).get("page") if meta.exists() else None
+                c = f"{c} {page}" if page else c
+            if c and c not in out:
+                out.append(c)
+    return out
+
+
+# ---------------------------------------------------------------- 写真カード
+
+CARD_W, CARD_H, CARD_TOP = 900, 620, 400
+EMOJI_FONT = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+
+
+def photo_items(p) -> list[dict]:
+    if p is None:
+        return []
+    items = p if isinstance(p, list) else [p]
+    return [{"file": x} if isinstance(x, str) else dict(x) for x in items]
+
+
+def photo_credit(item: dict) -> str | None:
+    if "credit" in item:
+        return item["credit"]
+    if "file" in item:
+        meta = (ROOT / item["file"]).with_suffix(".json")
+        if meta.exists():
+            return json.loads(meta.read_text(encoding="utf-8")).get("credit")
+    return None
+
+
+def cover(img: Image.Image, w: int, h: int, focus=(0.5, 0.5)) -> Image.Image:
+    """w×h を覆うように拡大して focus を中心に切り抜く。"""
+    sc = max(w / img.width, h / img.height)
+    im = img.resize((max(w, round(img.width * sc)), max(h, round(img.height * sc))), Image.LANCZOS)
+    x = min(max(0, int(im.width * focus[0] - w / 2)), im.width - w)
+    y = min(max(0, int(im.height * focus[1] - h / 2)), im.height - h)
+    return im.crop((x, y, x + w, y + h))
+
+
+def emoji_image(ch: str, size: int, bg) -> Image.Image:
+    f = ImageFont.truetype(EMOJI_FONT, 109)
+    tmp = Image.new("RGBA", (160, 160), (0, 0, 0, 0))
+    ImageDraw.Draw(tmp).text((80, 80), ch, font=f, embedded_color=True, anchor="mm")
+    tmp = tmp.crop(tmp.getbbox() or (0, 0, 160, 160))
+    s = size / max(tmp.size)
+    tmp = tmp.resize((int(tmp.width * s), int(tmp.height * s)), Image.LANCZOS)
+    img = Image.new("RGBA", (CARD_W, CARD_H), bg + (255,))
+    img.alpha_composite(tmp, ((CARD_W - tmp.width) // 2, (CARD_H - tmp.height) // 2))
+    return img
+
+
+def card_mask(w, h, r=40) -> Image.Image:
+    m = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, w - 1, h - 1), radius=r, fill=255)
+    return m
+
+
 class Renderer:
     def __init__(self, script: dict, series: dict, segs: list[Segment], total: float):
         self.W, self.H = series["size"]
@@ -440,6 +509,28 @@ class Renderer:
             if s.kind == "hook":
                 s.cap_times[0] = 0.0  # フックは0秒目から
         self.cap_cache: dict[str, Image.Image] = {}
+        # 写真カードの準備（Ken Burns 用に少し大きめに用意）
+        self.photos = {}
+        zoom = 1.12
+        bw, bh = int(CARD_W * zoom), int(CARD_H * zoom)
+        emoji_bg = mix(dark, main, 0.25)
+        for s in segs:
+            out = []
+            for it in photo_items(s.photo):
+                if "emoji" in it:
+                    base = emoji_image(it["emoji"], 420, emoji_bg).resize((bw, bh), Image.LANCZOS)
+                else:
+                    src = Image.open(ROOT / it["file"]).convert("RGB")
+                    base = cover(src, bw, bh, tuple(it.get("focus", (0.5, 0.5)))).convert("RGBA")
+                cr = photo_credit(it)
+                cp = pill(cr, 20, bg=(0, 0, 0, 120), fg=(255, 255, 255, 220), padx=14, pady=6) if cr else None
+                out.append((base, cp))
+            if out:
+                self.photos[id(s)] = out
+        self.card_mask = card_mask(CARD_W, CARD_H)
+        sh = Image.new("RGBA", (CARD_W + 80, CARD_H + 80), (0, 0, 0, 0))
+        ImageDraw.Draw(sh).rounded_rectangle((40, 50, 40 + CARD_W, 50 + CARD_H), radius=40, fill=(0, 0, 0, 140))
+        self.card_shadow = sh.filter(ImageFilter.GaussianBlur(18))
 
     def caption_img(self, text):
         if text not in self.cap_cache:
@@ -467,12 +558,19 @@ class Renderer:
         im.alpha_composite(self.header, ((W - self.header.width) // 2, 250))
         # 現在のシーン
         seg = next((s for s in reversed(self.segs) if t >= s.start), self.segs[0])
+        photos = self.photos.get(id(seg))
+        cap_y = H * 0.47
+        badge_y = 640
+        if photos:
+            cap_y = CARD_TOP + CARD_H + 175
+            badge_y = CARD_TOP
+            self.draw_photo(im, seg, photos, t)
         if seg.kind == "fact":
             b = self.badges[seg.index]
             k = min(1, (t - seg.start) / 0.25)
             s = 0.6 + 0.4 * ease_out_back(k)
             bb = b.resize((max(1, int(b.width * s)), max(1, int(b.height * s))), Image.BILINEAR)
-            im.alpha_composite(bb, ((W - bb.width) // 2, 640 - bb.height // 2))
+            im.alpha_composite(bb, ((W - bb.width) // 2, badge_y - bb.height // 2))
             self.progress(d, seg.index)
         # テロップ
         ci = 0
@@ -486,10 +584,41 @@ class Renderer:
         if k < 1:
             a = np.asarray(c.getchannel("A"), np.float32) * min(1, k * 1.6)
             c.putalpha(Image.fromarray(a.astype(np.uint8)))
-        im.alpha_composite(c, ((W - c.width) // 2, int(H * 0.47 - c.height / 2)))
+        im.alpha_composite(c, ((W - c.width) // 2, int(cap_y - c.height / 2)))
         for i, c in enumerate(self.credits):
             im.alpha_composite(c, ((W - c.width) // 2, 1545 + i * 46))
         return im.convert("RGB")
+
+    def draw_photo(self, im: Image.Image, seg, photos, t: float):
+        W = self.W
+        n = len(photos)
+        local = t - seg.start
+        i = min(n - 1, int(local / (seg.dur / n)))
+        base, cp = photos[i]
+        p = (local - i * seg.dur / n) / (seg.dur / n)  # この写真内の進み 0→1
+        # Ken Burns：ゆっくりズーム＋少しパン
+        z = 1.12 - 0.10 * p
+        cw, ch = int(base.width / 1.12 * z), int(base.height / 1.12 * z)
+        x0 = int((base.width - cw) * (0.5 + 0.3 * (p - 0.5) * (1 if seg.index % 2 else -1)))
+        y0 = (base.height - ch) // 2
+        frame = base.crop((x0, y0, x0 + cw, y0 + ch)).resize((CARD_W, CARD_H), Image.BILINEAR)
+        frame.putalpha(self.card_mask)
+        # 登場アニメ（下からふわっと）
+        k = min(1, local / 0.35)
+        e = 1 - (1 - k) ** 3
+        dy = int(60 * (1 - e))
+        x = (W - CARD_W) // 2
+        y = CARD_TOP + dy
+        if k < 1:
+            a = np.asarray(frame.getchannel("A"), np.float32) * e
+            frame.putalpha(Image.fromarray(a.astype(np.uint8)))
+        im.alpha_composite(self.card_shadow, (x - 40, y - 40))
+        im.alpha_composite(frame, (x, y))
+        # 白い縁取り
+        ImageDraw.Draw(im).rounded_rectangle((x - 3, y - 3, x + CARD_W + 2, y + CARD_H + 2), radius=42,
+                                              outline=(255, 255, 255, int(220 * e)), width=6)
+        if cp:
+            im.alpha_composite(cp, (x + CARD_W - cp.width - 14, y + CARD_H - cp.height - 14))
 
     def progress(self, d: ImageDraw.ImageDraw, idx: int):
         y, gap = 1440, 46
@@ -552,7 +681,7 @@ def make(path: Path, series: dict, args) -> bool:
     q = script.get("comment_question", "")
     post.write_text(f"{hdr}\n\n" + (f"{q}\n" if q else "") + "あなたの県のあるあるもコメントで教えて！\n\n"
                     f"#{script['prefecture']} #県民あるある #ご当地ネタ\n\n"
-                    + "\n".join(credits_for(script, series)) + "\n", encoding="utf-8")
+                    + "\n".join(credits_for(script, series) + photo_credits(script)) + "\n", encoding="utf-8")
     print(f"  ✔ {mp4.relative_to(ROOT)}")
     return p.returncode == 0
 

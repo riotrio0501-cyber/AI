@@ -7,6 +7,8 @@
 # status: ok   = 根拠あり
 #         説   = 確定していないが「〜という説」「〜という人も多い」などの言い方で紹介する（根拠メモは必須）
 #         要確認 = 未確認。make 時に警告（--strict なら作らない）
+# photo: ネタごとの写真（assets/photos/ の画像。リストなら順に切り替え）。{emoji: "🍜"} で絵文字カードにもできる
+#        写真は python photos.py search/get で Wikimedia Commons から取り込むとクレジットも自動で入る
 # comment_question: 締めで投げかける「どっち派？」の問い。投稿文にも入る。コメントを集めるのが狙い
 
 prefecture: 山形県
@@ -23,6 +25,7 @@ hook:
 
 facts:
   - title: "芋煮は地域で別物"
+    photo: assets/photos/yamagata/imoni.jpg
     narration: "その1。芋煮は地域で別の料理。内陸は牛肉としょうゆ。庄内は豚肉とみそ。どっちが正解かで、本気でもめる。"
     captions:
       - "①芋煮は地域で別物"
@@ -36,6 +39,7 @@ facts:
       - memo: "「本気でもめる」は演出上の表現（毎年のネット上の論争ネタとして定番）。事実主張ではない。"
 
   - title: "ラーメン支出 日本一"
+    photo: {emoji: "🍜"}
     narration: "その2。山形市は、外食のラーメンにお金を使う額で、日本一の常連。夏は冷たいスープの、冷やしラーメンまである。"
     reading:   # 「山形市」をはっきり読ませたい場合などに使う（今回は不要）
     captions:
@@ -51,6 +55,7 @@ facts:
       - memo: "冷やしラーメンは山形市の栄屋本店が発祥とされる（動画では発祥店には触れていない）。"
 
   - title: "県民歌は昭和天皇の歌"
+    photo: assets/photos/yamagata/mogami.jpg
     narration: "その3。山形県民の歌、最上川。歌詞は、昭和天皇が詠んだ和歌。意外と知らない人も多い。"
     reading: "その3。山形県民の歌、もがみがわ。歌詞は、昭和天皇がよんだ和歌。意外と知らない人も多い。"
     captions:
