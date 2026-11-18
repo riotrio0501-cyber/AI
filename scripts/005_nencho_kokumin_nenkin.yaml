@@ -1,0 +1,47 @@
+id: "005"
+title: 年末調整で出し忘れると損する紙
+length: short
+targets: [新社会人, 季節]
+season: 11
+info_year: 2026年分（令和8年分）の年末調整
+status: draft
+age_note: null
+
+sources:
+  - label: 国税庁「年末調整がよくわかるページ」
+    url: https://www.nta.go.jp/users/gensen/nencho/index.htm
+    note: 保険料控除申告書・社会保険料控除（要確認：環境の制限で本文未取得）
+  - label: 日本年金機構「社会保険料（国民年金保険料）控除証明書」
+    url: https://www.nenkin.go.jp/service/kokunen/hokenryo/20140627.html
+    note: 控除証明書の送付時期（要確認：URLと送付時期）
+
+scenes:
+  - role: hook
+    telop: "新社会人、\n年末調整で[[損]]してない？"
+    narration: 新社会人のみんな、年末調整で損してない？
+  - role: point
+    telop: "入社前に払った\n[[国民年金]]"
+    narration: 入社前の1月から3月に、自分で払った国民年金。
+  - role: point
+    telop: "年末調整で\n[[控除]]できる"
+    narration: 実はこれ、年末調整で社会保険料控除として書けるんです。
+  - role: point
+    telop: "3か月分なら\n約[[5万円]]の控除"
+    narration: 3か月分なら、約5万円分の控除。そのぶん税金が少し戻ってきます。
+    check: 要確認  # 2026年度保険料17,920円×3＝53,760円。戻る税額は所得で変わる
+  - role: caution
+    telop: "必要なのは\n[[控除証明書]]"
+    narration: 必要なのは、日本年金機構から届く控除証明書。捨てずに会社に出してね。
+  - role: caution
+    telop: "親が払った分は\n[[親]]の控除に"
+    narration: ただし、親が払ってくれていた場合は、親の控除になるよ。
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。
+
+caption: |
+  4月入社の新社会人で、1〜3月に国民年金を自分で払った人は要チェック。
+  その分は年末調整の「保険料控除申告書」に書けば、社会保険料控除になります。
+  日本年金機構から届く控除証明書を添付してね。親が払った分は親の控除になります。
+  ※2026年分の年末調整の情報です。出典：国税庁・日本年金機構
+hashtags: [新社会人, 年末調整, 国民年金, 社会保険料控除, 税金, お金の知識, 知らなきゃ損, 給与明細, 社会人1年目]

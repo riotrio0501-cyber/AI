@@ -1,5 +1,6 @@
 """1本の台本 → mp4 / キャプション を書き出す"""
 import math
+import re
 import subprocess
 from functools import lru_cache
 from pathlib import Path
@@ -180,12 +181,19 @@ def brand_layer(script):
     d.text((x + 34, y), config.ACCOUNT_NAME, font=font(34), fill=(255, 255, 255, 230))
     d.text((x + 34, y + 44), config.ACCOUNT_ID, font=font(26, "bold"), fill=(255, 255, 255, 150))
     # 出典・年度
-    src = "・".join(s.get("label", "").split("「")[0] for s in script.sources[:2] if isinstance(s, dict))
-    info = f"※{script.info_year}の情報　出典：{src}" + ("ほか" if len(script.sources) > 2 else "")
-    if script.age_note:
-        info += f"　{script.age_note}"
-    f = font(26, "bold")
-    d.text((W / 2, config.SAFE_BOTTOM - 40), info, font=f, fill=(255, 255, 255, 140), anchor="mm")
+    orgs = []
+    for s in script.sources:
+        org = re.split(r"[「 　]", s.get("label", "") if isinstance(s, dict) else "")[0]
+        if org and org not in orgs:
+            orgs.append(org)
+    info = f"※{script.info_year}の情報　出典：{'・'.join(orgs[:2])}" + ("ほか" if len(orgs) > 2 else "")
+    lines = [info] + ([script.age_note] if script.age_note else [])
+    for i, text in enumerate(lines):
+        size = 26
+        while size > 16 and font(size, "bold").getlength(text) > W - 2 * config.SAFE_SIDE:
+            size -= 1
+        d.text((W / 2, config.SAFE_BOTTOM - 40 + i * 38), text, font=font(size, "bold"),
+               fill=(255, 255, 255, 140), anchor="mm")
     return im
 
 

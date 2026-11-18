@@ -1,0 +1,49 @@
+id: "007"
+title: 児童手当、高校生まで延長されたの知ってる？
+length: short
+targets: [30〜40代]
+season: null
+info_year: 2024年10月分以降の制度（2026年時点）
+status: draft
+age_note: null
+
+sources:
+  - label: こども家庭庁「児童手当制度のご案内」
+    url: https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai
+    note: 支給対象・金額（要確認：環境の制限で本文未取得、URLも要確認）
+  - label: 大阪府「児童手当の制度改正（拡充）（令和6年10月分以降）」
+    url: https://www.pref.osaka.lg.jp/o090135/kateishien/teate/jite_202410.html
+    note: 高校生年代まで延長、所得制限撤廃、第3子以降3万円、年6回支給
+  - label: 川崎市 よくある質問（児童手当の支給開始月）
+    url: https://www.city.kawasaki.jp/templates/faq/450/0000012846.html
+    note: 原則、申請した月の翌月分から（要確認）
+
+scenes:
+  - role: hook
+    telop: "高校生の子にも\n[[児童手当]]出てるよ"
+    narration: 高校生の子どもにも、児童手当が出てるって知ってた？
+  - role: point
+    telop: "高校生年代まで\n月[[1万円]]"
+    narration: 2024年10月から、高校生年代まで延長されて、第1子・第2子は月1万円。
+  - role: point
+    telop: "[[所得制限]]も撤廃"
+    narration: さらに所得制限もなくなって、前はもらえなかった家庭も対象に。
+  - role: point
+    telop: "第3子以降は\n月[[3万円]]"
+    narration: 第3子以降は、月3万円です。
+  - role: caution
+    telop: "[[申請]]しないと\nもらえないことも"
+    narration: ただし、申請していないと受け取れない場合があって、原則さかのぼれません。
+  - role: caution
+    telop: "公務員は[[勤務先]]に申請"
+    narration: 手続きは住んでいる市区町村、公務員の人は勤務先で確認してね。
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。
+
+caption: |
+  2024年10月分から、児童手当は高校生年代（18歳になった後の最初の3月31日まで）に延長、所得制限も撤廃されました。
+  第1子・第2子は3歳〜高校生年代で月1万円、第3子以降は月3万円。
+  申請していないと受け取れない場合があり、原則さかのぼれないので、お住まいの市区町村で確認を。
+  ※2024年10月分以降の制度です。出典：こども家庭庁・各自治体
+hashtags: [児童手当, 子育て, 高校生, 給付金, 子育て世代, お金の知識, 知らなきゃ損, ママ, パパ]

@@ -1,0 +1,49 @@
+id: "003"
+title: 20歳の学生は年金を払わなくていい制度がある
+length: short
+targets: [学生・若者]
+season: null
+info_year: 2026年度（令和8年度）
+status: draft
+age_note: 20歳以上の学生が対象
+
+sources:
+  - label: 日本年金機構「国民年金保険料の学生納付特例制度」
+    url: https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html
+    note: 学生納付特例の対象・追納（10年以内）（要確認：環境の制限で本文未取得）
+  - label: 日本年金機構「学生納付特例申請書」
+    url: https://www.nenkin.go.jp/denshibenri_kojin/shinseisho/gakutoku_shinseisho.html
+    note: 申請方法
+  - label: 日本年金機構 セミナー資料（令和8年度 国民年金）
+    url: https://www.nenkin.go.jp/service/learn/seminar.files/kokuminR8.pdf
+    note: 令和8年度の国民年金保険料 月額17,920円
+
+scenes:
+  - role: hook
+    telop: "20歳の学生、\n年金の通知[[放置]]してない？"
+    narration: 20歳になった学生さん、年金のお知らせ、放置してない？
+  - role: point
+    telop: "保険料は\n月[[17,920円]]"
+    narration: 国民年金の保険料は、2026年度で月1万7920円。
+  - role: point
+    telop: "学生は[[申請]]すれば\n払うのを後回しにできる"
+    narration: でも学生は、申請すれば、払うのを社会人になるまで後回しにできるんです。
+  - role: point
+    telop: "放置すると[[未納]]扱い"
+    narration: 放置すると未納扱い。いざという時の障害年金に影響することも。
+  - role: caution
+    telop: "後から払わないと\n[[将来の年金]]は増えない"
+    narration: ただし、後から払わないと将来の年金は増えません。払えるのは10年以内です。
+    check: 要確認  # 追納は10年以内・3年目以降は加算額あり
+  - role: caution
+    telop: "[[所得が多い]]学生は\n対象外のことも"
+    narration: 所得が一定以上ある学生は、対象外のこともあるよ。
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。
+
+caption: |
+  20歳になると届く国民年金のお知らせ。学生なら「学生納付特例」を申請すれば、払うのを後回しにできます。
+  放置して未納にするのがいちばん損。申請はマイナポータルや年金事務所、学校の窓口などで。
+  ※2026年度の情報です。出典：日本年金機構
+hashtags: [大学生, 国民年金, 学生納付特例, 20歳, 年金, お金の知識, 知らなきゃ損, 専門学生, 一人暮らし]

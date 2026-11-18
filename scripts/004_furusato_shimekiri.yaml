@@ -1,0 +1,46 @@
+id: "004"
+title: ふるさと納税は12月31日まで
+length: short
+targets: [30〜40代, 季節]
+season: 12
+info_year: 2026年分（2026年1月〜12月の寄附）
+status: draft
+age_note: null
+
+sources:
+  - label: 総務省「ふるさと納税ポータル 税金の控除について」
+    url: https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html
+    note: 自己負担2,000円、ワンストップ特例（要確認：環境の制限で本文未取得）
+  - label: 名古屋市「ふるさと納税ワンストップ特例制度」
+    url: https://www.city.nagoya.jp/shisei/furusatonozei/1003647/1003648.html
+    note: 対象は確定申告不要の給与所得者等・寄附先5団体以下
+  - label: 埼玉県「ふるさと納税ワンストップ特例制度について」
+    url: https://www.pref.saitama.lg.jp/a0209/z-furusato/z-furusatoone.html
+    note: 申請書は寄附の翌年1月10日必着
+
+scenes:
+  - role: hook
+    telop: "ふるさと納税、\n今年分は[[12月31日]]まで"
+    narration: ふるさと納税、今年の分は、12月31日までだよ。
+  - role: point
+    telop: "1月〜12月の寄附が\n[[今年の分]]"
+    narration: 1月から12月までの寄附が、今年の分としてカウントされます。
+  - role: point
+    telop: "会社員なら\n[[ワンストップ特例]]"
+    narration: 確定申告をしない会社員なら、ワンストップ特例が使えるかも。
+  - role: point
+    telop: "申請書は\n[[1月10日]]必着"
+    narration: 寄附先が5つ以内なら、申請書を翌年1月10日までに届ければ、確定申告はいりません。
+  - role: caution
+    telop: "[[上限]]を超えると\nただの寄附に"
+    narration: ただし、上限額を超えた分は自己負担になるので、先に目安をチェックしてね。
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。
+
+caption: |
+  ふるさと納税は1月〜12月の寄附がその年の分。今年分は12月31日までです。
+  確定申告をしない会社員で寄附先が5自治体以内なら、ワンストップ特例（翌年1月10日必着）が使えます。
+  上限額は収入や家族構成で変わるので、先に確認してね。
+  ※2026年分の情報です。出典：総務省・各自治体
+hashtags: [ふるさと納税, ワンストップ特例, 年末, 会社員, 節税, お金の知識, 知らなきゃ損, 共働き, 子育て世代]
