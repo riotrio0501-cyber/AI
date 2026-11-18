@@ -43,10 +43,12 @@ class SBV2TTS:
 
     def __init__(self):
         from style_bert_vits2.constants import Languages
+        from style_bert_vits2.logging import logger
+        logger.remove()  # 進捗ログを出さない
         from style_bert_vits2.nlp import bert_models
         from style_bert_vits2.tts_model import TTSModel
         bert = str(config.SBV2_DIR / "bert" / "deberta-v2-large-japanese-char-wwm")
-        bert_models.load_model(Languages.JP, bert)
+        bert_models.load_model(Languages.JP, bert).float()  # 新しいtransformersはfp16のまま読むため
         bert_models.load_tokenizer(Languages.JP, bert)
         v = config.SBV2_VOICES[config.SBV2_VOICE]
         d = config.SBV2_DIR / "models" / v["dir"]

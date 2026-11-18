@@ -33,7 +33,7 @@ SAFE_BOTTOM = 1920 - 420
 SAFE_SIDE = 80
 
 # ナレーション
-TTS_BACKEND = "openjtalk"  # openjtalk / voicevox / auto（voicevox→だめならopenjtalk）
+TTS_BACKEND = "sbv2"  # sbv2（自然・推奨） / openjtalk（軽量） / voicevox / auto
 TTS_SPEED = 1.22      # 速め
 # OpenJTalkの声（htsvoice）。tohoku-f01 は CC BY 4.0 なのでクレジットを自動でキャプションに入れる
 HTSVOICE_DIR = Path("/home/user/tools/htsvoice/tohoku")
