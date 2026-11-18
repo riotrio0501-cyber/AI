@@ -1,0 +1,62 @@
+prefecture: 福岡県
+code: 40
+color:
+  main: "#D93A49"
+  dark: "#2A070C"
+  note: "明太子の赤"
+
+hook:
+  narration: "福岡県民なら、全部わかる。"
+  captions:
+    - "[福岡県民]なら/{全部}わかる"
+
+facts:
+  - title: "ラーメンは硬さで頼む"
+    photo: {emoji: "🍜"}
+    narration: "その1。福岡のラーメンは、麺の硬さを指定する。バリカタ、ハリガネ、粉落とし。そして替え玉が当たり前。"
+    reading: "その1。福岡のラーメンは、麺の硬さを指定する。バリカタ、ハリガネ、こなおとし。そして替え玉が当たり前。"
+    captions:
+      - "①麺の[硬さ]を指定"
+      - "バリカタ・ハリガネ/{粉落とし}"
+      - "[替え玉]は当たり前"
+    status: ok
+    evidence:
+      - url: https://www.crossroadfukuoka.jp/feature/noodles
+        memo: "福岡県観光連盟。博多ラーメンの麺の硬さ指定と替え玉文化。"
+      - url: https://tabi-mag.jp/fu0363/
+        memo: "替え玉は長浜の屋台（元祖長浜屋、1952年）が発祥といわれる（諸説）。硬さの呼び方の順序は店で異なる。"
+
+  - title: "うどんは柔らかい"
+    photo: {emoji: "🍲"}
+    narration: "その2。でも、うどんは柔らかいのが福岡流。コシは求めない。しかも、うどんの発祥は博多だという説まである。"
+    captions:
+      - "②うどんは/[柔らかい]のが福岡流"
+      - "うどんの発祥は/{博多}説"
+    status: 説
+    evidence:
+      - url: https://tabi-mag.jp/fu0202/
+        memo: "博多の承天寺に「饂飩蕎麦発祥之地」の碑。開山の聖一国師が宋から製粉技術を持ち帰ったという伝承。史実としては未確定なので「説」。"
+      - url: https://www.crossroadfukuoka.jp/feature/noodles
+        memo: "福岡のうどんは柔らかい麺が特徴（ごぼう天など）。"
+
+  - title: "博多？福岡？"
+    photo: {emoji: "🚉"}
+    narration: "その3。市の名前は福岡なのに、駅は博多。博多市に変える案は、賛成と反対が同じ数で否決された、という説がある。"
+    captions:
+      - "③市は福岡/駅は[博多]"
+      - "博多市にする案は"
+      - "{同数}で否決された説"
+    status: 説
+    evidence:
+      - url: https://catalog.lib.kyushu-u.ac.jp/opac_download_md/7388878/p134.pdf
+        memo: "九州大学資料。1889年に福岡市誕生、駅名は博多。1890年に博多側議員が「博多市」への改称案を出し、賛否同数で議長裁決により否決とされる。「1票差」とする資料もあり食い違うため「説」。"
+      - url: https://www.city.fukuoka.lg.jp/shicho/koho/life/seikatsu-guide/documents/202502_gaiyou.pdf
+        memo: "福岡市の概要。1890年に市名変更の建議。"
+
+comment_question: "博多派？福岡派？"
+
+outro:
+  narration: "あなたは、博多派？福岡派？あなたの県のあるあるも、コメントで教えて。"
+  captions:
+    - "あなたは/[博多]派？[福岡]派？"
+    - "あなたの県も/[コメント]で教えて"

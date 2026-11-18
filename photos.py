@@ -31,9 +31,9 @@ _last = 0.0
 
 def _get(url: str) -> bytes:
     global _last
-    wait = 3.0 - (time.time() - _last)
+    wait = 8.0 - (time.time() - _last)
     if wait > 0:
-        time.sleep(wait)  # 3秒に1回まで（Wikimedia の回数制限対策）
+        time.sleep(wait)  # 8秒に1回まで（Wikimedia の回数制限対策）
     for attempt in range(4):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA})

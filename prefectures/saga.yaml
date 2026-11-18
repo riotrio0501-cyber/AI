@@ -1,0 +1,60 @@
+prefecture: 佐賀県
+code: 41
+color:
+  main: "#2F6FD6"
+  dark: "#06142E"
+  note: "有田焼の藍"
+
+hook:
+  narration: "佐賀県民なら、全部わかる。"
+  captions:
+    - "[佐賀県民]なら/{全部}わかる"
+
+facts:
+  - title: "佐賀県は一度消えた"
+    photo: {emoji: "🗾"}
+    narration: "その1。佐賀県は、一度消えている。明治時代に長崎県に入れられて、7年後に、やっと佐賀県に戻った。"
+    reading: "その1。佐賀県は、一度消えている。明治時代に長崎県に入れられて、ななねんごに、やっと佐賀県に戻った。"
+    captions:
+      - "①佐賀県は/[一度消えた]"
+      - "明治に/{長崎県}の一部に"
+      - "7年後に/[佐賀県]復活"
+    status: ok
+    evidence:
+      - url: https://www.pref.nagasaki.jp/shared/uploads/2025/03/1742895504.pdf
+        memo: "長崎県の沿革資料。1876年（明治9年）に佐賀県が廃止され三潴県へ、同年8月に旧佐賀県全域が長崎県へ移管。1883年（明治16年）5月に分離（佐賀県再設置）。1876→1883で7年。"
+
+  - title: "のりの日本一"
+    photo: {emoji: "🍙"}
+    narration: "その2。佐賀のりは、売れた枚数と金額で日本一の常連。有明海の、大きな潮の満ち引きが、おいしさの秘密。"
+    captions:
+      - "②のりは/[日本一の常連]"
+      - "秘密は/{有明海}の潮"
+    status: ok
+    evidence:
+      - url: https://www.oanda.jp/lab-education/market_news/kn_2026050801001452/
+        memo: "共同通信（2026年5月）。佐賀県有明海漁協が今季の販売枚数・販売額で4年ぶり全国1位確実と発表。19年連続1位の後、3年連続で兵庫県に首位を譲っていた。"
+      - url: https://www.maff.go.jp/j/pr/aff/2104/producer02.html
+        memo: "農水省。有明海の干満差と栄養を生かした佐賀ののり養殖。"
+
+  - title: "シシリアンライス"
+    photo: {emoji: "🍛"}
+    narration: "その3。佐賀のご当地グルメ、シシリアンライス。ご飯に、炒めた肉と生野菜、マヨネーズ。なぜシシリアンなのかは、謎。"
+    captions:
+      - "③[シシリアンライス]"
+      - "ご飯に肉・野菜/マヨネーズ"
+      - "名前の由来は{謎}"
+    status: 説
+    evidence:
+      - url: https://hugkum.sho.jp/659181
+        memo: "佐賀市のご当地グルメ。昭和50年頃誕生、まかない飯説あり。温かいご飯に炒めた肉・生野菜・マヨネーズ。名前の由来は諸説で定かでない。"
+      - url: https://www.city.saga.lg.jp/material/files/group/24/p1hob4qhhh1co15fe4p71eta1cj94.pdf
+        memo: "佐賀市の資料にもシシリアンライスのレシピ。"
+
+comment_question: "佐賀といえば、何を思い浮かべる？"
+
+outro:
+  narration: "佐賀といえば、何を思い浮かべる？あなたの県のあるあるも、コメントで教えて。"
+  captions:
+    - "佐賀といえば/{何}を思い浮かべる？"
+    - "あなたの県も/[コメント]で教えて"

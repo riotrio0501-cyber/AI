@@ -1,0 +1,60 @@
+prefecture: 長崎県
+code: 42
+color:
+  main: "#8A5CD6"
+  dark: "#1A0F2E"
+  note: "教会のステンドグラスの紫"
+
+hook:
+  narration: "長崎県民なら、全部わかる。"
+  captions:
+    - "[長崎県民]なら/{全部}わかる"
+
+facts:
+  - title: "皿うどんにソース"
+    photo: {emoji: "🍝"}
+    narration: "その1。長崎では、皿うどんにソースをかける。それも、ウスターソース。しかも、皿うどん専用のソースまで売っている。"
+    captions:
+      - "①皿うどんに/[ソース]をかける"
+      - "皿うどん{専用ソース}/まである"
+    status: ok
+    evidence:
+      - url: https://www.city.nagasaki.lg.jp/nagazine/hakken0310/index2.html
+        memo: "長崎市。皿うどんにウスターソースをかけて食べるのが一般的。"
+      - url: https://gigazine.net/news/20171127-higashifoods-saraudon/
+        memo: "二次資料。チョーコー醤油の「金蝶ソース」など皿うどん向けのソースが地元で使われる。"
+
+  - title: "トルコライス"
+    photo: {emoji: "🍛"}
+    narration: "その2。トルコライスは、ピラフとスパゲッティとトンカツが、ひと皿に。でも、トルコとは関係ないという説が有力。"
+    captions:
+      - "②[トルコライス]"
+      - "ピラフ・パスタ/{トンカツ}が一皿に"
+      - "トルコとは/{関係ない}説"
+    status: 説
+    evidence:
+      - url: https://tabiiro.jp/gourmet/article/nagasaki-turkeyrice/
+        memo: "長崎のご当地洋食。名前の由来は諸説（3つの料理＝トリコロールが転じた説、サフランライスがトルコのピラフに似ている説など）。発祥も定かでないため「説」。"
+
+  - title: "島の数日本一"
+    photo: {emoji: "🏝️"}
+    narration: "その3。長崎県は、島の数が日本一。その数、1479。2位の北海道とは、たった6個差。"
+    reading: "その3。長崎県は、島の数が日本一。その数、せんよんひゃくななじゅうきゅう。2位の北海道とは、たった6個差。"
+    captions:
+      - "③島の数[日本一]"
+      - "その数/{1479島}"
+      - "北海道とは/たった[6島差]"
+    status: ok
+    evidence:
+      - url: https://www.nippon.com/ja/japan-data/h01615/
+        memo: "国土地理院が2023年に島の数を数え直し（全国14,125島）。都道府県別1位は長崎県1,479、2位北海道1,473、3位鹿児島1,256。"
+      - url: https://www.pref.nagasaki.jp/shared/uploads/2025/01/1737609009.pdf
+        memo: "長崎県資料。従来971島→1,479島。"
+
+comment_question: "皿うどんにソース、かける？かけない？"
+
+outro:
+  narration: "皿うどんにソース、かける？かけない？あなたの県のあるあるも、コメントで教えて。"
+  captions:
+    - "[ソース]は/{かける？かけない？}"
+    - "あなたの県も/[コメント]で教えて"

@@ -1,0 +1,56 @@
+prefecture: 宮崎県
+code: 45
+color:
+  main: "#F28C28"
+  dark: "#2E1503"
+  note: "マンゴーのオレンジ"
+
+hook:
+  narration: "宮崎県民なら、全部わかる。"
+  captions:
+    - "[宮崎県民]なら/{全部}わかる"
+
+facts:
+  - title: "元祖チキン南蛮にタルタルはない"
+    photo: {emoji: "🍗"}
+    narration: "その1。チキン南蛮は、宮崎の延岡が発祥。でも元祖の店のチキン南蛮には、タルタルソースがかかっていない。"
+    reading: "その1。チキン南蛮は、宮崎の、のべおかが発祥。でも元祖の店のチキン南蛮には、タルタルソースがかかっていない。"
+    captions:
+      - "①チキン南蛮は/[延岡]発祥"
+      - "元祖には/{タルタルがない}"
+    status: ok
+    evidence:
+      - url: https://ontrip.jal.co.jp/kyushu/17484898
+        memo: "延岡市の「直ちゃん」が元祖を名乗る店で、もともとタルタルソースなしの甘酢がけ。タルタルをかけるスタイルは「おぐら」が広めた。"
+      - url: https://nobekan.jp/general/files/pdf/all_nobeoka_gourmet_gb-fin04.pdf
+        memo: "延岡観光協会のグルメ資料。"
+
+  - title: "レタス巻き"
+    photo: {emoji: "🥬"}
+    narration: "その2。お寿司のレタス巻きも、宮崎生まれという説がある。シャキシャキのレタスとエビとマヨネーズを、のりで巻いている。"
+    captions:
+      - "②[レタス巻き]も/宮崎生まれ説"
+      - "レタス・エビ/{マヨネーズ}"
+    status: 説
+    evidence:
+      - url: https://news.mynavi.jp/article/20120815-ryokomiyazaki/
+        memo: "二次資料。レタス巻きは宮崎が発祥とされ、レタス・エビ・マヨネーズを巻いた巻き寿司。考案者・店の詳細は未確認のため「説」。"
+
+  - title: "冷や汁"
+    photo: {emoji: "🍚"}
+    narration: "その3。夏の宮崎は、冷や汁。焼いた魚とごまの、冷たいみそ汁を、ご飯にかけて食べる。夏バテでも、するする入る。"
+    captions:
+      - "③夏は[冷や汁]"
+      - "冷たいみそ汁を/{ご飯にかける}"
+    status: ok
+    evidence:
+      - url: https://www.maff.go.jp/j/keikaku/syokubunka/k_ryouri/area_stories/miyazaki.html
+        memo: "農水省「うちの郷土料理」宮崎県。冷や汁は焼き魚のほぐし身とすりごまを入れた冷たいみそ汁をご飯にかける夏の郷土料理。「するする入る」は感想表現。"
+
+comment_question: "チキン南蛮、タルタルあり派？なし派？"
+
+outro:
+  narration: "チキン南蛮、タルタルあり派？なし派？あなたの県のあるあるも、コメントで教えて。"
+  captions:
+    - "チキン南蛮/タルタル{あり？なし？}"
+    - "あなたの県も/[コメント]で教えて"

@@ -1,0 +1,58 @@
+prefecture: 鹿児島県
+code: 46
+color:
+  main: "#E0603A"
+  dark: "#2B0D05"
+  note: "桜島の夕焼け"
+
+hook:
+  narration: "鹿児島県民なら、全部わかる。"
+  captions:
+    - "[鹿児島県民]なら/{全部}わかる"
+
+facts:
+  - title: "灰は克灰袋へ"
+    photo: {emoji: "🌋"}
+    narration: "その1。鹿児島では、桜島の灰が降ってくる。集めた灰は、克灰袋という専用の袋に入れて出す。"
+    reading: "その1。鹿児島では、桜島の灰が降ってくる。集めた灰は、こくはいぶくろという専用の袋に入れて出す。"
+    captions:
+      - "①桜島の/[灰]が降ってくる"
+      - "灰は専用の/{克灰袋}へ"
+    status: ok
+    evidence:
+      - url: https://www.city.kagoshima.lg.jp/kikakuzaisei/kikaku/seisaku-k/kagotips/plain/kurashi/kokuhaibukuro.html
+        memo: "鹿児島市。集めた火山灰は専用のビニール袋「克灰袋」に入れて、宅地内降灰置場に出す。"
+
+  - title: "お茶の日本一"
+    photo: {emoji: "🍵"}
+    narration: "その2。お茶の生産量、静岡が日本一だと思ってない？2024年、鹿児島が初めて静岡を抜いて、日本一になった。"
+    reading: "その2。お茶の生産量、静岡が日本一だと思ってない？にせんにじゅうよねん、鹿児島が初めて静岡を抜いて、日本一になった。"
+    captions:
+      - "②お茶日本一は/[静岡]…じゃない？"
+      - "2024年/[鹿児島]が初の1位"
+    status: ok
+    evidence:
+      - url: https://www.bcnretail.com/market/detail/20250303_497341.html
+        memo: "農水省の2024年産荒茶生産量（速報）で鹿児島県が40.4%で1位、静岡県が38.6%で2位。静岡は1959年の統計開始以来1位だった。確報値は未確認。"
+      - url: https://www.customs.go.jp/nagasaki/toukei/R07.09_tokusyu.pdf
+        memo: "長崎税関資料。2024年、鹿児島県の生産量は初の全国第1位。"
+
+  - title: "しろくま"
+    photo: {emoji: "🍧"}
+    narration: "その3。鹿児島のかき氷といえば、しろくま。練乳のかき氷に、フルーツがたっぷり。上から見ると、白熊の顔に見える。"
+    captions:
+      - "③かき氷は/[しろくま]"
+      - "練乳に/{フルーツたっぷり}"
+      - "上から見ると/[白熊の顔]"
+    status: 説
+    evidence:
+      - url: https://rurubu.jp/andmore/article/22863
+        memo: "二次資料。練乳をかけたかき氷にフルーツをのせた鹿児島発祥の氷菓。天文館むじゃきが考案したとされる（諸説）。白熊の顔に見えるのが名前の由来という説もあるため「説」。"
+
+comment_question: "お茶の日本一、静岡？鹿児島？"
+
+outro:
+  narration: "お茶といえば、静岡？鹿児島？あなたの県のあるあるも、コメントで教えて。"
+  captions:
+    - "お茶といえば/[静岡]？[鹿児島]？"
+    - "あなたの県も/[コメント]で教えて"
