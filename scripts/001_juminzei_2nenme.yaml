@@ -1,0 +1,58 @@
+# ===== 知らなきゃ損ラボ 台本ファイル =====
+# 1ファイル = 1本の動画。scripts/ に置くだけで書き出し対象になる。
+id: "001"
+title: 社会人2年目から手取りが減る理由
+length: short            # short(20〜40秒・ポイント1つ) / long(60〜75秒・ポイント3つ)
+targets: [新社会人]       # 学生・若者 / 新社会人 / 一人暮らし / 30〜40代 / 季節
+season: null             # 季節ネタなら月を入れる（例: 6）
+info_year: 2026年度       # 何年度の情報か
+status: draft            # draft → approved になったら動画化
+age_note: null           # 未成年が使えないサービスなら「18歳以上」など
+
+sources:
+  - label: 東京都主税局「個人住民税の特別徴収」
+    url: https://www.tax.metro.tokyo.lg.jp/kazei/life/kojin_ju/tokubetsu/about
+    note: 給与所得者は6月〜翌年5月の給与から天引き（特別徴収）
+  - label: 総務省「個人住民税」
+    url: https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/150790_06.html
+    note: 前年所得課税、所得割の標準税率10%（要確認：環境の制限でページ本文を未取得）
+
+# テロップ記法: [[...]] で囲んだ部分は金色で強調。1画面10〜15文字目安。
+# narration はTTSに読ませる文（読み間違い防止に、必要ならよみを reading に書く）
+scenes:
+  - role: hook               # 0〜2秒
+    telop: "社会人2年目、\n手取りが[[月1万円]]減る？"
+    narration: 社会人2年目、手取りが月1万円減るって知ってた？
+    check: 要確認  # 金額は年収300万円前後の目安。自治体・控除で変わる
+  - role: point
+    telop: "犯人は[[住民税]]"
+    narration: 犯人は、住民税。
+  - role: point
+    telop: "住民税は\n[[前の年]]の収入で決まる"
+    narration: 住民税は、前の年の収入をもとに計算されるんです。
+  - role: point
+    telop: "1年目は\nほぼ[[0円]]"
+    narration: 1年目は前の年が学生だから、ほぼかからない。
+  - role: point
+    telop: "2年目の[[6月]]から\n天引きスタート"
+    narration: でも2年目の6月から、給料天引きがスタート。
+  - role: point
+    telop: "年収300万なら\n[[月1万円前後]]が目安"
+    narration: 年収300万円くらいなら、月1万円前後が目安です。
+    check: 要確認  # 所得割10%＋均等割で概算。給与所得控除・社会保険料控除の扱いで上下する
+  - role: caution
+    telop: "学生時代に稼いだ人は\n[[1年目]]からかかることも"
+    narration: ただし、学生時代のバイト収入が多かった人は、1年目からかかることも。
+  - role: caution
+    telop: "金額は[[6月の通知書]]で\nチェック"
+    narration: 正確な金額は、6月に会社から渡される通知書でチェックしてね。
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。
+
+caption: |
+  社会人2年目の6月、給与明細を見て「あれ？」となる人が多いのがこれ。
+  住民税は前の年の収入で決まるので、2年目から天引きが始まります。
+  金額はお住まいの自治体・収入によって変わるので、6月に届く「住民税の決定通知書」で確認してね。
+  ※2026年度の情報です。出典：東京都主税局・総務省
+hashtags: [新社会人, 住民税, 手取り, 社会人2年目, お金の知識, 知らなきゃ損, 給与明細, 節約, 一人暮らし]
