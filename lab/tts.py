@@ -1,0 +1,96 @@
+"""ナレーション合成（ローカルTTS）
+
+- voicevox : VOICEVOX CORE（推奨。声が自然。クレジット表記が必要）
+- openjtalk: pyopenjtalk（pipだけで動く予備）
+どちらも 48kHz mono float32 の numpy 配列を返す。
+"""
+import numpy as np
+
+from . import config
+
+SR = 48000
+_engine = None
+
+
+class OpenJTalkTTS:
+    name = "openjtalk"
+    credit = None
+
+    def __init__(self):
+        import pyopenjtalk
+        self.pj = pyopenjtalk
+
+    def synth(self, text, speed):
+        x, sr = self.pj.tts(text, speed=speed, half_tone=1.0)
+        x = (x / 32768.0).astype(np.float32)
+        return resample(x, sr, SR)
+
+
+class VoicevoxTTS:
+    name = "voicevox"
+    credit = config.VOICEVOX_CREDIT
+
+    def __init__(self):
+        from voicevox_core.blocking import Onnxruntime, OpenJtalk, Synthesizer, VoiceModelFile
+        d = config.VOICEVOX_DIR
+        lib = next((d / "voicevox_onnxruntime-linux-x64-1.17.3" / "lib").glob("libvoicevox_onnxruntime.so.*"))
+        ort = Onnxruntime.load_once(filename=str(lib))
+        self.syn = Synthesizer(ort, OpenJtalk(str(d / "open_jtalk_dic_utf_8-1.11")))
+        sid = config.VOICEVOX_STYLE_ID
+        for p in sorted((d / "vvm_repo" / "vvms").glob("*.vvm")):
+            with VoiceModelFile.open(p) as m:
+                if any(st.id == sid for c in m.metas for st in c.styles):
+                    self.syn.load_voice_model(m)
+                    break
+        self.sid = sid
+
+    def synth(self, text, speed):
+        q = self.syn.create_audio_query(text, self.sid)
+        q.speed_scale = speed
+        q.pre_phoneme_length = 0.05
+        q.post_phoneme_length = 0.05
+        q.output_sampling_rate = SR
+        import io, wave
+        with wave.open(io.BytesIO(self.syn.synthesis(q, self.sid))) as w:
+            x = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768.0
+        return x
+
+
+def resample(x, sr, to):
+    if sr == to:
+        return x
+    n = int(len(x) * to / sr)
+    return np.interp(np.linspace(0, len(x) - 1, n), np.arange(len(x)), x).astype(np.float32)
+
+
+def get_engine():
+    global _engine
+    if _engine:
+        return _engine
+    want = config.TTS_BACKEND
+    if want in ("auto", "voicevox"):
+        try:
+            _engine = VoicevoxTTS()
+            return _engine
+        except Exception as e:  # noqa: BLE001
+            if want == "voicevox":
+                raise
+            print(f"  [TTS] VOICEVOXが使えないため OpenJTalk を使用（{type(e).__name__}: {e}）")
+    _engine = OpenJTalkTTS()
+    return _engine
+
+
+def trim_silence(x, thresh=0.01, pad=0.03):
+    idx = np.where(np.abs(x) > thresh)[0]
+    if len(idx) == 0:
+        return x
+    a = max(0, idx[0] - int(pad * SR))
+    b = min(len(x), idx[-1] + int(pad * SR))
+    return x[a:b]
+
+
+def synth(text, speed=None):
+    eng = get_engine()
+    x = trim_silence(eng.synth(text, speed or config.TTS_SPEED))
+    peak = np.max(np.abs(x)) or 1.0
+    return x / peak * 0.85
