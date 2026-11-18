@@ -46,6 +46,20 @@ OPENJTALK_VOICES = {
     "tohoku_happy": {"path": HTSVOICE_DIR / "tohoku-f01-happy.htsvoice", "speed_mul": 0.95,
                      "credit": "音声: HTS voice tohoku-f01 (CC BY 4.0)"},
 }
+# Style-Bert-VITS2（いちばん人間らしい。モデルは Hugging Face から取得）
+SBV2_DIR = Path("/home/user/tools/sbv2")
+SBV2_VOICE = "koharune_ami"
+_AMI = "あみたろの声素材工房 (https://amitaro.net/)"
+SBV2_VOICES = {
+    "koharune_ami": {"dir": "koharune-ami", "style": "Neutral", "speed_mul": 1.0,
+                     "credit": f"Style-Bert-VITS2モデル: 小春音アミ、{_AMI}"},
+    "koharune_ami_runrun": {"dir": "koharune-ami", "style": "るんるん", "speed_mul": 1.0,
+                            "credit": f"Style-Bert-VITS2モデル: 小春音アミ、{_AMI}"},
+    "amitaro": {"dir": "amitaro", "style": "Neutral", "speed_mul": 1.0,
+                "credit": f"Style-Bert-VITS2モデル: あみたろ、{_AMI}"},
+    "jvnv_f1": {"dir": "jvnv-F1-jp", "style": "Neutral", "speed_mul": 1.0,
+                "credit": "Style-Bert-VITS2モデル: jvnv-F1-jp (JVNV corpus, CC BY-SA 4.0)"},
+}
 VOICEVOX_DIR = Path("/home/user/tools/voicevox")
 VOICEVOX_STYLE_ID = 8  # 春日部つむぎ（ノーマル）
 VOICEVOX_CREDIT = "VOICEVOX:春日部つむぎ"

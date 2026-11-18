@@ -37,6 +37,35 @@ class OpenJTalkTTS:
         return resample(x, e.get_sampling_frequency(), SR)
 
 
+class SBV2TTS:
+    """Style-Bert-VITS2（感情・抑揚が自然。torch CPUで動く）"""
+    name = "sbv2"
+
+    def __init__(self):
+        from style_bert_vits2.constants import Languages
+        from style_bert_vits2.nlp import bert_models
+        from style_bert_vits2.tts_model import TTSModel
+        bert = str(config.SBV2_DIR / "bert" / "deberta-v2-large-japanese-char-wwm")
+        bert_models.load_model(Languages.JP, bert)
+        bert_models.load_tokenizer(Languages.JP, bert)
+        v = config.SBV2_VOICES[config.SBV2_VOICE]
+        d = config.SBV2_DIR / "models" / v["dir"]
+        self.model = TTSModel(model_path=next(d.glob("*.safetensors")), config_path=d / "config.json",
+                              style_vec_path=d / "style_vectors.npy", device="cpu")
+        self.v = v
+        self.credit = v["credit"]
+
+    def synth(self, text, speed):
+        v = self.v
+        sr, x = self.model.infer(text=text, style=v.get("style", "Neutral"), style_weight=v.get("style_weight", 1.0),
+                                 length=1.0 / (speed * v.get("speed_mul", 1.0)), sdp_ratio=v.get("sdp_ratio", 0.3),
+                                 pitch_scale=v.get("pitch", 1.0), intonation_scale=v.get("intonation", 1.1))
+        x = np.asarray(x, np.float32)
+        if np.abs(x).max() > 2:
+            x /= 32768.0
+        return resample(x, sr, SR)
+
+
 class VoicevoxTTS:
     name = "voicevox"
     credit = config.VOICEVOX_CREDIT
@@ -79,6 +108,9 @@ def get_engine():
     if _engine:
         return _engine
     want = config.TTS_BACKEND
+    if want == "sbv2":
+        _engine = SBV2TTS()
+        return _engine
     if want in ("auto", "voicevox"):
         try:
             _engine = VoicevoxTTS()

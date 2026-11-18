@@ -38,13 +38,16 @@ def main():
     ap.add_argument("--force", action="store_true", help="書き出し済みでも作り直す")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--preview", action="store_true")
-    ap.add_argument("--tts", choices=["auto", "voicevox", "openjtalk"])
-    ap.add_argument("--voice", choices=list(config.OPENJTALK_VOICES), help="OpenJTalkの声")
+    ap.add_argument("--tts", choices=["auto", "voicevox", "openjtalk", "sbv2"])
+    ap.add_argument("--voice", choices=list(config.OPENJTALK_VOICES) + list(config.SBV2_VOICES), help="声")
     a = ap.parse_args()
     if a.tts:
         config.TTS_BACKEND = a.tts
     if a.voice:
-        config.OPENJTALK_VOICE = a.voice
+        if a.voice in config.SBV2_VOICES:
+            config.SBV2_VOICE = a.voice
+        else:
+            config.OPENJTALK_VOICE = a.voice
 
     paths = [Path(f) for f in a.files] or sorted(SCRIPTS.glob("*.y*ml"))
     scripts = [load(p) for p in paths]
