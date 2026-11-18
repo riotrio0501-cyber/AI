@@ -12,7 +12,7 @@ hook:
 
 facts:
   - title: "温泉日本一"
-    photo: {emoji: "♨️"}
+    photo: assets/photos/oita/beppu.jpg
     narration: "その1。大分県は、温泉の源泉の数も、湧き出る量も日本一。おんせん県を名乗るのは、だてじゃない。"
     reading: "その1。大分県は、温泉の源泉の数も、わきでる量も日本一。おんせん県を名乗るのは、だてじゃない。"
     captions:
@@ -24,7 +24,7 @@ facts:
         memo: "大分県資料。温泉の源泉数・湧出量ともに全国1位（源泉数4,418、2位鹿児島2,753。環境省「温泉利用状況」）。"
 
   - title: "とり天"
-    photo: {emoji: "🍤"}
+    photo: assets/photos/oita/toriten.jpg
     narration: "その2。大分で天ぷらといえば、とり天。鶏肉の天ぷらを、酢醤油やからしで食べる。発祥は別府という説が有力。"
     reading: "その2。大分で天ぷらといえば、とりてん。鶏肉の天ぷらを、すじょうゆやからしで食べる。発祥は別府という説が有力。"
     captions:

@@ -12,7 +12,7 @@ hook:
 
 facts:
   - title: "灰は克灰袋へ"
-    photo: {emoji: "🌋"}
+    photo: assets/photos/kagoshima/sakurajima.jpg
     narration: "その1。鹿児島では、桜島の灰が降ってくる。集めた灰は、克灰袋という専用の袋に入れて出す。"
     reading: "その1。鹿児島では、桜島の灰が降ってくる。集めた灰は、こくはいぶくろという専用の袋に入れて出す。"
     captions:
@@ -24,7 +24,7 @@ facts:
         memo: "鹿児島市。集めた火山灰は専用のビニール袋「克灰袋」に入れて、宅地内降灰置場に出す。"
 
   - title: "お茶の日本一"
-    photo: {emoji: "🍵"}
+    photo: assets/photos/kagoshima/chiran.jpg
     narration: "その2。お茶の生産量、静岡が日本一だと思ってない？2024年、鹿児島が初めて静岡を抜いて、日本一になった。"
     reading: "その2。お茶の生産量、静岡が日本一だと思ってない？にせんにじゅうよねん、鹿児島が初めて静岡を抜いて、日本一になった。"
     captions:

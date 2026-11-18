@@ -12,7 +12,7 @@ hook:
 
 facts:
   - title: "元祖チキン南蛮にタルタルはない"
-    photo: {emoji: "🍗"}
+    photo: assets/photos/miyazaki/nanban.jpg
     narration: "その1。チキン南蛮は、宮崎の延岡が発祥。でも元祖の店のチキン南蛮には、タルタルソースがかかっていない。"
     reading: "その1。チキン南蛮は、宮崎の、のべおかが発祥。でも元祖の店のチキン南蛮には、タルタルソースがかかっていない。"
     captions:
@@ -37,7 +37,7 @@ facts:
         memo: "二次資料。レタス巻きは宮崎が発祥とされ、レタス・エビ・マヨネーズを巻いた巻き寿司。考案者・店の詳細は未確認のため「説」。"
 
   - title: "冷や汁"
-    photo: {emoji: "🍚"}
+    photo: assets/photos/miyazaki/hiyajiru.jpg
     narration: "その3。夏の宮崎は、冷や汁。焼いた魚とごまの、冷たいみそ汁を、ご飯にかけて食べる。夏バテでも、するする入る。"
     captions:
       - "③夏は[冷や汁]"

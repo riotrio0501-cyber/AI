@@ -12,7 +12,7 @@ hook:
 
 facts:
   - title: "皿うどんにソース"
-    photo: {emoji: "🍝"}
+    photo: assets/photos/nagasaki/saraudon.jpg
     narration: "その1。長崎では、皿うどんにソースをかける。それも、ウスターソース。しかも、皿うどん専用のソースまで売っている。"
     captions:
       - "①皿うどんに/[ソース]をかける"
@@ -25,7 +25,7 @@ facts:
         memo: "二次資料。チョーコー醤油の「金蝶ソース」など皿うどん向けのソースが地元で使われる。"
 
   - title: "トルコライス"
-    photo: {emoji: "🍛"}
+    photo: assets/photos/nagasaki/toruko.jpg
     narration: "その2。トルコライスは、ピラフとスパゲッティとトンカツが、ひと皿に。でも、トルコとは関係ないという説が有力。"
     captions:
       - "②[トルコライス]"
@@ -37,7 +37,7 @@ facts:
         memo: "長崎のご当地洋食。名前の由来は諸説（3つの料理＝トリコロールが転じた説、サフランライスがトルコのピラフに似ている説など）。発祥も定かでないため「説」。"
 
   - title: "島の数日本一"
-    photo: {emoji: "🏝️"}
+    photo: assets/photos/nagasaki/kujukushima.jpg
     narration: "その3。長崎県は、島の数が日本一。その数、1479。2位の北海道とは、たった6個差。"
     reading: "その3。長崎県は、島の数が日本一。その数、せんよんひゃくななじゅうきゅう。2位の北海道とは、たった6個差。"
     captions:

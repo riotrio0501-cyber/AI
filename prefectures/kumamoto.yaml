@@ -12,7 +12,7 @@ hook:
 
 facts:
   - title: "水道水は100%地下水"
-    photo: {emoji: "🚰"}
+    photo: assets/photos/kumamoto/suizenji.jpg
     narration: "その1。熊本市の水道水は、100パーセント地下水。ダムの水を使っていない。蛇口から、天然水が出てくる。"
     captions:
       - "①水道水は/[100%地下水]"
@@ -39,7 +39,7 @@ facts:
         memo: "後世に残したい熊本弁でも1位。"
 
   - title: "太平燕"
-    photo: {emoji: "🍜"}
+    photo: assets/photos/kumamoto/taipien.jpg
     narration: "その3。熊本のちゃんぽん的存在、太平燕。春雨のスープに、揚げ卵。給食にも出てくるのに、県外ではほぼ知られていない。"
     reading: "その3。熊本のちゃんぽん的存在、タイピーエン。春雨のスープに、揚げ卵。給食にも出てくるのに、県外ではほぼ知られていない。"
     captions:
