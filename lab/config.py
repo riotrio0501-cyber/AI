@@ -35,6 +35,17 @@ SAFE_SIDE = 80
 # ナレーション
 TTS_BACKEND = "openjtalk"  # openjtalk / voicevox / auto（voicevox→だめならopenjtalk）
 TTS_SPEED = 1.22      # 速め
+# OpenJTalkの声（htsvoice）。tohoku-f01 は CC BY 4.0 なのでクレジットを自動でキャプションに入れる
+HTSVOICE_DIR = Path("/home/user/tools/htsvoice/tohoku")
+OPENJTALK_VOICE = "mei"
+OPENJTALK_VOICES = {
+    "mei": {"path": None, "half_tone": 1.0},
+    "mei_high": {"path": None, "half_tone": 2.5},
+    "tohoku_neutral": {"path": HTSVOICE_DIR / "tohoku-f01-neutral.htsvoice", "speed_mul": 0.95,
+                       "credit": "音声: HTS voice tohoku-f01 (CC BY 4.0)"},
+    "tohoku_happy": {"path": HTSVOICE_DIR / "tohoku-f01-happy.htsvoice", "speed_mul": 0.95,
+                     "credit": "音声: HTS voice tohoku-f01 (CC BY 4.0)"},
+}
 VOICEVOX_DIR = Path("/home/user/tools/voicevox")
 VOICEVOX_STYLE_ID = 8  # 春日部つむぎ（ノーマル）
 VOICEVOX_CREDIT = "VOICEVOX:春日部つむぎ"

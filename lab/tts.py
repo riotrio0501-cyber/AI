@@ -18,12 +18,23 @@ class OpenJTalkTTS:
 
     def __init__(self):
         import pyopenjtalk
+        from pyopenjtalk.htsengine import HTSEngine
         self.pj = pyopenjtalk
+        v = config.OPENJTALK_VOICES[config.OPENJTALK_VOICE]
+        path = v["path"] or pyopenjtalk.DEFAULT_HTS_VOICE
+        self.engine = HTSEngine(path if isinstance(path, bytes) else str(path).encode())
+        self.half_tone = v.get("half_tone", 0.0)
+        self.speed_mul = v.get("speed_mul", 1.0)
+        self.credit = v.get("credit")
 
     def synth(self, text, speed):
-        x, sr = self.pj.tts(text, speed=speed, half_tone=1.0)
+        e = self.engine
+        e.set_speed(speed * self.speed_mul)
+        e.add_half_tone(self.half_tone)
+        x = np.asarray(e.synthesize(self.pj.extract_fullcontext(text)), np.float64)
+        e.refresh()
         x = (x / 32768.0).astype(np.float32)
-        return resample(x, sr, SR)
+        return resample(x, e.get_sampling_frequency(), SR)
 
 
 class VoicevoxTTS:

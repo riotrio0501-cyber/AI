@@ -39,9 +39,12 @@ def main():
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--preview", action="store_true")
     ap.add_argument("--tts", choices=["auto", "voicevox", "openjtalk"])
+    ap.add_argument("--voice", choices=list(config.OPENJTALK_VOICES), help="OpenJTalkの声")
     a = ap.parse_args()
     if a.tts:
         config.TTS_BACKEND = a.tts
+    if a.voice:
+        config.OPENJTALK_VOICE = a.voice
 
     paths = [Path(f) for f in a.files] or sorted(SCRIPTS.glob("*.y*ml"))
     scripts = [load(p) for p in paths]
