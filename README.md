@@ -31,7 +31,7 @@ python make_videos.py --batch --include-draft --force # 下書き含め作り直
 ## ナレーション
 `lab/config.py` の `TTS_BACKEND` と声の設定で切り替え。`--voice` でも指定可。
 - `sbv2`（既定・推奨）: Style-Bert-VITS2。いちばん人間らしい。声は `koharune_ami` / `koharune_ami_runrun` / `amitaro` / `jvnv_f1`
-  - モデルは Hugging Face から `/home/user/tools/sbv2/` に取得（litagin/sbv2_koharune_ami ほか、BERT: ku-nlp/deberta-v2-large-japanese-char-wwm）
+  - モデルは `./setup_models.sh` で Hugging Face から `models/` に取得（小春音アミ＋BERT。他の声は手動）
   - 声ごとのクレジットがキャプションに自動で入ります（あみたろ系は「あみたろの声素材工房」の表記が必須）
 - `openjtalk`: 軽量な予備。声は `mei` / `mei_high` / `tohoku_neutral` / `tohoku_happy`
 

@@ -36,7 +36,7 @@ SAFE_SIDE = 80
 TTS_BACKEND = "sbv2"  # sbv2（自然・推奨） / openjtalk（軽量） / voicevox / auto
 TTS_SPEED = 1.22      # 速め
 # OpenJTalkの声（htsvoice）。tohoku-f01 は CC BY 4.0 なのでクレジットを自動でキャプションに入れる
-HTSVOICE_DIR = Path("/home/user/tools/htsvoice/tohoku")
+HTSVOICE_DIR = ROOT / "models" / "htsvoice_tohoku"
 OPENJTALK_VOICE = "mei"
 OPENJTALK_VOICES = {
     "mei": {"path": None, "half_tone": 1.0},
@@ -47,7 +47,7 @@ OPENJTALK_VOICES = {
                      "credit": "音声: HTS voice tohoku-f01 (CC BY 4.0)"},
 }
 # Style-Bert-VITS2（いちばん人間らしい。モデルは Hugging Face から取得）
-SBV2_DIR = Path("/home/user/tools/sbv2")
+SBV2_DIR = ROOT / "models" / "sbv2"
 SBV2_VOICE = "koharune_ami"
 _AMI = "あみたろの声素材工房 (https://amitaro.net/)"
 SBV2_VOICES = {
