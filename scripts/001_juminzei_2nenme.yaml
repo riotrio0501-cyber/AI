@@ -23,32 +23,40 @@ scenes:
   - role: hook               # 0〜2秒
     telop: "社会人2年目、\n手取りが[[月1万円]]減る？"
     narration: 社会人2年目、手取りが月1万円減るって知ってた？
+    visual: {type: icon, name: wallet}
     check: 要確認  # 金額は年収300万円前後の目安。自治体・控除で変わる
   - role: point
     telop: "犯人は[[住民税]]"
     narration: 犯人は、住民税。
+    visual: {type: icon, name: building, text: 市区町村}
   - role: point
     telop: "住民税は\n[[前の年]]の収入で決まる"
     narration: 住民税は、前の年の収入をもとに計算されるんです。
+    visual: {type: steps, items: [去年1年間の収入で決まる, 次の年の6月から払う]}
   - role: point
     telop: "1年目は\nほぼ[[0円]]"
     narration: 1年目は前の年が学生だから、ほぼかからない。
+    visual: {type: bar, items: [{label: 1年目, value: 0, text: ほぼ0円}, {label: 2年目, value: 1, text: 月1万円前後, highlight: true}]}
   - role: point
     telop: "2年目の[[6月]]から\n天引きスタート"
     narration: でも2年目の6月から、給料天引きがスタート。
+    visual: {type: months, highlight: [6, 7, 8, 9, 10, 11, 12], caption: "2年目の[[6月]]から天引きスタート"}
   - role: point
     telop: "年収300万なら\n[[月1万円前後]]が目安"
     narration: 年収300万円くらいなら、月1万円前後が目安です。
+    visual: {type: icon, name: coin, text: 約1万}
     check: 要確認  # 所得割10%＋均等割で概算。給与所得控除・社会保険料控除の扱いで上下する
   - role: caution
     telop: "学生時代に稼いだ人は\n[[1年目]]からかかることも"
     narration: ただし、学生時代のバイト収入が多かった人は、1年目からかかることも。
+    visual: {type: icon, name: student}
   - role: caution
     telop: "金額は[[6月の通知書]]で\nチェック"
     narration: 正確な金額は、6月に会社から渡される通知書でチェックしてね。
+    visual: {type: icon, name: document, text: 決定通知書}
   - role: outro
     telop: "[[保存]]して見返してね"
-    narration: 保存して見返してね。
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
 
 caption: |
   社会人2年目の6月、給与明細を見て「あれ？」となる人が多いのがこれ。

@@ -26,6 +26,11 @@ python make_videos.py --batch --include-draft --force # 下書き含め作り直
 - `scenes[].role`: hook / who / point / caution / outro
 - テロップは `[[...]]` で金色強調、`\n` で改行（1行15文字以内）
 - 読み間違いは `reading:` に読みを書く
+- 図解・イラストは `visual:` で指定（テロップの下に表示。すべてコード描画で著作権フリー）
+  - `icon`（イラスト1つ）/ `icons`（横並び、`label`で下に文字）/ `bar`（棒グラフ）/ `compare`（Before→After）/ `months`（12か月カレンダー）/ `steps`（手順1・2・3）
+  - アイコン: calendar / coin / document / phone / student / worker / family / building / warning / check / cross / wallet / gift / pension / chat
+  - 書き方の例は `lab/visuals.py` の先頭と `scripts/` の台本を参照
+- 最後の outro は自動で「保存」アイコン＋フォローボタンの演出が入る（ナレーションでもフォローを促す）
 - `status: approved` にした台本だけが `--batch` の対象
 
 ## ナレーション

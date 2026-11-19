@@ -22,21 +22,26 @@ scenes:
   - role: hook
     telop: "ふるさと納税、\n今年分は[[12月31日]]まで"
     narration: ふるさと納税、今年の分は、12月31日までだよ。
+    visual: {type: icons, items: [{name: gift}, {name: calendar, text: 12/31}]}
   - role: point
     telop: "1月〜12月の寄附が\n[[今年の分]]"
     narration: 1月から12月までの寄附が、今年の分としてカウントされます。
+    visual: {type: months, highlight: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], caption: "この1年の寄附が[[今年の分]]"}
   - role: point
     telop: "会社員なら\n[[ワンストップ特例]]"
     narration: 確定申告をしない会社員なら、ワンストップ特例が使えるかも。
+    visual: {type: icon, name: worker}
   - role: point
     telop: "申請書は\n[[1月10日]]必着"
     narration: 寄附先が5つ以内なら、申請書を翌年1月10日までに届ければ、確定申告はいりません。
+    visual: {type: steps, items: [寄附先が5自治体以内, 確定申告しない会社員など, 申請書は1月10日必着]}
   - role: caution
     telop: "[[上限]]を超えると\nただの寄附に"
     narration: ただし、上限額を超えた分は自己負担になるので、先に目安をチェックしてね。
+    visual: {type: icon, name: warning}
   - role: outro
     telop: "[[保存]]して見返してね"
-    narration: 保存して見返してね。
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
 
 caption: |
   ふるさと納税は1月〜12月の寄附がその年の分。今年分は12月31日までです。

@@ -19,24 +19,30 @@ scenes:
   - role: hook
     telop: "毎月[[2,500円]]、\nムダにしてない？"
     narration: 毎月2500円、ムダにしてない？
+    visual: {type: icon, name: phone}
   - role: point
     telop: "月500円でも\n5つで[[2,500円]]"
     narration: 月500円のサブスクでも、5つあれば月2500円。1年で3万円です。
+    visual: {type: icons, items: [{name: coin, text: "500"}, {name: coin, text: "500"}, {name: coin, text: "500"}, {name: coin, text: "500"}, {name: coin, text: "500"}], caption: "1年で[[3万円]]"}
   - role: point
     telop: "アプリを消しても\n[[解約にならない]]"
     narration: しかも、アプリを消しただけでは、解約にならないんです。
+    visual: {type: icon, name: cross}
   - role: point
     telop: "[[明細]]と\nサブスク一覧をチェック"
     narration: スマホの設定のサブスク一覧と、毎月の明細を見て、使ってないものを解約しよう。
+    visual: {type: steps, items: [スマホのサブスク一覧を開く, 毎月の明細を見る, 使ってないものを解約]}
   - role: caution
     telop: "無料お試しは\n[[自動で有料]]に"
     narration: 無料お試しは、期間が終わると自動で有料になることが多いから要注意。
+    visual: {type: icon, name: calendar, text: 自動更新}
   - role: caution
     telop: "困ったら[[188]]に相談"
     narration: 困ったら、消費者ホットライン188へ。
+    visual: {type: icon, name: chat, text: "188"}
   - role: outro
     telop: "[[保存]]して見返してね"
-    narration: 保存して見返してね。
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
 
 caption: |
   サブスクはアプリを消しても解約にはなりません。

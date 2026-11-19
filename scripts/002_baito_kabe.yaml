@@ -19,23 +19,28 @@ scenes:
   - role: hook
     telop: "バイト学生、\n[[103万の壁]]はもう古い"
     narration: バイトしてる学生さん、103万円の壁って、もう古いかも。
+    visual: {type: icon, name: student}
   - role: point
     telop: "自分の所得税は\n年収[[160万円]]まで0円"
     narration: 2025年分から、自分に所得税がかからないラインは、年収160万円まで上がりました。
+    visual: {type: compare, before: 103万円, after: 160万円, before_label: これまで, after_label: 2025年分から}
     check: 要確認  # 基礎控除の特例（合計所得132万円以下）を含めた金額。国税庁で確認
   - role: point
     telop: "親の控除も\n[[150万円]]までは満額"
     narration: さらに19歳から22歳なら、年収150万円までは、親の控除も満額のまま。
+    visual: {type: icon, name: family, caption: "[[19〜22歳]]の子が対象"}
     check: 要確認  # 特定親族特別控除。63万円満額の上限が給与収入150万円か要確認
   - role: caution
     telop: "[[住民税]]や[[社会保険]]は\n別の壁があるよ"
     narration: ただし、住民税や、親の健康保険の扶養は、別のラインがあるので注意。
+    visual: {type: icon, name: warning}
   - role: caution
     telop: "働く前に\n[[親と勤務先]]に確認"
     narration: シフトを増やす前に、親と勤務先に確認してね。
+    visual: {type: icons, items: [{name: family, label: 親}, {name: building, text: 職場, label: 勤務先}]}
   - role: outro
     telop: "[[保存]]して見返してね"
-    narration: 保存して見返してね。
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
 
 caption: |
   「103万円を超えたらダメ」はもう古いかも。

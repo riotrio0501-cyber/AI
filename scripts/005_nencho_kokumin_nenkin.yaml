@@ -19,25 +19,31 @@ scenes:
   - role: hook
     telop: "新社会人、\n年末調整で[[損]]してない？"
     narration: 新社会人のみんな、年末調整で損してない？
+    visual: {type: icon, name: worker}
   - role: point
     telop: "入社前に払った\n[[国民年金]]"
     narration: 入社前の1月から3月に、自分で払った国民年金。
+    visual: {type: months, highlight: [1, 2, 3], caption: "入社前に[[自分で払った分]]"}
   - role: point
     telop: "年末調整で\n[[控除]]できる"
     narration: 実はこれ、年末調整で社会保険料控除として書けるんです。
+    visual: {type: icon, name: document, text: 保険料控除}
   - role: point
     telop: "3か月分なら\n約[[5万円]]の控除"
     narration: 3か月分なら、約5万円分の控除。そのぶん税金が少し戻ってきます。
+    visual: {type: icons, items: [{name: coin, text: 1.8万}, {name: coin, text: 1.8万}, {name: coin, text: 1.8万}], caption: "3か月で[[約5.4万円]]"}
     check: 要確認  # 2026年度保険料17,920円×3＝53,760円。戻る税額は所得で変わる
   - role: caution
     telop: "必要なのは\n[[控除証明書]]"
     narration: 必要なのは、日本年金機構から届く控除証明書。捨てずに会社に出してね。
+    visual: {type: icon, name: document, text: 控除証明書}
   - role: caution
     telop: "親が払った分は\n[[親]]の控除に"
     narration: ただし、親が払ってくれていた場合は、親の控除になるよ。
+    visual: {type: icon, name: family}
   - role: outro
     telop: "[[保存]]して見返してね"
-    narration: 保存して見返してね。
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
 
 caption: |
   4月入社の新社会人で、1〜3月に国民年金を自分で払った人は要チェック。

@@ -19,6 +19,7 @@ class Scene:
     reading: str | None = None  # TTS用の読み（読み間違い対策）
     number: int | None = None   # longのポイント番号
     check: str | None = None
+    visual: dict | None = None  # 図解・イラスト（lab/visuals.py 参照）
 
 
 @dataclass
@@ -100,6 +101,12 @@ def validate(s: Script):
                 Wn.append(f"シーン{i}: テロップ1行が{len(line)}文字（15文字以内推奨）「{line}」")
         if sc.check:
             Wn.append(f"シーン{i}: 要確認 → {sc.check}" if sc.check != "要確認" else f"シーン{i}: 要確認")
+    from .visuals import TYPES
+    for i, sc in enumerate(s.scenes, 1):
+        if sc.visual and sc.visual.get("type", "icon") not in TYPES:
+            E.append(f"シーン{i}: visual type「{sc.visual.get('type')}」は不明（{' / '.join(TYPES)}）")
+    if s.scenes and s.scenes[-1].role == "outro" and "フォロー" not in s.scenes[-1].narration:
+        Wn.append("最後のシーンでフォローを促していない")
     text = " ".join([s.caption] + [sc.narration + sc.telop for sc in s.scenes])
     for w in config.NG_WORDS:
         if w in text:

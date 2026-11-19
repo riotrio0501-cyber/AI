@@ -8,12 +8,15 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-from . import audio, config, tts
+from . import audio, config, tts, visuals
 from .config import FPS, GOLD, GREEN, H, NAVY, W, WHITE
 from .script import GOLD_RE, Script
 
 TEXT_MAX_W = W - 2 * config.SAFE_SIDE - 20
 TELOP_CY = 880
+TELOP_CY_WITH_VISUAL = 620  # 図解があるシーンはテロップを上に
+VISUAL_TOP = 830            # 図解エリアの上端（高さ visuals.AREA_H）
+OUTRO_CY = 640
 
 
 @lru_cache(maxsize=64)
@@ -243,7 +246,8 @@ def render(script: Script, outdir: Path, preview_only=False):
     telops = [render_telop(s["scene"].telop, max_size=128 if s["scene"].role == "hook" else 112) for s in scenes]
     labels = [role_label(s["scene"], script) for s in scenes]
     icon = bookmark_icon()
-    follow = render_telop("フォローで[[毎日お得情報]]", max_size=64) if script.length == "long" else None
+    vis = [visuals.make(s["scene"].visual) for s in scenes]
+    follow = visuals.FollowCTA()
 
     nframes = int(total * FPS)
     mp4 = outdir / f"{script.slug}.mp4"
@@ -252,7 +256,7 @@ def render(script: Script, outdir: Path, preview_only=False):
            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(mp4)]
     proc = None if preview_only else subprocess.Popen(cmd, stdin=subprocess.PIPE)
     cover_t = min(scenes[0]["end"] - 0.1, 1.2)
-    previews = {round(s["start"] + 0.5, 2): i for i, s in enumerate(scenes)}
+    previews = {round(min(s["start"] + 1.4, s["end"] - 0.1), 2): i for i, s in enumerate(scenes)}
     frames_out = range(nframes) if not preview_only else [int(k * FPS) for k in previews] + [int(cover_t * FPS)]
 
     for fi in frames_out:
@@ -266,7 +270,12 @@ def render(script: Script, outdir: Path, preview_only=False):
         scale = 0.82 + 0.18 * ease_out_back(k)
         alpha = min(1.0, lt / 0.1)
         tel = telops[si]
-        cy = TELOP_CY + (60 if sc.role == "outro" else 0)
+        if sc.role == "outro":
+            cy = OUTRO_CY
+        elif vis[si] is not None:
+            cy = TELOP_CY_WITH_VISUAL
+        else:
+            cy = TELOP_CY
         if scale != 1.0:
             tel = tel.resize((max(1, int(tel.width * scale)), max(1, int(tel.height * scale))), Image.BILINEAR)
         if alpha < 1:
@@ -281,8 +290,9 @@ def render(script: Script, outdir: Path, preview_only=False):
         if sc.role == "outro":
             bounce = abs(math.sin(lt * 5)) * 30 * math.exp(-lt * 1.2)
             im.alpha_composite(icon, (int(W / 2 - icon.width / 2), int(top_of_text - icon.height - 10 - bounce)))
-            if follow is not None:
-                im.alpha_composite(follow, (int(W / 2 - follow.width / 2), int(cy + telops[si].height / 2)))
+            im.alpha_composite(follow.frame(lt - 0.5), (0, int(cy + telops[si].height / 2 + 10)))
+        elif vis[si] is not None:
+            im.alpha_composite(vis[si].frame(lt - 0.15), (0, VISUAL_TOP))
         im.alpha_composite(brand)
         # 進捗バー
         d = ImageDraw.Draw(im)
