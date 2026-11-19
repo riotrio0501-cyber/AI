@@ -38,6 +38,7 @@ def main():
     ap.add_argument("--force", action="store_true", help="書き出し済みでも作り直す")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--preview", action="store_true")
+    ap.add_argument("--caption-only", action="store_true", help="キャプション(caption.txt)だけ作り直す")
     ap.add_argument("--tts", choices=["auto", "voicevox", "openjtalk", "sbv2"])
     ap.add_argument("--voice", choices=list(config.OPENJTALK_VOICES) + list(config.SBV2_VOICES), help="声")
     a = ap.parse_args()
@@ -51,6 +52,19 @@ def main():
 
     paths = [Path(f) for f in a.files] or sorted(SCRIPTS.glob("*.y*ml"))
     scripts = [load(p) for p in paths]
+    if a.caption_only:
+        for s in scripts:
+            mp4 = OUT / s.slug / f"{s.slug}.mp4"
+            dur = None
+            if mp4.exists():
+                import subprocess
+                r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                    str(mp4)], capture_output=True, text=True)
+                dur = float(r.stdout.strip() or 0) or None
+            (OUT / s.slug).mkdir(parents=True, exist_ok=True)
+            render.write_caption(s, OUT / s.slug, dur)
+            print(f"caption → {OUT / s.slug / 'caption.txt'}")
+        return
     if a.check:
         for s in scripts:
             report(s)

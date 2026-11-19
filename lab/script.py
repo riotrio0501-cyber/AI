@@ -35,6 +35,8 @@ class Script:
     scenes: list
     caption: str
     hashtags: list
+    caption_title: str | None = None  # キャプション1行目（検索されやすい言葉を入れる）
+    question: str | None = None       # コメントを促す質問
     season: int | None = None
     age_note: str | None = None
     warnings: list = field(default_factory=list)
@@ -58,6 +60,7 @@ def load(path) -> Script:
         targets=d.get("targets") or [], info_year=str(d.get("info_year") or ""), status=d.get("status", "draft"),
         sources=d.get("sources") or [], scenes=scenes, caption=(d.get("caption") or "").strip(),
         hashtags=d.get("hashtags") or [], season=d.get("season"), age_note=d.get("age_note"),
+        caption_title=d.get("caption_title"), question=d.get("question"),
     )
     validate(s)
     return s
@@ -101,6 +104,10 @@ def validate(s: Script):
                 Wn.append(f"シーン{i}: テロップ1行が{len(line)}文字（15文字以内推奨）「{line}」")
         if sc.check:
             Wn.append(f"シーン{i}: 要確認 → {sc.check}" if sc.check != "要確認" else f"シーン{i}: 要確認")
+    if not s.caption_title:
+        Wn.append("caption_title（キャプション1行目）が未記入。title を使います")
+    if len(s.hashtags) > config.MAX_HASHTAGS:
+        Wn.append(f"ハッシュタグが{len(s.hashtags)}個。先頭{config.MAX_HASHTAGS}個だけ使います")
     from .visuals import TYPES
     for i, sc in enumerate(s.scenes, 1):
         if sc.visual and sc.visual.get("type", "icon") not in TYPES:

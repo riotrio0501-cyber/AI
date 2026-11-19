@@ -32,6 +32,9 @@ python make_videos.py --batch --include-draft --force # 下書き含め作り直
   - 書き方の例は `lab/visuals.py` の先頭と `scripts/` の台本を参照
 - 最後の outro は自動で「保存」アイコン＋フォローボタンの演出が入る（ナレーションでもフォローを促す）
 - `status: approved` にした台本だけが `--batch` の対象
+- キャプション: `caption_title`（1行目・検索されやすい言葉）、`caption`（本文）、`question`（コメントを促す質問）、`hashtags`（先頭5個を使用）
+  - `caption.txt` は「1行目 → 本文 → 質問 → 保存/フォロー → 年度・出典 → 声のクレジット → タグ」の順で自動生成。下におすすめ投稿時間つき
+  - キャプションだけ作り直す: `python make_videos.py --caption-only`
 
 ## ナレーション
 `lab/config.py` の `TTS_BACKEND` と声の設定で切り替え。`--voice` でも指定可。

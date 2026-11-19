@@ -316,17 +316,49 @@ def render(script: Script, outdir: Path, preview_only=False):
     return mp4, total
 
 
-def write_caption(script: Script, outdir: Path, total):
-    eng = tts.get_engine()
-    tags = " ".join("#" + h.lstrip("#") for h in script.hashtags)
-    lines = [script.caption, "", tags, ""]
-    if eng.credit:
-        lines.append(eng.credit)
-    lines += ["", "---- 投稿前チェック用（キャプションには貼らない）----",
-              f"タイトル: {script.title}", f"長さ: {script.length}（{total:.1f}秒）",
-              f"対象: {' / '.join(script.targets)}", f"情報の年度: {script.info_year}", "出典:"]
+def source_orgs(script: Script):
+    orgs = []
+    for s in script.sources:
+        org = re.split(r"[「 　]", s.get("label", "") if isinstance(s, dict) else "")[0]
+        if org and org not in orgs:
+            orgs.append(org)
+    return orgs
+
+
+def build_caption(script: Script, credit=None):
+    """投稿用キャプション: 1行目キーワード → 本文 → 質問 → 保存/フォロー → 年度・出典 → クレジット → タグ"""
+    body, notes = [], []
+    for ln in script.caption.splitlines():
+        (notes if ln.strip().startswith("※") else body).append(ln)
+    if not notes:
+        orgs = source_orgs(script)
+        notes = [f"※{script.info_year}の情報です。出典：{'・'.join(orgs[:3])}" + ("ほか" if len(orgs) > 3 else "")]
+    if script.age_note:
+        notes.append(f"※{script.age_note}")
+    tags = " ".join("#" + h.lstrip("#") for h in script.hashtags[: config.MAX_HASHTAGS])
+    lines = [script.caption_title or script.title, *body, "",
+             script.question or config.DEFAULT_QUESTION, config.CTA_LINE, "", *notes]
+    if credit:
+        lines.append(credit)
+    lines += ["", tags]
+    return "\n".join(lines).strip() + "\n"
+
+
+def write_caption(script: Script, outdir: Path, total=None):
+    credit = tts.get_engine().credit if config.TTS_BACKEND != "sbv2" else _sbv2_credit()
+    text = build_caption(script, credit)
+    times = sorted({config.POST_TIMES[t] for t in script.targets if t in config.POST_TIMES})
+    lines = [text.rstrip(), "", "", "---- 投稿前チェック用（ここから下はキャプションに貼らない）----",
+             f"タイトル: {script.title}", f"長さ: {script.length}" + (f"（{total:.1f}秒）" if total else ""),
+             f"対象: {' / '.join(script.targets)}", f"おすすめ投稿時間: {' または '.join(times) or '20:00〜21:00'}",
+             f"情報の年度: {script.info_year}", f"キャプション文字数: {len(text)}", "出典:"]
     lines += [f"  - {s.get('label','')}: {s.get('url','')}" for s in script.sources]
     if script.warnings:
         lines.append("警告:")
         lines += [f"  - {w}" for w in script.warnings]
     (outdir / "caption.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _sbv2_credit():
+    # キャプションだけ作り直すときにモデルを読み込まなくて済むように設定から取る
+    return config.SBV2_VOICES[config.SBV2_VOICE]["credit"]
