@@ -28,6 +28,29 @@ DARK = (10, 26, 50)
 AREA_H = 560  # 図解エリアの高さ
 
 
+def avatar(size, ring=GREEN, ring_w=0.06):
+    """プロフィール画像を丸く切り抜く（無ければ「損」マーク）"""
+    from PIL import ImageOps
+    s = size * SS
+    out = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    d = ImageDraw.Draw(out)
+    d.ellipse([0, 0, s - 1, s - 1], fill=ring)
+    inner = int(s * (1 - ring_w * 2))
+    off = (s - inner) // 2
+    mask = Image.new("L", (inner, inner), 0)
+    ImageDraw.Draw(mask).ellipse([0, 0, inner - 1, inner - 1], fill=255)
+    if config.PROFILE_IMAGE.exists():
+        src = Image.open(config.PROFILE_IMAGE).convert("RGBA")
+        m = int(min(src.size) * 0.1)  # 余白を少し切って中央を大きく
+        src = src.crop((m, m, src.width - m, src.height - m))
+        img = ImageOps.fit(src, (inner, inner), Image.LANCZOS)
+    else:
+        img = Image.new("RGBA", (inner, inner), NAVY + (255,))
+        ImageDraw.Draw(img).text((inner / 2, inner / 2), "損", font=_font(int(inner * .5)), fill=GOLD, anchor="mm")
+    out.paste(img, (off, off), mask)
+    return _done(out)
+
+
 def _font(size):
     from .render import font
     return font(size)
@@ -427,12 +450,11 @@ class FollowCTA:
         s = SS
         d.rounded_rectangle([0, 0, w * s - 1, h * s - 1], radius=85 * s, fill=(255, 255, 255, 240))
         # アバター
-        d.ellipse([16 * s, 16 * s, 154 * s, 154 * s], fill=GREEN)
-        d.ellipse([24 * s, 24 * s, 146 * s, 146 * s], fill=NAVY)
-        d.text((85 * s, 80 * s), "損", font=_font(62 * s), fill=GOLD, anchor="mm")
         d.text((180 * s, 62 * s), config.ACCOUNT_NAME, font=_font(42 * s), fill=NAVY, anchor="lm")
         d.text((180 * s, 112 * s), "毎日お得情報を発信中", font=_font(30 * s), fill=(90, 100, 120), anchor="lm")
-        self.card = _shadow(_done(im), off=8, blur=12, alpha=100)
+        card = _done(im)
+        card.alpha_composite(avatar(138), (16, 16))
+        self.card = _shadow(card, off=8, blur=12, alpha=100)
         self.btn = self._button(False)
         self.btn_done = self._button(True)
 

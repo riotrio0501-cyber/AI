@@ -180,9 +180,9 @@ def brand_layer(script):
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     x, y = config.SAFE_SIDE - 20, config.SAFE_TOP + 10
-    d.ellipse([x, y + 10, x + 22, y + 32], fill=GREEN)
-    d.text((x + 34, y), config.ACCOUNT_NAME, font=font(34), fill=(255, 255, 255, 230))
-    d.text((x + 34, y + 44), config.ACCOUNT_ID, font=font(26, "bold"), fill=(255, 255, 255, 150))
+    im.alpha_composite(visuals.avatar(76, ring=WHITE, ring_w=0.04), (x, y))
+    d.text((x + 90, y + 2), config.ACCOUNT_NAME, font=font(34), fill=(255, 255, 255, 230))
+    d.text((x + 90, y + 46), config.ACCOUNT_ID, font=font(26, "bold"), fill=(255, 255, 255, 150))
     # 出典・年度
     orgs = []
     for s in script.sources:

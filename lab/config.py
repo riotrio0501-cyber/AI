@@ -9,6 +9,7 @@ W, H, FPS = 1080, 1920, 30
 # ブランド
 ACCOUNT_NAME = "知らなきゃ損ラボ"
 ACCOUNT_ID = "@shiranakya_son_lab"
+PROFILE_IMAGE = ROOT / "assets" / "profile.png"  # プロフィール画像（フォローボタン・左上に使用）
 NAVY = (0x13, 0x29, 0x4B)
 GREEN = (0x2B, 0xAE, 0x74)
 GOLD = (0xF5, 0xB8, 0x3D)
