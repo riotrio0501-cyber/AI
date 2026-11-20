@@ -23,8 +23,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/信濃の国
     memo: 1968年に県歌に制定。県内の小中学校で広く歌われ、県民の歌唱率が高いとされる（調査ではなく通説のため「説」）。
 - title: 牛乳パン
-  photo:
-    emoji: 🍞
+  photo: assets/photos/nagano/gyunyupan.jpg
   narration: その2。長野のパン屋さんでおなじみ、牛乳パン。ふわふわの生地に、クリームがたっぷり。袋の男の子の絵も定番。
   reading: その2。長野のパン屋さんでおなじみ、ぎゅうにゅうパン。ふわふわの生地に、クリームがたっぷり。袋の男の子の絵も定番。
   captions:
@@ -36,8 +35,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/牛乳パン
     memo: 長野県内の多くのパン店で売られるご当地パン。袋に男の子のイラストが描かれたものが多い。
 - title: 長野と松本
-  photo:
-    emoji: 🏯
+  photo: assets/photos/nagano/matsumoto.jpg
   narration: その3。県庁があるのは長野市。でも、松本も負けていない。長野と松本は、ずっとライバル関係という説。
   reading: その3。県庁があるのは長野市。でも、まつもとも負けていない。長野とまつもとは、ずっとライバル関係という説。
   captions:

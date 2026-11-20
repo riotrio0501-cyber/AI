@@ -10,8 +10,7 @@ hook:
   - '[山梨県民]なら/{全部}わかる'
 facts:
 - title: 富士山の県境
-  photo:
-    emoji: 🗻
+  photo: assets/photos/yamanashi/fuji.jpg
   narration: その1。富士山は、山梨と静岡どっちのもの？実は、山頂付近の県境は決まっていない。
   reading: その1。ふじさんは、山梨と静岡どっちのもの？実は、山頂付近の県境は決まっていない。
   captions:
@@ -22,8 +21,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/富士山
     memo: 8合目以上は富士山本宮浅間大社の境内地とされ、山頂付近の山梨・静岡の県境は未画定。
 - title: 鳥もつ煮
-  photo:
-    emoji: 🍢
+  photo: assets/photos/yamanashi/torimotsu.jpg
   narration: その2。甲府の鳥もつ煮は、B級グルメの大会で、グランプリをとったこともある。甘辛いたれが、てりてり。
   reading: その2。こうふのとりもつには、B級グルメの大会で、グランプリをとったこともある。あまからいたれが、てりてり。
   captions:

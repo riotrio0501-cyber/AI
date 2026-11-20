@@ -10,8 +10,7 @@ hook:
   - '[富山県民]なら/{全部}わかる'
 facts:
 - title: 持ち家率
-  photo:
-    emoji: 🏠
+  photo: assets/photos/toyama/gokayama.jpg
   narration: その1。富山は、持ち家率が全国トップクラス。家も広くて、延べ床面積も全国上位の常連。
   reading: その1。富山は、もちいえ率が全国トップクラス。家も広くて、のべゆか面積も全国上位の常連。
   captions:
@@ -22,8 +21,7 @@ facts:
   - url: https://www.stat.go.jp/data/jyutaku/
     memo: 総務省「住宅・土地統計調査」で持ち家率・1住宅あたり延べ面積とも全国上位の常連（年により順位は変動するため「トップクラス」）。
 - title: 富山ブラック
-  photo:
-    emoji: 🍜
+  photo: assets/photos/toyama/black.jpg
   narration: その2。富山ブラックは、真っ黒なスープのラーメン。しょっぱいけど、ご飯と食べると最高、という声も。
   reading: その2。とやまブラックは、真っ黒なスープのラーメン。しょっぱいけど、ご飯と食べると最高、という声も。
   captions:
@@ -35,8 +33,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/富山ブラックラーメン
     memo: 戦後、富山市の「大喜」で肉体労働者向けに塩分の濃いスープを出したのが始まりとされる。
 - title: 昆布
-  photo:
-    emoji: 🍙
+  photo: assets/photos/toyama/kobujime.jpg
   narration: その3。昆布はとれないのに、富山は昆布好き。昆布じめ、昆布おにぎり。北前船で運ばれてきた名残という説。
   reading: その3。こんぶはとれないのに、富山はこんぶ好き。こぶじめ、こんぶおにぎり。きたまえぶねで運ばれてきた名残という説。
   captions:
