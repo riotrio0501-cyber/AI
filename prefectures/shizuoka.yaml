@@ -1,0 +1,53 @@
+prefecture: 静岡県
+code: 22
+color:
+  main: '#2E9BD6'
+  dark: '#06192A'
+  note: 駿河湾の青
+hook:
+  narration: 静岡県民なら、全部わかる。
+  captions:
+  - '[静岡県民]なら/{全部}わかる'
+facts:
+- title: しぞーかおでん
+  photo:
+    emoji: 🍢
+  narration: その1。静岡おでんは、真っ黒なだしに、黒はんぺん。仕上げにだし粉と青のりをかける。駄菓子屋でも食べられる。
+  reading: その1。静岡おでんは、真っ黒なだしに、くろはんぺん。仕上げにだしこと、あおのりをかける。だがしやでも食べられる。
+  captions:
+  - ①[静岡おでん]は/{真っ黒}
+  - '{だし粉}と/{青のり}をかける'
+  - '[駄菓子屋]にもある'
+  status: ok
+  evidence:
+  - url: https://ja.wikipedia.org/wiki/静岡おでん
+    memo: 牛すじ等でとった黒いだし、黒はんぺん、だし粉・青のりが特徴。駄菓子屋で売られることも多い。
+- title: お茶
+  photo:
+    emoji: 🍵
+  narration: その2。お茶の生産量は、ずっと静岡が日本一。でも2024年、ついに鹿児島に抜かれた。静岡県民、ショック。
+  captions:
+  - ②お茶の生産量は/ずっと[日本一]
+  - 2024年/{鹿児島}に抜かれた
+  status: ok
+  evidence:
+  - url: https://www.maff.go.jp/j/tokei/kekka_gaiyou/sakumotu/sakkyou_kome/
+    memo: 農林水産省「作物統計」2024年産の荒茶生産量で鹿児島県が静岡県を上回り初の1位（速報値ベース）。「ショック」は演出。
+- title: さわやか
+  photo:
+    emoji: 🍖
+  narration: その3。げんこつハンバーグの、さわやか。お店は静岡県内にしかない。県外の人が、何時間も並ぶことも。
+  captions:
+  - ③[げんこつハンバーグ]の/{さわやか}
+  - お店は/[静岡県内]だけ
+  - '{何時間}も並ぶことも'
+  status: ok
+  evidence:
+  - url: https://ja.wikipedia.org/wiki/炭焼きレストランさわやか
+    memo: 静岡県内のみで展開。週末などは数時間待ちになることもある。
+comment_question: お茶といえば静岡？鹿児島？
+outro:
+  narration: お茶といえば、静岡？鹿児島？あなたの県のあるあるも、コメントで教えて。
+  captions:
+  - お茶といえば/[静岡]？[鹿児島]？
+  - あなたの県も/[コメント]で教えて

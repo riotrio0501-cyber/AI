@@ -1,0 +1,53 @@
+prefecture: 石川県
+code: 17
+color:
+  main: '#C9A04A'
+  dark: '#21180A'
+  note: 金箔の金
+hook:
+  narration: 石川県民なら、全部わかる。
+  captions:
+  - '[石川県民]なら/{全部}わかる'
+facts:
+- title: 金箔
+  photo:
+    emoji: ✨
+  narration: その1。日本の金箔は、ほぼ全部が金沢製。そのシェアは、なんと99パーセント以上。
+  reading: その1。日本のきんぱくは、ほぼ全部が金沢製。そのシェアは、なんと99パーセント以上。
+  captions:
+  - ①日本の[金箔]は/ほぼ{金沢製}
+  - シェアは/{99％以上}
+  status: ok
+  evidence:
+  - url: https://ja.wikipedia.org/wiki/金沢箔
+    memo: 金沢箔は国内生産の99%以上を占めるとされる（金沢市・石川県の資料）。
+- title: アイス
+  photo:
+    emoji: 🍦
+  narration: その2。金沢は、アイスクリームにお金をかける街。家計調査で全国1位になった年もある。冬でも食べる、という声も。
+  captions:
+  - ②金沢は/[アイス]好き
+  - 家計調査で/{全国1位}の年も
+  - '{冬}でも食べる？'
+  status: 説
+  evidence:
+  - url: https://www.stat.go.jp/data/kakei/
+    memo: 総務省「家計調査」のアイスクリーム・シャーベット支出額で金沢市が1位になった年がある。順位は年により変動するため「説」扱い。
+- title: ハントンライス
+  photo:
+    emoji: 🍛
+  narration: その3。金沢の洋食といえば、ハントンライス。オムライスに、魚のフライとタルタル。名前の由来は、ハンガリーとフランス語のマグロ、という説。
+  captions:
+  - ③金沢の洋食/[ハントンライス]
+  - '{オムライス}に/[魚フライ]'
+  - 名前の由来は/{謎}？
+  status: 説
+  evidence:
+  - url: https://ja.wikipedia.org/wiki/ハントンライス
+    memo: 金沢市の洋食店「ジャーマン・ベーカリー」などが発祥とされる。由来は「ハンガリー」＋「トン（仏語thon=マグロ）」とする説が知られる。
+comment_question: 冬でもアイス食べる？
+outro:
+  narration: 冬でも、アイス食べる？あなたの県のあるあるも、コメントで教えて。
+  captions:
+  - '{冬}でも/[アイス]食べる？'
+  - あなたの県も/[コメント]で教えて
