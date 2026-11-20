@@ -10,6 +10,7 @@ hook:
   - '[岐阜県民]なら/{全部}わかる'
 facts:
 - title: モーニング
+  post: "喫茶代は名古屋より岐阜市が上の年も"
   photo: assets/photos/gifu/morning.jpg
   narration: その1。喫茶店のモーニングといえば名古屋。でも、喫茶代にお金をかけているのは、実は岐阜市、という年も多い。
   reading: その1。喫茶店のモーニングといえば名古屋。でも、きっさだいにお金をかけているのは、実は岐阜市、という年も多い。
@@ -21,6 +22,7 @@ facts:
   - url: https://www.stat.go.jp/data/kakei/
     memo: 総務省「家計調査」の喫茶代で岐阜市は全国1位の年が多い（年により名古屋市と入れ替わるため「説」）。
 - title: 鶏ちゃん
+  post: "郷土料理・鶏ちゃん"
   photo: assets/photos/gifu/keichan.jpg
   narration: その2。鶏ちゃんは、味つけした鶏肉を、キャベツと一緒に焼く郷土料理。家ごとに味がちがう。
   reading: その2。けいちゃんは、味つけした鶏肉を、キャベツと一緒に焼く郷土料理。家ごとに味がちがう。
@@ -33,6 +35,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/鶏ちゃん
     memo: 奥美濃・飛騨地方の郷土料理。味噌・醤油・塩など家庭や店ごとに味つけが異なる。
 - title: 美濃と飛騨
+  post: "美濃と飛騨はまるで別の県"
   photo: assets/photos/gifu/shirakawago.jpg
   narration: その3。岐阜は、南の美濃と北の飛騨で、まるで別の県。もともと別の国で、気候も言葉もちがう。
   reading: その3。岐阜は、南のみのと北のひだで、まるで別の県。もともと別の国で、気候も言葉もちがう。

@@ -6,6 +6,7 @@
     python make_video.py --all                          # prefectures/*.yaml を全部
     python make_video.py prefectures/yamagata.yaml --check   # 台本チェックと尺だけ（動画は作らない）
     python make_video.py prefectures/yamagata.yaml --strict  # 「要確認」が残っていたら中止
+    python make_video.py --all --post                         # 投稿文（キャプション）だけ作り直す
 
 台本の書式は prefectures/yamagata.yaml を参照。
 """
@@ -13,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import urllib.parse
 import math
 import re
 import subprocess
@@ -413,7 +415,7 @@ def photo_credits(script: dict) -> list[str]:
             if c and "file" in it:
                 meta = (ROOT / it["file"]).with_suffix(".json")
                 page = json.loads(meta.read_text(encoding="utf-8")).get("page") if meta.exists() else None
-                c = f"{c} {page}" if page else c
+                c = f"{c} {urllib.parse.unquote(page)}" if page else c
             if c and c not in out:
                 out.append(c)
     return out
@@ -676,14 +678,46 @@ def make(path: Path, series: dict, args) -> bool:
     p.stdin.close()
     p.wait()
     wav.unlink()
-    post = out_dir / f"{name}_投稿文.txt"
-    hdr = series["header"].format(prefecture=script["prefecture"])
-    q = script.get("comment_question", "")
-    post.write_text(f"{hdr}\n\n" + (f"{q}\n" if q else "") + "あなたの県のあるあるもコメントで教えて！\n\n"
-                    f"#{script['prefecture']} #県民あるある #ご当地ネタ\n\n"
-                    + "\n".join(credits_for(script, series) + photo_credits(script)) + "\n", encoding="utf-8")
+    write_post(script, series, out_dir / f"{name}_投稿文.txt")
     print(f"  ✔ {mp4.relative_to(ROOT)}")
     return p.returncode == 0
+
+
+REGIONS = [(1, "北海道"), (7, "東北"), (14, "関東"), (23, "中部"), (30, "近畿"), (35, "中国"), (39, "四国"), (47, "九州")]
+
+
+def region_of(code: int) -> str:
+    return next(r for last, r in REGIONS if int(code) <= last)
+
+
+def post_text(script: dict, series: dict) -> str:
+    """SNS 投稿用のキャプション。台本の post_lead / hashtags で上書き・追加できる"""
+    pref = script["prefecture"]
+    short = pref if pref == "北海道" else pref[:-1]
+    hdr = series["header"].format(prefecture=pref)
+    lead = script.get("post_lead") or f"{pref}民なら全部わかる？いくつ知ってた？"
+    marks = "①②③④⑤"
+    def summary(f):  # 投稿文の箇条書き: post があればそれ、なければ1枚目のテロップ
+        t = f.get("post") or f["captions"][0]
+        t = re.sub(r"[\[\]{}]", "", t).replace("/", " ").lstrip("①②③④⑤ ")
+        return t + ("（説）" if f.get("status") == "説" else "")
+    lines = [f"{marks[i]} {summary(f)}" for i, f in enumerate(script["facts"])]
+    q = script.get("comment_question", "")
+    tags = [pref, f"{short}あるある", f"{region_of(script['code'])}地方", "県民あるある", "ご当地ネタ",
+            "地元ネタ", "あるある", "ショート動画"] + list(script.get("hashtags", []))
+    tags = list(dict.fromkeys(t.lstrip("#") for t in tags))
+    parts = [hdr, lead, "\n".join(lines)]
+    if any(f.get("status") == "説" for f in script["facts"]):
+        parts[-1] += "\n※（説）は諸説あり。地元の本当のところを教えて！"
+    parts.append((f"{q}\n" if q else "") + "あなたの県のあるあるもコメントで教えて！")
+    parts.append(" ".join("#" + t for t in tags))
+    parts.append("―――\n" + "\n".join(credits_for(script, series) + photo_credits(script)))
+    return "\n\n".join(parts) + "\n"
+
+
+def write_post(script: dict, series: dict, path: Path):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(post_text(script, series), encoding="utf-8")
 
 
 def main():
@@ -692,12 +726,18 @@ def main():
     ap.add_argument("--all", action="store_true", help="prefectures/*.yaml を全部作る")
     ap.add_argument("--check", action="store_true", help="台本チェックと尺の確認だけ")
     ap.add_argument("--strict", action="store_true", help="要確認が残っていたら作らない")
+    ap.add_argument("--post", action="store_true", help="投稿文（キャプション）だけ作り直す")
     args = ap.parse_args()
     series = load_yaml(ROOT / "series.yaml")
     paths = sorted((ROOT / "prefectures").glob("*.yaml")) if args.all else args.scripts
     if not paths:
         ap.print_help()
         sys.exit(1)
+    if args.post:
+        for p in paths:
+            write_post(load_yaml(p), series, ROOT / "out" / f"{p.stem}_投稿文.txt")
+            print(f"  ✔ out/{p.stem}_投稿文.txt")
+        return
     ok = all([make(p, series, args) for p in paths])
     sys.exit(0 if ok else 1)
 

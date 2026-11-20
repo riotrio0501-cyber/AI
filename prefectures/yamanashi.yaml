@@ -10,6 +10,7 @@ hook:
   - '[山梨県民]なら/{全部}わかる'
 facts:
 - title: 富士山の県境
+  post: "富士山頂の県境は決まっていない"
   photo: assets/photos/yamanashi/fuji.jpg
   narration: その1。富士山は、山梨と静岡どっちのもの？実は、山頂付近の県境は決まっていない。
   reading: その1。ふじさんは、山梨と静岡どっちのもの？実は、山頂付近の県境は決まっていない。
@@ -21,6 +22,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/富士山
     memo: 8合目以上は富士山本宮浅間大社の境内地とされ、山頂付近の山梨・静岡の県境は未画定。
 - title: 鳥もつ煮
+  post: "甲府の鳥もつ煮はB-1グランプリ優勝"
   photo: assets/photos/yamanashi/torimotsu.jpg
   narration: その2。甲府の鳥もつ煮は、B級グルメの大会で、グランプリをとったこともある。甘辛いたれが、てりてり。
   reading: その2。こうふのとりもつには、B級グルメの大会で、グランプリをとったこともある。あまからいたれが、てりてり。
@@ -33,6 +35,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/鳥もつ煮
     memo: 「みなさまの縁をとりもつ隊」が2010年のB-1グランプリ（厚木大会）でゴールドグランプリ。
 - title: 無尽
+  post: "大人は「無尽」で忙しい"
   photo:
     emoji: 🍻
   narration: その3。山梨の大人は、無尽で忙しい。仲間でお金を積み立てて、毎月集まって飲む会。いくつも入っている人も。

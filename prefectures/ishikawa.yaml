@@ -10,6 +10,7 @@ hook:
   - '[石川県民]なら/{全部}わかる'
 facts:
 - title: 金箔
+  post: "日本の金箔は99%以上が金沢製"
   photo: assets/photos/ishikawa/kinpaku.jpg
   narration: その1。日本の金箔は、ほぼ全部が金沢製。そのシェアは、なんと99パーセント以上。
   reading: その1。日本のきんぱくは、ほぼ全部が金沢製。そのシェアは、なんと99パーセント以上。
@@ -21,6 +22,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/金沢箔
     memo: 金沢箔は国内生産の99%以上を占めるとされる（金沢市・石川県の資料）。
 - title: アイス
+  post: "金沢はアイス好き"
   photo: assets/photos/ishikawa/ice.jpg
   narration: その2。金沢は、アイスクリームにお金をかける街。家計調査で全国1位になった年もある。冬でも食べる、という声も。
   captions:
@@ -32,6 +34,7 @@ facts:
   - url: https://www.stat.go.jp/data/kakei/
     memo: 総務省「家計調査」のアイスクリーム・シャーベット支出額で金沢市が1位になった年がある。順位は年により変動するため「説」扱い。
 - title: ハントンライス
+  post: "金沢の洋食・ハントンライス"
   photo: assets/photos/ishikawa/hanton.jpg
   narration: その3。金沢の洋食といえば、ハントンライス。オムライスに、魚のフライとタルタル。名前の由来は、ハンガリーとフランス語のマグロ、という説。
   captions:

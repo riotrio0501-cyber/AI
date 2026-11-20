@@ -12,6 +12,7 @@ hook:
 
 facts:
   - title: "じゃじゃ麺の締め"
+    post: "じゃじゃ麺は食べ終わってからが本番"
     photo:
       - assets/photos/iwate/jajamen.jpg
       - assets/photos/iwate/chitantan.jpg
@@ -27,6 +28,7 @@ facts:
         memo: "二次資料。盛岡じゃじゃ麺の店でちーたん（ちいたんたん）を追加で頼むのが定番。作り方は店により異なる（皿に卵を割り、ゆで汁と肉みそを入れるのが一般的とされる）。"
 
   - title: "福田パン"
+    post: "パンといえば福田パン"
     photo: {emoji: "🥪"}
     narration: "その2。盛岡の福田パンは、大きいコッペパンに、好きな具を2種類はさんでもらえる。県民の、ソウルフード。"
     captions:
@@ -39,6 +41,7 @@ facts:
         memo: "二次資料。1948年創業の盛岡の店。具材を2種類選ぶと目の前でコッペパンに挟んでくれる注文方式。"
 
   - title: "本州でいちばん広い"
+    post: "本州でいちばん広い県"
     photo: assets/photos/iwate/iwatesan.jpg
     narration: "その3。岩手県は、本州でいちばん広い県。全国でも、北海道の次に広い。だから県内の移動が、とにかく遠い。"
     captions:

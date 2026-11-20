@@ -10,6 +10,7 @@ hook:
   - '[静岡県民]なら/{全部}わかる'
 facts:
 - title: しぞーかおでん
+  post: "静岡おでんは真っ黒、だし粉と青のり"
   photo: assets/photos/shizuoka/oden.jpg
   narration: その1。静岡おでんは、真っ黒なだしに、黒はんぺん。仕上げにだし粉と青のりをかける。駄菓子屋でも食べられる。
   reading: その1。静岡おでんは、真っ黒なだしに、くろはんぺん。仕上げにだしこと、あおのりをかける。だがしやでも食べられる。
@@ -22,6 +23,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/静岡おでん
     memo: 牛すじ等でとった黒いだし、黒はんぺん、だし粉・青のりが特徴。駄菓子屋で売られることも多い。
 - title: お茶
+  post: "お茶の生産量、鹿児島に抜かれた"
   photo: assets/photos/shizuoka/tea.jpg
   narration: その2。お茶の生産量は、ずっと静岡が日本一。でも2024年、ついに鹿児島に抜かれた。静岡県民、ショック。
   captions:
@@ -32,6 +34,7 @@ facts:
   - url: https://www.maff.go.jp/j/tokei/kekka_gaiyou/sakumotu/sakkyou_kome/
     memo: 農林水産省「作物統計」2024年産の荒茶生産量で鹿児島県が静岡県を上回り初の1位（速報値ベース）。「ショック」は演出。
 - title: さわやか
+  post: "さわやかは静岡県内にしかない"
   photo: assets/photos/shizuoka/sawayaka.jpg
   narration: その3。げんこつハンバーグの、さわやか。お店は静岡県内にしかない。県外の人が、何時間も並ぶことも。
   captions:

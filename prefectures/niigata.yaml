@@ -10,6 +10,7 @@ hook:
   - '[新潟県民]なら/{全部}わかる'
 facts:
 - title: 柿の種
+  post: "柿の種は新潟・長岡生まれ"
   photo: assets/photos/niigata/kakinotane.jpg
   narration: その1。おつまみの定番、柿の種。実は新潟・長岡生まれ。お米の県は、おせんべいの県でもある。
   reading: その1。おつまみの定番、かきのたね。実は新潟、ながおか生まれ。お米の県は、おせんべいの県でもある。
@@ -22,6 +23,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/柿の種
     memo: 大正末期に長岡の浪花屋製菓が考案したとされる。新潟県は米菓の出荷額が全国1位（業界統計）。
 - title: イタリアン
+  post: "イタリアンは焼きそば＋ミートソース"
   photo: assets/photos/niigata/italian.jpg
   narration: その2。新潟でイタリアンといえば、焼きそばに、ミートソースをかけた食べもの。フォークで食べるのが新潟流。
   captions:
@@ -33,6 +35,7 @@ facts:
   - url: https://ja.wikipedia.org/wiki/イタリアン_(料理)
     memo: 新潟市の「みかづき」、長岡市の「フレンド」で提供される焼きそば料理。
 - title: 何地方？
+  post: "新潟って何地方？"
   photo: assets/photos/niigata/echigo.jpg
   narration: その3。新潟って何地方？中部、北陸、甲信越、ときには東北。資料によって変わるので、県民も迷う。
   reading: その3。新潟って何地方？ちゅうぶ、ほくりく、こうしんえつ、ときには東北。資料によって変わるので、県民も迷う。
