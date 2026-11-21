@@ -62,7 +62,9 @@ def make_voices(lines, cast):
             opts = ["sbv2", c["model"], ln.get("emotion", c.get("emotion", "ふつう")),
                     ln.get("strength", c.get("strength", 2.0)), speed, volume]
         else:
-            vid = ln.get("voice_id", c["voice_id"]); ln["voice_id"] = vid
+            emo = ln.get("emotion", c.get("emotion", "ふつう"))
+            vid = ln.get("voice_id") or c.get("emotion_styles", {}).get(emo) or c["voice_id"]
+            ln["voice_id"] = vid
             opts = ["vv", vid, speed, volume, ln.get("pitch", 0.0)]
         key = hashlib.md5(json.dumps([text, opts], ensure_ascii=False).encode()).hexdigest()[:8]
         out = vdir / f"{i + 1:02d}_{ln['speaker']}_{key}.wav"
@@ -311,16 +313,26 @@ def write_credits(lines, out):
     names, sbv = [], False
     try:
         sp = json.loads(urllib.request.urlopen(f"{API}/speakers", timeout=10).read())
-        idname = {st["id"]: s["name"] for s in sp for st in s["styles"]}
+        idname = {st["id"]: (s["name"], s["speaker_uuid"]) for s in sp for st in s["styles"]}
     except Exception:
         idname = {}
     for ln in lines:
         if ln.get("engine") == "sbv2":
-            sbv = True
-        n = idname.get(ln.get("voice_id")) if ln.get("engine") != "sbv2" else None
-        if n and n not in names:
-            names.append(n)
-    rows = [f"VOICEVOX:{n}" for n in names]
+            sbv = True; continue
+        n = idname.get(ln.get("voice_id"))
+        if not n:
+            continue
+        credit = f"VOICEVOX:{n[0]}"
+        try:  # キャラごとに指定されたクレジット表記があればそれを使う（例: もち子さん）
+            pol = json.loads(urllib.request.urlopen(f"{API}/speaker_info?speaker_uuid={n[1]}", timeout=10).read())["policy"]
+            m = re.search(r"「(VOICEVOX[:：][^」]+)」", pol)
+            if m:
+                credit = m.group(1)
+        except Exception:
+            pass
+        if credit not in names:
+            names.append(credit)
+    rows = list(names)
     if sbv:
         rows += ["音声合成：Style-Bert-VITS2", "音声モデル：JVNV (CC BY-SA 4.0) https://sites.google.com/site/shinnosuketakamichi/research-topics/jvnv_corpus"]
     rows += ["画像生成：Animagine XL 4.0", "効果音・BGM：自作"]

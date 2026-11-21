@@ -18,10 +18,15 @@
       "model": "jvnv-F2-jp"
     },
     "娘": {
-      "voice_id": 8,
       "color": "#e0457b",
-      "engine": "sbv2",
-      "model": "jvnv-F1-jp"
+      "voice_id": 20,
+      "emotion_styles": {
+        "怒り": 78,
+        "嫌悪": 78,
+        "悲しみ": 77,
+        "おびえ": 77,
+        "喜び": 79
+      }
     },
     "彼氏": {
       "voice_id": 12,
