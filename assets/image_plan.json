@@ -1,0 +1,35 @@
+{
+  "fast": true,
+  "size": [832, 1216],
+  "style": "anime screencap, cel shading, clean lineart, vivid colors, masterpiece, high score, great score, absurdres",
+  "negative": "lowres, bad anatomy, bad hands, text, error, missing finger, extra digits, fewer digits, cropped, worst quality, low quality, low score, bad score, average score, signature, watermark, username, speech bubble, logo",
+  "images": [
+    {"name": "bg/living", "seed": 11,
+     "prompt": "no humans, scenery, indoors, japanese house, living room, washitsu, shoji, tatami, low wooden table, chabudai, cooking pot on table, steam, cushion, daytime, warm lighting"},
+
+    {"name": "父/close", "seed": 1,
+     "prompt": "1boy, solo, male focus, old man, 58 years old, japanese, short hair, buzz cut, grey hair, thick eyebrows, frown, serious, closed mouth, upper body, looking at viewer, navy samue, crossed arms, indoors, japanese room, shoji, tatami, blurry background",
+     "negative": "female"},
+    {"name": "母/close", "seed": 2,
+     "prompt": "1girl, solo, mature female, 55 years old, japanese, brown hair, medium hair, low ponytail, hair over shoulder, narrowed eyes, gentle smile, closed mouth, beige cardigan, white blouse, upper body, looking at viewer, indoors, japanese room, shoji, tatami, blurry background",
+     "negative": "child, loli"},
+    {"name": "娘/close", "seed": 3,
+     "prompt": "1girl, solo, adult, 27 years old, japanese, dark brown hair, ponytail, brown eyes, annoyed, half-closed eyes, closed mouth, light blue blouse, upper body, looking at viewer, indoors, japanese room, shoji, tatami, blurry background",
+     "negative": "child, loli"},
+    {"name": "彼氏/close", "seed": 4,
+     "prompt": "1boy, solo, male focus, young man, 28 years old, japanese, short black hair, droopy eyes, nervous, sweat, closed mouth, navy suit, white shirt, light blue necktie, upper body, looking at viewer, indoors, japanese room, shoji, tatami, blurry background",
+     "negative": "female"},
+
+    {"name": "父/open", "from": "父/close", "prompt": "1boy, old man, open mouth, talking, teeth"},
+    {"name": "母/open", "from": "母/close", "prompt": "1girl, mature female, open mouth, talking, smile"},
+    {"name": "娘/open", "from": "娘/close", "prompt": "1girl, open mouth, talking, annoyed"},
+    {"name": "彼氏/open", "from": "彼氏/close", "prompt": "1boy, open mouth, talking, nervous"},
+
+    {"name": "shots/帰れ", "from": "父/close", "strength": 0.9,
+     "prompt": "1boy, old man, grey hair, buzz cut, angry, furious, shouting, open mouth, teeth, wide-eyed, anger vein, v-shaped eyebrows"},
+    {"name": "shots/固まる", "from": "父/close", "strength": 0.9,
+     "prompt": "1boy, old man, grey hair, buzz cut, shocked, white eyes, blank eyes, pale face, shaded face, sweat, sweating profusely, open mouth, comedy"},
+    {"name": "shots/おめでとう", "from": "父/close", "strength": 0.9,
+     "prompt": "1boy, old man, grey hair, buzz cut, forced smile, wide smile, teeth, sweat, nervous sweating, closed eyes, comedy"}
+  ]
+}

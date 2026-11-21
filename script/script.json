@@ -8,12 +8,12 @@
   {"speaker": "父", "text": "今だ。人生で一番大事な質問だ", "effect": "zoom"},
   {"speaker": "彼氏", "text": "（小声）醤油って言えば正解だよな…", "effect": "none", "voice_id": 33, "volume": 0.6, "speed": 1.2},
   {"speaker": "彼氏", "text": "えっと…豚肉の味噌で！", "effect": "none"},
-  {"speaker": "父", "text": "帰れ", "effect": ["pause", "zoom", "shake"], "se": "don"},
+  {"speaker": "父", "text": "帰れ", "effect": ["pause", "zoom", "shake"], "se": "don", "shot": "帰れ"},
   {"speaker": "彼氏", "text": "結婚の話は！？", "effect": "shake"},
   {"speaker": "父", "text": "宮城の芋煮を選ぶ男に娘はやれん", "effect": "none"},
   {"speaker": "母", "text": "お父さん", "effect": "pause"},
   {"speaker": "父", "text": "なんだ", "effect": "none"},
   {"speaker": "母", "text": "私、宮城出身だけど", "effect": "zoom", "se": "shock"},
-  {"speaker": "父", "text": "……", "effect": "zoom", "pause": 2.2},
-  {"speaker": "父", "text": "…結婚おめでとう", "effect": "pause", "se_after": "chan"}
+  {"speaker": "父", "text": "……", "effect": "zoom", "pause": 2.2, "shot": "固まる"},
+  {"speaker": "父", "text": "…結婚おめでとう", "effect": "pause", "se_after": "chan", "shot": "おめでとう"}
 ]

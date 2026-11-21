@@ -6,7 +6,7 @@
 import hashlib, json, re, subprocess, sys, wave, urllib.request, urllib.parse
 from pathlib import Path
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 W, H, FPS, SR = 1080, 1920, 30, 48000
@@ -76,7 +76,7 @@ def effects(ln):
 
 
 def build_timeline(lines):
-    t = 0.4
+    t = 1.2  # 最初はタイトルと背景だけ見せる
     for ln in lines:
         fx = effects(ln)
         t += GAP + (PAUSE if "pause" in fx else 0)
@@ -150,32 +150,44 @@ def hex2rgb(h):
     h = h.lstrip("#"); return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 
-def load_char(name, c):
-    imgs = {}
-    for st in ("close", "open"):
-        im = Image.open(ROOT / "assets/characters" / name / f"{st}.png").convert("RGBA")
-        # 立ち絵の幅を 560px 基準にそろえる
-        s = 560 * c.get("scale", 1.0) / im.width
-        imgs[st] = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS)
-    dark = {k: ImageEnhance.Brightness(v).enhance(0.72) for k, v in imgs.items()}
-    return imgs, dark
+def cover(im, w=W, h=H):
+    """画面いっぱいに拡大して中央を切り抜く"""
+    s = max(w / im.width, h / im.height)
+    im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
+    x, y = (im.width - w) // 2, (im.height - h) // 2
+    return im.crop((x, y, x + w, y + h))
 
 
-def compose_scene(bg, chars, cast, speaker, mouth_open):
-    im = bg.copy()
-    order = sorted(cast["characters"].items(), key=lambda kv: kv[1].get("layer", 0))
-    for name, c in order:
-        imgs, dark = chars[name]
-        active = speaker is None or name == speaker
-        st = "open" if (name == speaker and mouth_open) else "close"
-        src = (imgs if active else dark)[st]
-        im.alpha_composite(src, (int(c["x"] - src.width / 2), int(c["bottom"] - src.height)))
-    return im.convert("RGB")
+def load_img(path):
+    return cover(Image.open(path).convert("RGB")) if path.exists() else None
 
 
-def face_point(name, cast, chars):
-    c = cast["characters"][name]; h = chars[name][0]["close"].height
-    return c["x"], c["bottom"] - h * 0.68
+class Shots:
+    """カット（場面）ごとの絵を読み込んでおく"""
+    def __init__(self, cast):
+        self.cast = cast; self.cache = {}
+
+    def get(self, key):
+        if key in self.cache:
+            return self.cache[key]
+        kind, name, mouth = key
+        if kind == "char":
+            d = ROOT / "assets/characters" / name
+            im = load_img(d / f"{mouth}.png") or load_img(d / "close.png")
+        elif kind == "shot":
+            im = load_img(ROOT / "assets/shots" / f"{name}.png")
+        else:
+            im = load_img(ROOT / self.cast["background"])
+        self.cache[key] = im or Image.new("RGB", (W, H), (60, 60, 60))
+        return self.cache[key]
+
+
+def shot_key(ln, mouth_open):
+    if ln is None:
+        return ("bg", None, None)
+    if ln.get("shot"):
+        return ("shot", ln["shot"], None)
+    return ("char", ln["speaker"], "open" if mouth_open else "close")
 
 
 def wrap(text, font, maxw, d):
@@ -195,18 +207,16 @@ def wrap(text, font, maxw, d):
 
 
 def subtitle_layer(speaker, text, color):
+    """白い文字＋話者の色のふち＋黒いふち"""
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    f = ImageFont.truetype(FONT, 78); fn = ImageFont.truetype(FONT, 44)
-    rows = wrap(text, f, W - 120, d)
-    lh = 100; top = 1430
-    d.rounded_rectangle([30, top - 90, W - 30, top + lh * max(len(rows), 2) + 30], radius=36, fill=(0, 0, 0, 150))
-    nw = d.textlength(speaker, font=fn)
-    d.rounded_rectangle([60, top - 70, 60 + nw + 50, top - 6], radius=30, fill=hex2rgb(color) + (255,))
-    d.text((85, top - 72), speaker, font=fn, fill="white")
+    f = ImageFont.truetype(FONT, 80)
+    rows = wrap(text, f, W - 100, d)
+    lh = 104; top = 1560 - lh * len(rows)
     for i, r in enumerate(rows):
-        tw = d.textlength(r, font=f)
-        d.text(((W - tw) / 2, top + i * lh), r, font=f, fill="white", stroke_width=9, stroke_fill=hex2rgb(color))
+        tw = d.textlength(r, font=f); x, y = (W - tw) / 2, top + i * lh
+        d.text((x, y), r, font=f, fill="black", stroke_width=16, stroke_fill="black")
+        d.text((x, y), r, font=f, fill="white", stroke_width=9, stroke_fill=hex2rgb(color))
     return layer
 
 
@@ -224,10 +234,7 @@ def title_layer(title):
 
 def render(lines, total, cast, audio, out):
     nframes = int(total * FPS)
-    bg = Image.open(ROOT / cast["background"]).convert("RGBA").resize((W, H), Image.LANCZOS)
-    chars = {n: load_char(n, c) for n, c in cast["characters"].items()}
-
-    # フレームごとの「今のセリフ」
+    shots = Shots(cast)
     cur = [-1] * nframes
     for i, ln in enumerate(lines):
         s = int(ln["start"] * FPS)
@@ -235,11 +242,10 @@ def render(lines, total, cast, audio, out):
         for f in range(s, min(e, nframes)):
             cur[f] = i
     mouths = [mouth_track(ln, nframes) for ln in lines]
-
-    scene_cache, sub_cache = {}, {}
+    sub_cache = {}
     title = title_layer(cast["title"])
     rng = np.random.default_rng(1)
-    cx, cy, z = W / 2, H / 2, 1.0
+    z, prev_shot, shot_start = 1.0, None, 0
 
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
                            "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", str(audio),
@@ -249,28 +255,25 @@ def render(lines, total, cast, audio, out):
     for f in range(nframes):
         i = cur[f]
         ln = lines[i] if i >= 0 else None
-        spk = ln["speaker"] if ln else None
-        mo = bool(mouths[i][f]) if ln else False
-        key = (spk, mo)
-        if key not in scene_cache:
-            scene_cache[key] = compose_scene(bg, chars, cast, spk, mo)
-        scene = scene_cache[key]
-
-        # カメラ（ズーム・揺れ）
+        key = shot_key(ln, bool(mouths[i][f]) if ln else False)
+        scene = shots.get(key)
+        shot_id = key[:2]
+        if shot_id != prev_shot:          # カットが変わったらカメラをリセット
+            prev_shot, shot_start, z = shot_id, f, 1.0
         fx = effects(ln) if ln else set()
-        tz, tx, ty = 1.0, W / 2, H / 2
-        if "zoom" in fx:
-            tz = 1.25
-            tx, ty = face_point(spk, cast, chars)
-        k = 0.35
-        z += (tz - z) * k; cx += (tx - cx) * k; cy += (ty - cy) * k
-        zz, sx, sy = z, 0.0, 0.0
+        # ゆっくり寄っていく動き＋ズーム演出
+        drift = 1.0 + 0.0015 * (f - shot_start)
+        tz = 1.22 if "zoom" in fx else 1.0
+        z += (tz - z) * 0.3
+        zz = max(1.0, min(z * min(drift, 1.08), 1.4))
+        cx, cy = W / 2, H * 0.36           # 顔のあたりに向かって寄る
+        sx = sy = 0.0
         if "shake" in fx:
             el = f / FPS - ln["start"]
             if 0 <= el < 0.6:
-                amp = 28 * (1 - el / 0.6)
+                amp = 30 * (1 - el / 0.6)
                 sx, sy = rng.uniform(-amp, amp, 2)
-                zz = max(zz, 1.06)
+                zz = max(zz, 1.08)
         bw, bh = W / zz, H / zz
         x0 = min(max(cx - bw / 2 + sx, 0), W - bw); y0 = min(max(cy - bh / 2 + sy, 0), H - bh)
         frame = scene.resize((W, H), Image.BILINEAR, box=(x0, y0, x0 + bw, y0 + bh)) if zz > 1.001 else scene
@@ -278,7 +281,7 @@ def render(lines, total, cast, audio, out):
         frame.alpha_composite(title)
         if ln:
             if i not in sub_cache:
-                sub_cache[i] = subtitle_layer(spk, ln["text"], cast["characters"][spk]["color"])
+                sub_cache[i] = subtitle_layer(ln["speaker"], ln["text"], cast["characters"][ln["speaker"]]["color"])
             frame.alpha_composite(sub_cache[i])
         ff.stdin.write(frame.convert("RGB").tobytes())
         if f % 150 == 0:
