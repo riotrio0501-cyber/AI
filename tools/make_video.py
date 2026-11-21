@@ -4,6 +4,7 @@
 手順: ①VOICEVOXで音声生成（変更のないセリフは再利用） ②音を合成 ③絵を合成 ④MP4に書き出し
 """
 import hashlib, json, re, subprocess, sys, wave, urllib.request, urllib.parse
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -36,11 +37,10 @@ def is_silent(text):
 
 
 def read_wav(path):
-    with wave.open(str(path)) as w:
-        sr, ch = w.getframerate(), w.getnchannels()
-        x = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
-    if ch == 2:
-        x = x.reshape(-1, 2).mean(1)
+    import soundfile as sf
+    x, sr = sf.read(str(path), dtype="float32")
+    if x.ndim == 2:
+        x = x.mean(1)
     if sr != SR:  # 線形補間でリサンプル
         n = int(len(x) * SR / sr)
         x = np.interp(np.linspace(0, len(x) - 1, n), np.arange(len(x)), x).astype(np.float32)
@@ -48,24 +48,38 @@ def read_wav(path):
 
 
 def make_voices(lines, cast):
+    """声を作る。キャラの "engine" が "sbv2" なら感情つきの声、なければ VOICEVOX"""
     vdir = ROOT / "voices"; vdir.mkdir(exist_ok=True)
     for i, ln in enumerate(lines):
         if is_silent(ln["text"]):
             ln["wav"] = None; continue
-        vid = ln.get("voice_id", cast["characters"][ln["speaker"]]["voice_id"])
-        ln["voice_id"] = vid
-        opts = dict(speed=ln.get("speed", cast.get("speed", 1.0)), volume=ln.get("volume", 1.0), pitch=ln.get("pitch", 0.0))
-        key = hashlib.md5(json.dumps([tts_text(ln["text"]), ln.get("yomi"), vid, opts], ensure_ascii=False).encode()).hexdigest()[:8]
+        c = cast["characters"][ln["speaker"]]
+        text = ln.get("yomi") or tts_text(ln["text"])
+        speed = ln.get("speed", c.get("speed", cast.get("speed", 1.0)))
+        volume = ln.get("volume", 1.0)
+        if c.get("engine") == "sbv2":
+            ln["engine"] = "sbv2"
+            opts = ["sbv2", c["model"], ln.get("emotion", c.get("emotion", "ふつう")),
+                    ln.get("strength", c.get("strength", 2.0)), speed, volume]
+        else:
+            vid = ln.get("voice_id", c["voice_id"]); ln["voice_id"] = vid
+            opts = ["vv", vid, speed, volume, ln.get("pitch", 0.0)]
+        key = hashlib.md5(json.dumps([text, opts], ensure_ascii=False).encode()).hexdigest()[:8]
         out = vdir / f"{i + 1:02d}_{ln['speaker']}_{key}.wav"
         ln["wav"] = out
         if out.exists():
             continue
         for old in vdir.glob(f"{i + 1:02d}_*.wav"):
             old.unlink()
-        q = json.loads(api("/audio_query", {"text": ln.get("yomi") or tts_text(ln["text"]), "speaker": vid}))
-        q.update(speedScale=opts["speed"], volumeScale=opts["volume"], pitchScale=opts["pitch"],
-                 prePhonemeLength=0.05, postPhonemeLength=0.08, outputSamplingRate=SR)
-        out.write_bytes(api("/synthesis", {"speaker": vid}, json.dumps(q).encode()))
+        if opts[0] == "sbv2":
+            import sbv2, soundfile as sf
+            sr, x = sbv2.synth(text, opts[1], opts[2], opts[3], speed, volume)
+            sf.write(out, x, sr)
+        else:
+            q = json.loads(api("/audio_query", {"text": text, "speaker": opts[1]}))
+            q.update(speedScale=speed, volumeScale=volume, pitchScale=opts[4],
+                     prePhonemeLength=0.05, postPhonemeLength=0.08, outputSamplingRate=SR)
+            out.write_bytes(api("/synthesis", {"speaker": opts[1]}, json.dumps(q).encode()))
         print(f"  音声 {i + 1:02d} {ln['speaker']}「{ln['text']}」")
 
 
@@ -294,18 +308,23 @@ def render(lines, total, cast, audio, out):
 
 
 def write_credits(lines, out):
+    names, sbv = [], False
     try:
         sp = json.loads(urllib.request.urlopen(f"{API}/speakers", timeout=10).read())
         idname = {st["id"]: s["name"] for s in sp for st in s["styles"]}
     except Exception:
         idname = {}
-    names = []
     for ln in lines:
-        n = idname.get(ln.get("voice_id"))
+        if ln.get("engine") == "sbv2":
+            sbv = True
+        n = idname.get(ln.get("voice_id")) if ln.get("engine") != "sbv2" else None
         if n and n not in names:
             names.append(n)
-    txt = "【概要欄用クレジット】\n" + "\n".join(f"VOICEVOX:{n}" for n in names) + \
-          "\n\n（効果音・BGMは自作の合成音）\n"
+    rows = [f"VOICEVOX:{n}" for n in names]
+    if sbv:
+        rows += ["音声合成：Style-Bert-VITS2", "音声モデル：JVNV (CC BY-SA 4.0) https://sites.google.com/site/shinnosuketakamichi/research-topics/jvnv_corpus"]
+    rows += ["画像生成：Animagine XL 4.0", "効果音・BGM：自作"]
+    txt = "【概要欄用クレジット】\n" + "\n".join(rows) + "\n"
     out.write_text(txt, encoding="utf-8")
     return txt
 

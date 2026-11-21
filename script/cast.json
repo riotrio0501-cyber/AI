@@ -7,19 +7,27 @@
   "characters": {
     "父": {
       "voice_id": 13,
-      "color": "#2f6fd6"
+      "color": "#2f6fd6",
+      "engine": "sbv2",
+      "model": "jvnv-M2-jp"
     },
     "母": {
       "voice_id": 14,
-      "color": "#8a5bc9"
+      "color": "#8a5bc9",
+      "engine": "sbv2",
+      "model": "jvnv-F2-jp"
     },
     "娘": {
       "voice_id": 8,
-      "color": "#e0457b"
+      "color": "#e0457b",
+      "engine": "sbv2",
+      "model": "jvnv-F1-jp"
     },
     "彼氏": {
       "voice_id": 12,
-      "color": "#2f9e57"
+      "color": "#2f9e57",
+      "engine": "sbv2",
+      "model": "jvnv-M1-jp"
     }
   }
 }
