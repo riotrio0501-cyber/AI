@@ -1,0 +1,23 @@
+{
+  "title": "娘の彼氏が泊まりに来た夜、\n台所から怪しい声が聞こえてきた",
+  "lines": [
+    {"speaker": "父", "text": "…彼氏くん。今夜は泊まっていけ", "effect": "none"},
+    {"speaker": "彼氏", "text": "あ、ありがとうございます！", "effect": "none"},
+    {"speaker": "父", "text": "ただし、娘の部屋には近づくな", "effect": "zoom"},
+    {"speaker": "彼氏", "text": "も、もちろんです！", "effect": "none"},
+    {"speaker": "娘", "text": "ねえお母さん、これ太すぎて入らないよ…", "effect": "pause", "shot": "台所の戸", "muffle": true, "se": "don"},
+    {"speaker": "父", "text": "……", "effect": "zoom", "shot": "固まる", "pause": 1.4},
+    {"speaker": "母", "text": "大丈夫。力を抜いて、ゆっくり奥まで入れるの", "effect": "none", "shot": "台所の戸", "muffle": true},
+    {"speaker": "彼氏", "text": "（小声）え…何の話…？", "effect": "none", "voice_id": 33, "volume": 0.6, "speed": 1.15},
+    {"speaker": "娘", "text": "あっ…入った！", "effect": "none", "shot": "台所の戸", "muffle": true},
+    {"speaker": "母", "text": "ほら、全部入ったでしょ", "effect": "none", "shot": "台所の戸", "muffle": true},
+    {"speaker": "父", "text": "けしからーん！！", "effect": ["zoom", "shake"], "shot": "帰れ", "se": "don"},
+    {"speaker": "母", "text": "あら、お父さん。どうしたの？", "effect": "pause", "shot": "ネギ鍋"},
+    {"speaker": "娘", "text": "太いネギがお鍋に入らなくてさ", "effect": "none"},
+    {"speaker": "父", "text": "……", "effect": "zoom", "shot": "固まる", "pause": 1.3},
+    {"speaker": "娘", "text": "お父さん、何を想像してたの？", "effect": "zoom"},
+    {"speaker": "彼氏", "text": "（小声）お父さんも同じこと考えてたんだ…", "effect": "none", "voice_id": 33, "volume": 0.6, "speed": 1.15},
+    {"speaker": "母", "text": "あら、お父さん。顔が真っ赤よ", "effect": "pause"},
+    {"speaker": "父", "text": "…芋煮の湯気のせいだ", "effect": "zoom", "shot": "赤面", "se_after": "chan"}
+  ]
+}

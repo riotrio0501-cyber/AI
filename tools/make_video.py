@@ -83,6 +83,9 @@ def build_timeline(lines):
         ln["start"] = t
         if ln["wav"]:
             ln["audio"] = read_wav(ln["wav"])
+            if ln.get("muffle"):  # 壁ごしの声（こもった音）
+                k = np.ones(14) / 14
+                ln["audio"] = np.convolve(np.convolve(ln["audio"], k, "same"), k, "same") * 0.9
             dur = len(ln["audio"]) / SR
         else:
             ln["audio"] = None
@@ -311,7 +314,11 @@ def main():
     script = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "script/script.json"
     out = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "output/video.mp4"
     cast = json.loads((ROOT / "script/cast.json").read_text())
-    lines = json.loads(Path(script).read_text())
+    data = json.loads(Path(script).read_text())
+    if isinstance(data, dict):  # {"title": ..., "lines": [...]} 形式（回ごとにタイトルを持てる）
+        cast["title"] = data.get("title", cast["title"]); lines = data["lines"]
+    else:
+        lines = data
     print("① 音声を作成"); make_voices(lines, cast)
     total = build_timeline(lines)
     print(f"② 音を合成（長さ {total:.1f} 秒）"); audio = mix_audio(lines, total, cast)

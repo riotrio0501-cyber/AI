@@ -123,6 +123,29 @@
     510
    ],
    "feather": 25
+  },
+  {
+   "name": "shots/台所の戸",
+   "seed": 21,
+   "prompt": "no humans, scenery, indoors, japanese house, dark hallway at night, closed sliding door, frosted glass door, warm light leaking from kitchen, steam, mysterious"
+  },
+  {
+   "name": "shots/ネギ鍋",
+   "seed": 22,
+   "prompt": "no humans, food focus, still life, japanese kitchen, large cooking pot, imoni stew, taro, thick green onion sticking out of pot, steam, warm lighting, close-up"
+  },
+  {
+   "name": "shots/赤面",
+   "from": "父/close",
+   "mask": [
+    180,
+    100,
+    570,
+    510
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "prompt": "1boy, old man, grey hair, buzz cut, embarrassed, full-face blush, red face, looking away, sweat, wavy mouth, closed mouth, comedy"
   }
  ]
 }
