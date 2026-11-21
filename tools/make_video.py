@@ -13,6 +13,11 @@ ROOT = Path(__file__).resolve().parent.parent
 W, H, FPS, SR = 1080, 1920, 30, 48000
 FONT = "/usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc"
 API = "http://localhost:50021"
+API_NEMO = "http://localhost:50121"   # VOICEVOX Nemo（大人の声、話者IDが10000番台）
+
+
+def api_base(speaker_id):
+    return API_NEMO if int(speaker_id) >= 10000 else API
 
 GAP = 0.32          # セリフ間の基本の間（秒）
 PAUSE = 1.3         # effect "pause" で追加する間（秒）
@@ -22,7 +27,7 @@ TAIL = 2.0          # 最後の余韻
 
 # ---------------- 音声 ----------------
 def api(path, params, body=None):
-    url = f"{API}{path}?{urllib.parse.urlencode(params)}"
+    url = f"{api_base(params['speaker'])}{path}?{urllib.parse.urlencode(params)}"
     req = urllib.request.Request(url, data=body, method="POST", headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=120) as r:
         return r.read()
@@ -312,8 +317,13 @@ def render(lines, total, cast, audio, out):
 def write_credits(lines, out):
     names, sbv = [], False
     try:
-        sp = json.loads(urllib.request.urlopen(f"{API}/speakers", timeout=10).read())
-        idname = {st["id"]: (s["name"], s["speaker_uuid"]) for s in sp for st in s["styles"]}
+        idname = {}
+        for base in (API, API_NEMO):
+            try:
+                sp = json.loads(urllib.request.urlopen(f"{base}/speakers", timeout=10).read())
+                idname.update({st["id"]: (s["name"], s["speaker_uuid"]) for s in sp for st in s["styles"]})
+            except Exception:
+                pass
     except Exception:
         idname = {}
     for ln in lines:
@@ -324,8 +334,8 @@ def write_credits(lines, out):
             continue
         credit = f"VOICEVOX:{n[0]}"
         try:  # キャラごとに指定されたクレジット表記があればそれを使う（例: もち子さん）
-            pol = json.loads(urllib.request.urlopen(f"{API}/speaker_info?speaker_uuid={n[1]}", timeout=10).read())["policy"]
-            m = re.search(r"「(VOICEVOX[:：][^」]+)」", pol)
+            pol = json.loads(urllib.request.urlopen(f"{api_base(ln['voice_id'])}/speaker_info?speaker_uuid={n[1]}", timeout=10).read())["policy"]
+            m = re.search(r"「(VOICEVOX[^」]*)」", pol)
             if m:
                 credit = m.group(1)
         except Exception:
