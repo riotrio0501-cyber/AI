@@ -1,5 +1,5 @@
 {
-  "fast": true,
+  "fast": false,
   "size": [832, 1216],
   "style": "anime screencap, cel shading, clean lineart, vivid colors, masterpiece, high score, great score, absurdres",
   "negative": "lowres, bad anatomy, bad hands, text, error, missing finger, extra digits, fewer digits, cropped, worst quality, low quality, low score, bad score, average score, signature, watermark, username, speech bubble, logo",

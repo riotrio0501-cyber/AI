@@ -65,7 +65,7 @@ def ellipse_mask(size, box, feather=12):
 def generate(item, plan):
     p = pipes(plan)
     fast = plan.get("fast", True)
-    steps, cfg = (item.get("steps", 8), item.get("cfg", 1.5)) if fast else (item.get("steps", 25), item.get("cfg", 5.0))
+    steps, cfg = (item.get("steps", 8), item.get("cfg", 1.5)) if fast else (item.get("steps", 20), item.get("cfg", 5.0))
     prompt = f"{item['prompt']}, {plan['style']}"
     neg = plan["negative"] + (", " + item["negative"] if item.get("negative") else "")
     g = torch.Generator().manual_seed(item.get("seed", 0))
