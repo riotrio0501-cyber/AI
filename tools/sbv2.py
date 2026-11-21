@@ -39,7 +39,7 @@ def _load(name):
         bert_models.load_tokenizer(Languages.JP, b)
         _bert = True
     if name not in _models:
-        d = M / "jvnv" / name
+        d = M / "jvnv" / name if (M / "jvnv" / name).exists() else M / "extra" / name
         _models[name] = TTSModel(model_path=next(d.glob("*.safetensors")), config_path=d / "config.json",
                                  style_vec_path=d / "style_vectors.npy", device="cpu")
     return _models[name]
