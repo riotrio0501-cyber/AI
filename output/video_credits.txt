@@ -1,7 +1,4 @@
 【概要欄用クレジット】
-VOICEVOX:白上虎太郎
-VOICEVOX:青山龍星
-VOICEVOX:春日部つむぎ
-VOICEVOX:冥鳴ひまり
+
 
 （効果音・BGMは自作の合成音）

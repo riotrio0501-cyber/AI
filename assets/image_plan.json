@@ -75,14 +75,15 @@
   {
    "name": "彼氏/open",
    "from": "彼氏/close",
-   "prompt": "1boy, open mouth, talking, nervous",
+   "prompt": "1boy, open mouth, :o, talking, nervous, teeth",
    "mask": [
-    430,
-    467,
-    522,
-    523
+    398,
+    462,
+    486,
+    528
    ],
-   "strength": 0.75
+   "strength": 0.85,
+   "seed": 7
   },
   {
    "name": "shots/帰れ",
