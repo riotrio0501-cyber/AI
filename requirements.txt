@@ -1,0 +1,4 @@
+bpy==5.3.0
+pyyaml
+pillow
+numpy
