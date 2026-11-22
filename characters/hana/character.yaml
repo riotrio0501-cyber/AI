@@ -1,0 +1,23 @@
+name: hana
+display_name: ハナ
+subtitle_color: "#FF8FB1"
+hair_style: bob
+colors:
+  skin: "#FFE6D2"
+  hair: "#B5623A"
+  shirt: "#F48FB1"
+  pants: "#6D5A8C"
+  shoes: "#FFFFFF"
+  eye: "#3B2430"
+  cheek: "#FF9FA8"
+  accent: "#FFD54F"   # 星のヘアピン
+brow_width: 8
+voice:
+  engine: aivisspeech
+  model: null
+  styles:
+    normal: ノーマル
+    smile: 喜び
+    angry: 怒り
+    troubled: 悲しみ
+    surprised: ノーマル

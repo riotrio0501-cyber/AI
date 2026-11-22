@@ -1,0 +1,23 @@
+name: taro
+display_name: タロウ
+subtitle_color: "#4FC3F7"   # 字幕の色
+hair_style: short
+colors:
+  skin: "#FFE0C7"
+  hair: "#3A3F5C"
+  shirt: "#5BBF8A"
+  pants: "#4A5A7A"
+  shoes: "#F2F2F2"
+  eye: "#2B2238"
+  cheek: "#FFB3A7"
+brow_width: 12
+# 声の設定（音声生成の段階で /speakers を見て埋める。商用OKのモデルのみ）
+voice:
+  engine: aivisspeech
+  model: null
+  styles:        # face -> スタイル名
+    normal: ノーマル
+    smile: 喜び
+    angry: 怒り
+    troubled: 悲しみ
+    surprised: ノーマル
