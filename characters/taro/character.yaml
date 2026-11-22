@@ -4,11 +4,11 @@ subtitle_color: "#4FC3F7"   # 字幕の色
 hair_style: short
 colors:
   skin: "#FFE0C7"
-  hair: "#3A3F5C"
+  hair: "#3B3530"
   shirt: "#5BBF8A"
   pants: "#4A5A7A"
   shoes: "#F2F2F2"
-  eye: "#2B2238"
+  eye: "#3A2A22"
   cheek: "#FFB3A7"
 brow_width: 12
 # 声の設定（音声生成の段階で /speakers を見て埋める。商用OKのモデルのみ）

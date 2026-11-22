@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4E8D0"/><stop offset="1" stop-color="#E6CFA8"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5E9FD8"/><stop offset=".65" stop-color="#A9D2EE"/><stop offset="1" stop-color="#E3F1F4"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B9875A"/><stop offset="1" stop-color="#93623D"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF8E1" stop-opacity=".45"/><stop offset="1" stop-color="#FFF8E1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fridge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#DCEBDD"/><stop offset="1" stop-color="#B5CDB9"/>
+    </linearGradient>
+    <clipPath id="win"><rect x="196" y="246" width="688" height="660"/></clipPath>
+  </defs>
+
+  <!-- 壁 -->
+  <rect width="1080" height="1400" fill="url(#wall)"/>
+  <rect y="1340" width="1080" height="30" fill="#CDB58E"/>
+
+  <!-- 窓の外 -->
+  <g clip-path="url(#win)">
+    <rect x="196" y="246" width="688" height="660" fill="url(#sky)"/>
+    <!-- 入道雲 -->
+    <g fill="#FFFFFF">
+      <circle cx="420" cy="560" r="95"/><circle cx="530" cy="500" r="120"/><circle cx="650" cy="560" r="100"/>
+      <circle cx="560" cy="400" r="90"/><circle cx="470" cy="440" r="70"/><circle cx="740" cy="620" r="70"/>
+      <rect x="330" y="560" width="470" height="110" rx="50"/>
+    </g>
+    <g fill="#DCE6F0" opacity=".9">
+      <ellipse cx="540" cy="655" rx="230" ry="32"/><ellipse cx="640" cy="610" rx="90" ry="22"/>
+    </g>
+    <g fill="#FFFFFF" opacity=".8">
+      <ellipse cx="270" cy="330" rx="70" ry="18"/><ellipse cx="820" cy="380" rx="60" ry="14"/>
+    </g>
+    <!-- 遠くの丘と森 -->
+    <path d="M 196 760 Q 330 690 470 735 Q 620 680 760 720 Q 840 700 884 715 L 884 906 L 196 906 Z" fill="#9CC48A"/>
+    <path d="M 196 820 Q 300 770 420 800 Q 560 760 700 810 Q 800 785 884 800 L 884 906 L 196 906 Z" fill="#6FA35F"/>
+    <g fill="#4F8248">
+      <circle cx="250" cy="815" r="30"/><circle cx="285" cy="805" r="36"/><circle cx="320" cy="820" r="26"/>
+      <circle cx="760" cy="805" r="34"/><circle cx="800" cy="795" r="40"/><circle cx="840" cy="812" r="30"/>
+    </g>
+    <path d="M 196 870 Q 500 845 884 868 L 884 906 L 196 906 Z" fill="#5C9350"/>
+  </g>
+  <!-- 窓枠 -->
+  <g fill="none" stroke="#8E5F3B" stroke-width="26" stroke-linejoin="round">
+    <rect x="183" y="233" width="714" height="686" rx="6"/>
+    <line x1="540" y1="246" x2="540" y2="906"/>
+    <line x1="196" y1="560" x2="884" y2="560"/>
+  </g>
+  <rect x="150" y="918" width="780" height="34" rx="6" fill="#A06E46"/>
+  <rect x="150" y="948" width="780" height="10" fill="#7E5434" opacity=".6"/>
+
+  <!-- カーテン -->
+  <path d="M 120 200 L 260 200 Q 240 500 300 820 Q 230 900 210 960 L 120 960 Z" fill="#FBF6EA" opacity=".95"/>
+  <path d="M 960 200 L 820 200 Q 840 500 780 820 Q 850 900 870 960 L 960 960 Z" fill="#FBF6EA" opacity=".95"/>
+  <g stroke="#E6DCC6" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M 170 220 Q 165 560 185 940"/><path d="M 220 220 Q 215 600 250 880"/>
+    <path d="M 910 220 Q 915 560 895 940"/><path d="M 860 220 Q 865 600 830 880"/>
+  </g>
+  <rect x="100" y="186" width="880" height="18" rx="9" fill="#8E5F3B"/>
+
+  <!-- 窓辺の鉢植え -->
+  <g>
+    <path d="M 270 918 L 260 860 L 340 860 L 330 918 Z" fill="#C46E4A"/>
+    <g fill="#5E9B4E"><ellipse cx="285" cy="830" rx="20" ry="38" transform="rotate(-25 285 830)"/>
+      <ellipse cx="315" cy="822" rx="20" ry="42" transform="rotate(20 315 822)"/>
+      <ellipse cx="300" cy="815" rx="16" ry="44"/></g>
+    <path d="M 740 918 L 732 875 L 800 875 L 792 918 Z" fill="#D9A15E"/>
+    <g fill="#7DB36A"><circle cx="750" cy="860" r="20"/><circle cx="775" cy="848" r="24"/><circle cx="790" cy="866" r="18"/></g>
+  </g>
+
+  <!-- 光の帯 -->
+  <polygon points="200,250 540,250 760,1600 300,1600" fill="url(#beam)"/>
+  <polygon points="560,250 880,250 1040,1500 760,1500" fill="url(#beam)" opacity=".7"/>
+
+  <!-- 左の調理台 -->
+  <rect x="-20" y="1010" width="250" height="380" fill="#C9A27A"/>
+  <rect x="-20" y="990" width="270" height="36" rx="6" fill="#E9DCC4"/>
+  <g stroke="#A88259" stroke-width="5"><line x1="105" y1="1040" x2="105" y2="1380"/></g>
+  <circle cx="80" cy="1200" r="8" fill="#7A5634"/><circle cx="130" cy="1200" r="8" fill="#7A5634"/>
+  <!-- やかんと果物かご -->
+  <ellipse cx="70" cy="950" rx="58" ry="44" fill="#D97B5A"/><rect x="45" y="895" width="50" height="14" rx="7" fill="#8E4B33"/>
+  <path d="M 125 940 Q 165 925 175 900" stroke="#D97B5A" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M 150 990 Q 195 935 240 990 Z" fill="#B88A55"/>
+  <circle cx="178" cy="955" r="18" fill="#E2554A"/><circle cx="208" cy="958" r="17" fill="#F2B33D"/>
+
+  <!-- 右のレトロ冷蔵庫 -->
+  <rect x="820" y="720" width="280" height="680" rx="40" fill="url(#fridge)" stroke="#8FA996" stroke-width="5"/>
+  <line x1="822" y1="960" x2="1080" y2="960" stroke="#8FA996" stroke-width="5"/>
+  <rect x="850" y="800" width="18" height="110" rx="9" fill="#E7EFE8" stroke="#8FA996" stroke-width="4"/>
+  <rect x="850" y="1000" width="18" height="170" rx="9" fill="#E7EFE8" stroke="#8FA996" stroke-width="4"/>
+  <circle cx="960" cy="830" r="16" fill="#F2B33D"/><rect x="930" y="1030" width="70" height="90" fill="#FFFDF5" transform="rotate(4 965 1075)"/>
+  <circle cx="965" cy="1030" r="9" fill="#E2554A"/>
+
+  <!-- 床 -->
+  <rect y="1370" width="1080" height="550" fill="url(#floor)"/>
+  <g stroke="#83552F" stroke-width="4" opacity=".55">
+    <line x1="0" y1="1460" x2="1080" y2="1460"/><line x1="0" y1="1580" x2="1080" y2="1580"/>
+    <line x1="0" y1="1730" x2="1080" y2="1730"/>
+    <line x1="300" y1="1370" x2="290" y2="1460"/><line x1="720" y1="1370" x2="730" y2="1460"/>
+    <line x1="150" y1="1460" x2="130" y2="1580"/><line x1="560" y1="1460" x2="565" y2="1580"/><line x1="930" y1="1460" x2="950" y2="1580"/>
+    <line x1="380" y1="1580" x2="360" y2="1730"/><line x1="800" y1="1580" x2="820" y2="1730"/>
+  </g>
+  <!-- 陽だまり -->
+  <ellipse cx="560" cy="1560" rx="380" ry="90" fill="#FFE9B8" opacity=".35"/>
+</svg>

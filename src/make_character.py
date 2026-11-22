@@ -16,7 +16,7 @@ W, H = 600, 1000
 FACES = ["normal", "surprised", "angry", "troubled", "smile"]
 EYE_L, EYE_R, EYE_Y = 225, 375, 375
 MOUTH_X, MOUTH_Y = 300, 462
-OUTLINE = "#2B2238"
+OUTLINE = "#5B4033"  # 柔らかい焦げ茶の線
 
 
 def svg(body: str) -> str:
@@ -45,7 +45,7 @@ def eyes(face: str, c: dict) -> str:
                 f'<circle cx="{cx - 6}" cy="{EYE_Y + ry * 0.45}" r="3.5" fill="#fff" opacity=".8"/>')
 
     def surprised(cx, sx):
-        return (f'<circle cx="{cx}" cy="{EYE_Y}" r="30" fill="#fff" stroke="{col}" stroke-width="6"/>'
+        return (f'<circle cx="{cx}" cy="{EYE_Y}" r="30" fill="#fff" stroke="{col}" stroke-width="4.5"/>'
                 f'<circle cx="{cx}" cy="{EYE_Y + 2}" r="10" fill="{col}"/>')
 
     def angry(cx, sx):
@@ -106,7 +106,7 @@ def mouth(face: str, level: int) -> str:
     x, y = MOUTH_X, MOUTH_Y
     inside = "#7A2E3A"
     tongue = "#F2808A"
-    st = f'fill="none" stroke="{OUTLINE}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"'
+    st = f'fill="none" stroke="{OUTLINE}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"'
     fill = f'fill="{inside}" stroke="{OUTLINE}" stroke-width="5" stroke-linejoin="round"'
 
     if level == 0:
@@ -137,15 +137,27 @@ def mouth(face: str, level: int) -> str:
 
 
 # ---------- 髪 ----------
+HEAD_CLIP = ('<defs><clipPath id="headclip"><ellipse cx="300" cy="355" rx="212" ry="200"/>'
+             '</clipPath></defs>')
+
+
+def face_shadow(d: str, c: dict) -> str:
+    """前髪の影を顔に落とす（頭の形で切り抜く）。"""
+    return (HEAD_CLIP + f'<g clip-path="url(#headclip)"><path d="{d}" transform="translate(6,18)" '
+            f'fill="{darker(c["skin"], 0.88)}"/></g>')
+
+
 def hair(style: str, c: dict):
     col = c["hair"]
     hi = "#FFFFFF"
-    ol = f'stroke="{darker(col, 0.6)}" stroke-width="6" stroke-linejoin="round"'
+    ol = f'stroke="{darker(col, 0.6)}" stroke-width="4.5" stroke-linejoin="round"'
     if style == "short":
         back = f'<ellipse cx="300" cy="320" rx="222" ry="200" fill="{col}" {ol}/>'
+        bang = ("M 86 380 A 216 216 0 1 1 514 380 L 506 318 L 470 262 L 440 296 L 398 246 "
+                "L 356 288 L 304 240 L 258 290 L 214 250 L 176 298 L 136 262 L 96 322 Z")
         front = (
-            f'<path d="M 86 380 A 216 216 0 1 1 514 380 L 506 318 L 470 262 L 440 296 L 398 246 '
-            f'L 356 288 L 304 240 L 258 290 L 214 250 L 176 298 L 136 262 L 96 322 Z" fill="{col}" {ol}/>'
+            face_shadow(bang, c) +
+            f'<path d="{bang}" fill="{col}" {ol}/>'
             # アホ毛ではなく「寝ぐせ」2本
             f'<path d="M 300 132 Q 318 70 372 78 Q 336 96 330 136 Z" fill="{col}" {ol}/>'
             f'<path d="M 250 140 Q 236 92 268 70 Q 262 104 282 136 Z" fill="{col}" {ol}/>'
@@ -164,10 +176,12 @@ def hair(style: str, c: dict):
             a = -math.pi / 2 + k * math.pi / 5
             pts.append(f"{sx + r * math.cos(a):.1f},{sy + r * math.sin(a):.1f}")
         star = f'<polygon points="{" ".join(pts)}" fill="{acc}" stroke="{darker(acc, 0.65)}" stroke-width="4" stroke-linejoin="round"/>'
+        bang = ("M 78 470 Q 70 140 300 128 Q 530 140 522 470 L 492 470 Q 498 330 478 286 "
+                "Q 440 262 408 276 Q 376 254 344 274 Q 312 252 280 274 Q 248 252 216 274 "
+                "Q 184 256 150 280 Q 108 300 108 470 Z")
         front = (
-            f'<path d="M 78 470 Q 70 140 300 128 Q 530 140 522 470 L 492 470 Q 498 330 478 286 '
-            f'Q 440 262 408 276 Q 376 254 344 274 Q 312 252 280 274 Q 248 252 216 274 '
-            f'Q 184 256 150 280 Q 108 300 108 470 Z" fill="{col}" {ol}/>'
+            face_shadow(bang, c) +
+            f'<path d="{bang}" fill="{col}" {ol}/>'
             f'<path d="M 170 190 Q 240 158 320 160" fill="none" stroke="{hi}" stroke-width="10" '
             f'stroke-linecap="round" opacity=".35"/>'
             + star
@@ -177,8 +191,11 @@ def hair(style: str, c: dict):
 
 
 # ---------- 体・腕・頭 ----------
+TORSO = "M 214 560 Q 300 530 386 560 Q 420 680 424 820 Q 300 846 176 820 Q 180 680 214 560 Z"
+
+
 def body(c: dict) -> str:
-    ol = f'stroke="{OUTLINE}" stroke-width="6" stroke-linejoin="round"'
+    ol = f'stroke="{OUTLINE}" stroke-width="4.5" stroke-linejoin="round"'
     return (
         # 脚
         f'<rect x="222" y="780" width="66" height="160" rx="22" fill="{c["pants"]}" {ol}/>'
@@ -186,8 +203,12 @@ def body(c: dict) -> str:
         f'<ellipse cx="250" cy="950" rx="50" ry="26" fill="{c["shoes"]}" {ol}/>'
         f'<ellipse cx="350" cy="950" rx="50" ry="26" fill="{c["shoes"]}" {ol}/>'
         # 胴体
-        f'<path d="M 214 560 Q 300 530 386 560 Q 420 680 424 820 Q 300 846 176 820 Q 180 680 214 560 Z" '
-        f'fill="{c["shirt"]}" {ol}/>'
+        f'<defs><clipPath id="torso"><path d="{TORSO}"/></clipPath></defs>'
+        f'<path d="{TORSO}" fill="{c["shirt"]}"/>'
+        f'<g clip-path="url(#torso)">'
+        f'<ellipse cx="420" cy="720" rx="90" ry="200" fill="{darker(c["shirt"], 0.86)}"/>'
+        f'<ellipse cx="300" cy="555" rx="120" ry="34" fill="{darker(c["shirt"], 0.82)}"/></g>'
+        f'<path d="{TORSO}" fill="none" {ol}/>'
         f'<path d="M 262 548 Q 300 590 338 548" fill="{c["skin"]}" {ol}/>'
     )
 
@@ -200,14 +221,14 @@ def arm(side: str, c: dict) -> str:
     sx = -1 if side == "arm_l" else 1
     hx, hy = px + 40 * sx, py + 190
     return (
-        f'<path d="M {px} {py} L {hx} {hy - 26}" stroke="{OUTLINE}" stroke-width="58" stroke-linecap="round"/>'
+        f'<path d="M {px} {py} L {hx} {hy - 26}" stroke="{OUTLINE}" stroke-width="55" stroke-linecap="round"/>'
         f'<path d="M {px} {py} L {hx} {hy - 26}" stroke="{c["shirt"]}" stroke-width="46" stroke-linecap="round"/>'
-        f'<circle cx="{hx}" cy="{hy}" r="27" fill="{c["skin"]}" stroke="{OUTLINE}" stroke-width="6"/>'
+        f'<circle cx="{hx}" cy="{hy}" r="27" fill="{c["skin"]}" stroke="{OUTLINE}" stroke-width="4.5"/>'
     )
 
 
 def head(c: dict) -> str:
-    ol = f'stroke="{OUTLINE}" stroke-width="6"'
+    ol = f'stroke="{OUTLINE}" stroke-width="4.5"'
     return (
         f'<ellipse cx="92" cy="400" rx="30" ry="38" fill="{c["skin"]}" {ol}/>'
         f'<ellipse cx="508" cy="400" rx="30" ry="38" fill="{c["skin"]}" {ol}/>'
