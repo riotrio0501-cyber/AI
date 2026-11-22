@@ -1,0 +1,54 @@
+id: "014"
+title: 賃貸の退去費用、全部払わなくていいかも
+length: short
+targets: [一人暮らし]
+season: null
+info_year: 2026年（国土交通省ガイドライン・改正民法）
+status: draft
+age_note: null
+
+sources:
+  - label: 国土交通省「原状回復をめぐるトラブルとガイドライン」
+    url: https://www.mlit.go.jp/jutakukentiku/house/content/001611293.pdf
+    note: 経年変化・通常損耗は賃借人の原状回復義務に含まれない、経過年数を考慮
+  - label: 北海道「賃貸住宅退去時のポイント」
+    url: https://www.pref.hokkaido.lg.jp/kn/ksd/fudousan/tintai-point.html
+    note: 参考
+
+scenes:
+  - role: hook
+    telop: "賃貸の退去費用、\n[[言われるまま]]払ってない？"
+    narration: 賃貸の退去費用、言われるまま払ってない？
+    visual: {type: icon, name: document, text: 退去費用}
+  - role: point
+    telop: "[[普通に住んだ]]傷みは\n借りた人の負担じゃない"
+    narration: 普通に暮らしていてできた傷みや、古くなった分は、原則として借りた人の負担じゃないんです。
+    visual: {type: icon, name: check}
+  - role: point
+    telop: "日焼け・家具の跡は\n[[原則 貸主]]負担"
+    narration: 例えば、日焼けしたクロスや、家具を置いた跡は、原則、貸主の負担。
+    visual: {type: icons, items: [{name: check, label: 日焼け}, {name: check, label: 家具の跡}]}
+  - role: point
+    telop: "タバコ・不注意の傷は\n[[借りた人]]負担"
+    narration: 一方で、タバコのヤニや、不注意でつけた傷などは、借りた人の負担になります。
+    visual: {type: icons, items: [{name: cross, label: タバコ}, {name: cross, label: 不注意の傷}]}
+  - role: caution
+    telop: "[[契約書の特約]]も\nチェック"
+    narration: ただし、契約書の特約で決まっていることもあるので、まずは契約書を確認してね。
+    visual: {type: steps, items: [契約書の特約を確認, 入居時の写真を見返す, 明細の内訳を聞く]}
+  - role: caution
+    telop: "困ったら[[188]]に相談"
+    narration: 納得できないときは、消費者ホットライン188に相談できます。
+    visual: {type: icon, name: chat, text: "188"}
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
+
+caption_title: 【一人暮らし】賃貸の退去費用、全部払わなくていいかも｜原状回復ガイドライン
+question: 退去費用、いくら請求されたことある？コメントで教えて👇
+caption: |
+  国土交通省のガイドラインでは、普通に住んでいてできた傷み（通常損耗）や古くなった分（経年変化）は、原則として借りた人の負担ではありません。
+  タバコのヤニや不注意でつけた傷などは借りた人の負担に。
+  契約書の特約も確認して、納得できないときは消費者ホットライン188へ。
+  ※2026年時点の情報です。個別のケースは契約内容などで変わります。出典：国土交通省
+hashtags: [一人暮らし, 賃貸, 退去費用, 引っ越し, お金の知識]

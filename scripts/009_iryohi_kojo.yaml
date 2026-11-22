@@ -1,0 +1,51 @@
+id: "009"
+title: 医療費が年10万円をこえたら税金が戻るかも
+length: short
+targets: [30〜40代, 季節]
+season: 12
+info_year: 2026年分（令和8年分）
+status: draft
+age_note: null
+
+sources:
+  - label: 国税庁 タックスアンサー No.1120「医療費を支払ったとき（医療費控除）」
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm
+    note: 支払医療費−保険金等−10万円（総所得金額等200万円未満は5%）、上限200万円、生計を一にする親族分も対象
+
+scenes:
+  - role: hook
+    telop: "病院代、\n[[年10万円]]こえてない？"
+    narration: 今年の病院代、家族で10万円こえてない？
+    visual: {type: icon, name: family}
+  - role: point
+    telop: "[[医療費控除]]で\n税金が戻るかも"
+    narration: こえていたら、医療費控除で税金が戻ってくるかも。
+    visual: {type: icon, name: document, text: 確定申告}
+  - role: point
+    telop: "[[家族の分]]も\n合算できる"
+    narration: 一緒に暮らす家族の医療費も、合わせて計算できます。
+    visual: {type: icons, items: [{name: worker, label: 自分}, {name: family, label: 家族}]}
+  - role: point
+    telop: "10万円を[[こえた分]]が\n控除の対象"
+    narration: 1月から12月に払った医療費のうち、10万円をこえた分が控除の対象。
+    visual: {type: bar, items: [{label: 払った医療費, value: 15, text: 15万円}, {label: 控除の対象, value: 5, text: 5万円, highlight: true}]}
+  - role: caution
+    telop: "所得200万円未満なら\n[[所得の5%]]をこえた分"
+    narration: 所得が200万円未満の人は、10万円じゃなくて、所得の5パーセントをこえた分が対象です。
+    visual: {type: icon, name: coin, text: 5%}
+  - role: caution
+    telop: "[[保険金]]でもらった分は\n差し引く"
+    narration: ただし、保険金などで戻ってきた分は差し引いてね。年末調整ではできないので、確定申告が必要です。
+    visual: {type: icon, name: warning}
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
+
+caption_title: 【医療費控除】病院代が年10万円こえたら税金が戻るかも｜家族分も合算OK
+question: 今年の病院代、10万円こえそう？コメントで教えて👇
+caption: |
+  1月〜12月に家族で払った医療費が10万円（所得200万円未満の人は所得の5%）をこえたら、医療費控除の対象になるかも。
+  保険金などで戻ってきた分は差し引きます。年末調整ではできないので、確定申告が必要です。
+  領収書や医療費通知は捨てずにとっておいてね。
+  ※2026年分の情報です。出典：国税庁
+hashtags: [医療費控除, 確定申告, 節税, 子育て世代, お金の知識]

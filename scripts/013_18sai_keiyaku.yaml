@@ -1,0 +1,58 @@
+id: "013"
+title: 18歳から一人で契約できる＝取り消せない
+length: short
+targets: [学生・若者]
+season: null
+info_year: 2026年（2022年4月からの制度）
+status: draft
+age_note: 18歳・19歳の人向け
+
+sources:
+  - label: 政府広報オンライン「18歳から大人 成人になると増える消費者トラブル」
+    url: https://www.gov-online.go.jp/article/201801/entry-8951.html
+    note: 2022年4月から成年年齢18歳、未成年者取消権が使えなくなる
+  - label: 国民生活センター「若者の消費者トラブル」
+    url: https://www.kokusen.go.jp/hello/data/wakamono_effort.html
+    note: 若者に多いトラブル、消費者ホットライン188
+  - label: 消費者庁「成年年齢引下げに関するお問い合わせ」
+    url: https://www.caa.go.jp/policies/policy/consumer_education/consumer_education/lower_the_age_of_adulthood/inquiry
+    note: クーリング・オフの期間（訪問販売等8日間、マルチ商法20日間）（要確認）
+
+scenes:
+  - role: hook
+    telop: "18歳になったら\nこれ[[要注意]]"
+    narration: 18歳になったら、これは要注意。
+    visual: {type: icon, name: student}
+  - role: point
+    telop: "18歳から\n[[一人で契約]]できる"
+    narration: 2022年から、18歳になると、親の同意なしで一人で契約できるようになりました。
+    visual: {type: icon, name: document, text: 契約書}
+  - role: point
+    telop: "でも[[取り消し]]が\nできなくなる"
+    narration: そのかわり、未成年なら取り消せた契約が、取り消せなくなります。
+    visual: {type: compare, before: 取り消せる, after: 取り消せない, before_label: 17歳まで, after_label: 18歳から}
+  - role: point
+    telop: "[[もうけ話]]や\n美容の勧誘に注意"
+    narration: 特に、簡単にもうかる話や、美容関係の勧誘には注意してね。
+    visual: {type: icon, name: warning}
+  - role: caution
+    telop: "[[クーリング・オフ]]が\n使えることも"
+    narration: 訪問販売やマルチ商法などは、決められた期間内ならクーリング・オフできることも。
+    visual: {type: steps, items: [訪問販売・電話勧誘は8日間, マルチ商法は20日間, ネット通販は対象外]}
+    check: 要確認  # 期間は消費者庁で確認。通信販売にはクーリング・オフ制度がない
+  - role: caution
+    telop: "困ったら[[188]]に相談"
+    narration: 困ったら、一人で悩まずに、消費者ホットライン188へ。
+    visual: {type: icon, name: chat, text: "188"}
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
+
+caption_title: 【18歳・19歳】一人で契約できる＝取り消せない｜クーリング・オフと188
+question: 怪しい勧誘、受けたことある？コメントで教えて👇
+caption: |
+  2022年4月から成年年齢は18歳。親の同意なしで契約できる一方、未成年者取消権が使えなくなります。
+  もうけ話や美容関係の勧誘には注意。訪問販売やマルチ商法などは、期間内ならクーリング・オフできることも（ネット通販は対象外）。
+  困ったら消費者ホットライン188へ。
+  ※2026年時点の情報です。出典：政府広報オンライン・国民生活センター・消費者庁
+hashtags: [18歳, 大学生, 消費者トラブル, クーリングオフ, お金の知識]

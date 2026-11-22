@@ -1,0 +1,54 @@
+id: "015"
+title: 育休の手取りが10割相当になる制度
+length: short
+targets: [30〜40代]
+season: null
+info_year: 2025年4月からの制度（2026年時点）
+status: draft
+age_note: null
+
+sources:
+  - label: 厚生労働省 母性健康管理サイト「出生後休業支援給付」
+    url: https://www.bosei-navi.mhlw.go.jp/glossary/provide08.html
+    note: 休業開始時賃金日額×支給対象日数（上限28日）×13%
+  - label: 厚生労働省「出生後休業支援給付 簡易診断」
+    url: https://www.mhlw.go.jp/stf/syussyougo_kanishindan_00001.html
+    note: 両親ともに14日以上の育休で最大28日間13%上乗せ、育児休業給付と合わせて80%＝手取り10割相当
+
+scenes:
+  - role: hook
+    telop: "育休中の手取り、\n[[10割]]になるって知ってた？"
+    narration: 育休中の手取り、10割相当になるって知ってた？
+    visual: {type: icon, name: family}
+  - role: point
+    telop: "[[両親とも14日以上]]\n育休をとると"
+    narration: 子どもが生まれてすぐに、両親ともに14日以上育休をとると、
+    visual: {type: icons, items: [{name: worker, label: パパ 14日以上}, {name: worker, label: ママ 14日以上}]}
+  - role: point
+    telop: "給付が[[13%]]上乗せ"
+    narration: いつもの育児休業給付に、13パーセントが上乗せされます。
+    visual: {type: bar, items: [{label: これまで, value: 67, text: 67%}, {label: 上乗せ後, value: 80, text: 80%, highlight: true}]}
+  - role: point
+    telop: "合わせて80%＝\n手取り[[10割相当]]"
+    narration: 合わせて80パーセント。給付は非課税で社会保険料も免除されるので、手取りは10割相当に。
+    visual: {type: icon, name: wallet}
+  - role: caution
+    telop: "上乗せは\n[[最大28日間]]"
+    narration: ただし、上乗せがあるのは最大28日間。パパは子どもの出生後8週間以内に取る必要があります。
+    visual: {type: icon, name: calendar, text: 28日}
+  - role: caution
+    telop: "[[勤務先]]に\n早めに相談"
+    narration: 申請は勤務先を通して行うので、早めに相談してね。
+    visual: {type: icon, name: building, text: 職場}
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
+
+caption_title: 【育休】両親で14日以上取ると手取り10割相当に｜出生後休業支援給付
+question: 育休、取った（取る予定）？コメントで教えて👇
+caption: |
+  2025年4月から、子の出生直後に両親ともに14日以上の育休をとると、育児休業給付に13%が上乗せ（最大28日間）。
+  合わせて給付率80%。給付は非課税で、育休中は社会保険料の免除もあるので、手取り10割相当になります。
+  配偶者が働いていない場合やひとり親の場合は、本人だけの取得で対象になることも。申請は勤務先経由です。
+  ※2025年4月からの制度（2026年時点）の情報です。出典：厚生労働省
+hashtags: [育休, 子育て, 出産, 共働き, お金の知識]

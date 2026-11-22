@@ -1,0 +1,54 @@
+id: "011"
+title: バイト代から引かれた税金、戻ってくるかも
+length: short
+targets: [学生・若者]
+season: 1
+info_year: 2026年分（令和8年分）
+status: draft
+age_note: null
+
+sources:
+  - label: 国税庁 タックスアンサー No.2030「還付申告」
+    url: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2030.htm
+    note: 源泉徴収税額が年税額より多いとき還付申告できる。翌年1月1日から5年間提出可
+  - label: 国税庁「確定申告書等作成コーナー」
+    url: https://www.keisan.nta.go.jp/
+    note: スマホで申告書を作成できる（要確認）
+
+scenes:
+  - role: hook
+    telop: "バイト代から\n[[税金]]引かれてない？"
+    narration: バイト代の明細、所得税って書いて引かれてない？
+    visual: {type: icon, name: document, text: 給与明細}
+  - role: point
+    telop: "[[確定申告]]で\n戻ってくるかも"
+    narration: その税金、確定申告をすると戻ってくるかもしれません。
+    visual: {type: icon, name: coin}
+  - role: point
+    telop: "[[年末調整]]してない人は\nチャンス"
+    narration: 特に、年の途中でバイトを辞めた人や、年末調整をしていない人はチャンス。
+    visual: {type: icons, items: [{name: student, label: 途中で辞めた}, {name: cross, label: 年末調整なし}]}
+  - role: point
+    telop: "必要なのは\n[[源泉徴収票]]"
+    narration: 必要なのは、バイト先からもらえる源泉徴収票。なければバイト先にお願いしよう。
+    visual: {type: icon, name: document, text: 源泉徴収票}
+  - role: caution
+    telop: "[[5年]]さかのぼって\n申告できる"
+    narration: この還付申告は、次の年の1月から5年間できるので、去年の分もまだ間に合うかも。
+    visual: {type: months, highlight: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], caption: "翌年1月から[[5年間]]OK"}
+  - role: caution
+    telop: "戻る金額は\n[[人によって違う]]"
+    narration: ただし、戻る金額は収入や引かれた額によって違うよ。
+    visual: {type: icon, name: warning}
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
+
+caption_title: 【学生バイト】引かれた所得税は確定申告で戻るかも｜5年さかのぼれる
+question: バイトの明細、所得税引かれてた？コメントで教えて👇
+caption: |
+  バイト代から所得税が引かれていて、年末調整をしていない人（途中で辞めた人など）は、確定申告（還付申告）で戻ってくるかも。
+  還付申告は翌年1月1日から5年間提出できます。
+  必要なのはバイト先の源泉徴収票。国税庁の確定申告書等作成コーナーで作れます。
+  ※2026年分の情報です。出典：国税庁
+hashtags: [確定申告, 大学生, バイト, 還付金, お金の知識]

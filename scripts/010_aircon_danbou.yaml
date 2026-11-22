@@ -1,0 +1,52 @@
+id: "010"
+title: 冬のエアコン、設定温度1℃で電気代が変わる
+length: short
+targets: [一人暮らし, 季節]
+season: 12
+info_year: 2026年（資源エネルギー庁の試算）
+status: draft
+age_note: null
+
+sources:
+  - label: 資源エネルギー庁 省エネポータルサイト「エアコン」
+    url: https://www.enecho.meti.go.jp/category/saving_and_new/saving/general/howto/airconditioning/
+    note: 暖房21℃→20℃で年間約1,650円（外気温6℃、2.2kW、1日9時間）。フィルター清掃（月1〜2回）で年間約990円（要確認）
+  - label: 東京電力エナジーパートナー「エアコンの省エネ」
+    url: https://www.tepco.co.jp/ep/private/savingenergy/airconditioner01.html
+    note: 参考
+
+scenes:
+  - role: hook
+    telop: "冬のエアコン、\n何℃にしてる？"
+    narration: 冬のエアコン、何度にしてる？
+    visual: {type: icon, name: chat, text: "何℃?"}
+  - role: point
+    telop: "[[1℃]]下げるだけで\n電気代が変わる"
+    narration: 暖房の設定温度を1度下げるだけで、電気代が変わります。
+    visual: {type: compare, before: 21℃, after: 20℃, before_label: いつもの設定, after_label: 1℃下げる}
+  - role: point
+    telop: "年間[[約1,650円]]の節約"
+    narration: 21度から20度にすると、年間で約1650円の節約という国の試算も。
+    visual: {type: icon, name: coin, text: 1,650}
+    check: 要確認  # 外気温6℃・2.2kW・1日9時間の条件。電気料金単価で変わる
+  - role: point
+    telop: "[[フィルター掃除]]も\n月1〜2回"
+    narration: さらに、フィルター掃除を月1、2回すると、もっと効率アップ。
+    visual: {type: steps, items: [設定温度を20℃に, フィルターを月1〜2回掃除, 厚手のカーテンで保温]}
+    check: 要確認  # フィルター清掃の年間約990円は二次情報のため金額は入れていない
+  - role: caution
+    telop: "寒すぎは[[NG]]\n体調優先で"
+    narration: ただし、寒さをがまんしすぎるのはNG。体調を優先して、厚着やカーテンと組み合わせてね。
+    visual: {type: icon, name: warning}
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
+
+caption_title: 【冬の電気代】エアコン暖房は20℃がおすすめ？1℃で年約1,650円の差
+question: あなたの部屋の暖房、何℃にしてる？コメントで教えて👇
+caption: |
+  資源エネルギー庁の試算では、暖房の設定温度を21℃→20℃にすると年間約1,650円の節約に（外気温6℃・2.2kWのエアコン・1日9時間の場合）。
+  フィルター掃除や厚手のカーテンも組み合わせると効率アップ。
+  寒さのがまんしすぎは体調をくずすので、無理のない範囲で。
+  ※資源エネルギー庁の試算にもとづく目安です。電気料金や使い方で変わります。出典：資源エネルギー庁
+hashtags: [電気代, 節約, 一人暮らし, エアコン, 冬]

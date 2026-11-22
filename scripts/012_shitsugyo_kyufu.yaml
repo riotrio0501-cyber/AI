@@ -1,0 +1,55 @@
+id: "012"
+title: 自己都合で辞めても失業手当は1か月後から
+length: short
+targets: [新社会人]
+season: null
+info_year: 2025年4月1日以降の離職（2026年時点）
+status: draft
+age_note: null
+
+sources:
+  - label: 和歌山労働局（厚生労働省）「自己都合離職者の給付制限の見直し」
+    url: https://jsite.mhlw.go.jp/wakayama-roudoukyoku/content/contents/002384194.pdf
+    note: 2025年4月1日以降の離職は給付制限が原則1か月。教育訓練を受けた場合は解除
+  - label: 中小機構 J-Net21「改正雇用保険法の施行（2025年4月）」
+    url: https://j-net21.smrj.go.jp/law/20250604.html
+    note: 参考
+
+scenes:
+  - role: hook
+    telop: "転職したい人、\nこれ[[知らないと損]]"
+    narration: 仕事を辞めて転職を考えている人、これ知らないと損。
+    visual: {type: icon, name: worker}
+  - role: point
+    telop: "自己都合で辞めても\n[[失業手当]]は出る"
+    narration: 自分の都合で辞めても、条件を満たせば失業手当はもらえます。
+    visual: {type: icon, name: building, text: ハローワーク}
+  - role: point
+    telop: "待つ期間が\n[[2か月→1か月]]に"
+    narration: しかも2025年4月から、もらえるまで待つ期間が、2か月から1か月に短くなりました。
+    visual: {type: compare, before: 2か月, after: 1か月, before_label: これまで, after_label: 2025年4月から}
+  - role: point
+    telop: "[[教育訓練]]を受けると\n待たずにもらえることも"
+    narration: さらに、対象の教育訓練を受けていると、この待つ期間がなくなることも。
+    visual: {type: icon, name: student}
+  - role: caution
+    telop: "[[5年で2回以上]]なら\n3か月"
+    narration: ただし、5年以内に2回以上自己都合で辞めている場合などは3か月になります。
+    visual: {type: icon, name: warning}
+    check: 要確認  # 「2回以上」か「3回以上」か資料で表現が分かれる。厚労省・ハローワークで確認
+  - role: caution
+    telop: "まずは[[ハローワーク]]で\n確認"
+    narration: もらえる条件は人によって違うので、まずはハローワークで確認してね。
+    visual: {type: steps, items: [離職票を受け取る, ハローワークで申し込み, 条件を確認]}
+  - role: outro
+    telop: "[[保存]]して見返してね"
+    narration: 保存して見返してね。フォローすると、毎日お得な情報が届くよ。
+
+caption_title: 【転職・退職】自己都合でも失業手当は1か月後から｜2025年4月から変わった
+question: 転職、考えたことある？コメントで教えて👇
+caption: |
+  2025年4月1日以降に自己都合で離職した場合、失業手当（基本手当）の給付制限は原則2か月→1か月に短縮されました。
+  対象の教育訓練を受けている場合は、給付制限がなくなることも。
+  5年以内に複数回の自己都合離職がある場合などは3か月になります。もらえる条件はハローワークで確認してね。
+  ※2025年4月1日以降の離職についての情報です。出典：厚生労働省（和歌山労働局）
+hashtags: [転職, 退職, 失業保険, 新社会人, お金の知識]
