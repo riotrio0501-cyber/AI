@@ -279,3 +279,68 @@ def render_still(path):
     sc.render.image_settings.file_format = "PNG"
     sc.render.filepath = str(path)
     bpy.ops.render.render(write_still=True)
+
+
+# ---------- 毛並み ----------
+def mat_hair(name, color, melanin_tint=None, rough=0.35, coat=0.0):
+    """毛用マテリアル（毛1本1本の光り方を再現する専用シェーダー）。"""
+    m = bpy.data.materials.new(name)
+    m.use_nodes = True
+    nt = m.node_tree
+    for n in list(nt.nodes):
+        if n.type != "OUTPUT_MATERIAL":
+            nt.nodes.remove(n)
+    h = nt.nodes.new("ShaderNodeBsdfHairPrincipled")
+    h.parametrization = "COLOR"
+    h.inputs["Color"].default_value = (*color, 1)
+    h.inputs["Roughness"].default_value = rough
+    h.inputs["Radial Roughness"].default_value = 0.6
+    h.inputs["Coat"].default_value = coat
+    # 根元を暗く、毛先を明るく（ふわっと見せる）
+    info = nt.nodes.new("ShaderNodeHairInfo")
+    ramp = nt.nodes.new("ShaderNodeValToRGB")
+    ramp.color_ramp.elements[0].color = tuple(c * 0.45 for c in color) + (1,)
+    ramp.color_ramp.elements[1].color = tuple(min(1, c * 1.25) for c in color) + (1,)
+    nt.links.new(info.outputs["Intercept"], ramp.inputs["Fac"])
+    nt.links.new(ramp.outputs["Color"], h.inputs["Color"])
+    out = nt.nodes["Material Output"]
+    nt.links.new(h.outputs[0], out.inputs["Surface"])
+    return m
+
+
+def add_fur(obj, color, length=0.04, count=4000, children=12, clump=0.3, rough=0.012, kink=0.0,
+            root_w=0.6, name=None, vgroup=None):
+    """オブジェクトに毛を生やす。length は毛の長さ（m）。"""
+    mat = mat_hair((name or obj.name) + "_hair", color)
+    obj.data.materials.append(mat)
+    mod = obj.modifiers.new("fur", "PARTICLE_SYSTEM")
+    # 毛はサブディビジョンの前に置く（形はサブディビジョン後に合わせて生える）
+    ps = mod.particle_system.settings
+    ps.type = "HAIR"
+    ps.count = count
+    ps.hair_length = length
+    ps.use_advanced_hair = True
+    ps.material_slot = mat.name
+    ps.child_type = "INTERPOLATED"
+    ps.child_percent = 1
+    ps.rendered_child_count = children
+    ps.clump_factor = clump
+    ps.roughness_2 = rough
+    ps.roughness_endpoint = rough * 0.5
+    ps.child_length = 1.0
+    ps.root_radius = root_w
+    ps.tip_radius = 0.0
+    ps.radius_scale = 0.006
+    ps.hair_step = 5
+    ps.display_step = 3
+    ps.render_step = 4
+    if kink:
+        ps.kink = "CURL"
+        ps.kink_amplitude = kink
+        ps.kink_frequency = 2
+    if vgroup:
+        mod.particle_system.vertex_group_density = vgroup
+    # 毛の向きを法線＋少し下向きに（なでつけた感じ）
+    ps.normal_factor = length  # 「上級モード」では長さ＝法線方向の速度
+    ps.object_align_factor[2] = -0.35 * length
+    return mod
