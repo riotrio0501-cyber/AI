@@ -1,0 +1,19 @@
+{
+  "_note": "キャラの見た目の文章（固定）。生成のたびにここからそのまま使う。書きかえるときはユーザー確認を取ること。",
+  "gonta": "Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face",
+  "piko": "Piko, an original small slender stoat in pure white winter fur, only the tip of the tail is black, shiny round black eyes, tiny pink nose, small round ears, energetic and expressive, about one fifth the size of Gonta",
+  "jii": "Jii, an original elderly Japanese serow with brown shaggy fur, short dark horns, a long white beard, sleepy wise eyes, always sitting calmly on the same snowy rock",
+  "style": "high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text",
+  "negative": "text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat",
+  "reference_images": {
+    "_note": "顔アップがOKになったら、Higgsfield の job_id をここに書く。以降の生成はこれを参照画像にする。",
+    "gonta": null,
+    "piko": null,
+    "jii": null
+  },
+  "face_closeups": {
+    "gonta": "Character portrait, head and shoulders close-up, facing camera at a slight three-quarter angle, sleepy content smile, plain soft snowy forest background slightly blurred",
+    "piko": "Character portrait, close-up of the whole small body sitting upright on a snowy log, looking at camera with a proud determined grin, black tail tip clearly visible, plain soft snowy forest background slightly blurred",
+    "jii": "Character portrait, head and shoulders close-up, sitting on a snowy rock, half-closed sleepy wise eyes, long white beard, plain soft snowy forest background slightly blurred"
+  }
+}
