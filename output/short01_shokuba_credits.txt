@@ -1,0 +1,5 @@
+【概要欄用クレジット】
+音声モデル：わかな（AivisHub / ACML 1.0）
+音声モデル：阿井田 茂（CV：古山キリヲ）AivisHub / ACML 1.0
+画像生成：Animagine XL 4.0
+効果音・BGM：自作

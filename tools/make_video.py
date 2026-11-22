@@ -432,7 +432,7 @@ def title_layer(title):
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     f = ImageFont.truetype(FONT, 58)
-    rows = title.split("\n")
+    rows = [w for r in title.split("\n") for w in wrap(r, f, W - 80, d)]  # はみ出す行は折り返す
     d.rectangle([0, 120, W, 140 + 80 * len(rows) + 30], fill=(20, 20, 30, 200))
     for i, r in enumerate(rows):
         tw = d.textlength(r, font=f)
