@@ -1,0 +1,24 @@
+最後の木の実を守りたいだけなのに 使用素材クレジット
+
+- bgm/bouncy_pizzicato.wav: コミカルなピチカート（オリジナル曲） / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/boing.wav: ビヨーン / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/crash.wav: ドカーン / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/drop_tiny.wav: ポトッ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/freeze.wav: ピキピキッ（凍る） / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/gulp.wav: ゴクン / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/ice_slide.wav: 氷の上をシャーッ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/pat.wav: ポン / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/pop.wav: パクッ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/roll_rumble.wav: ゴロゴロ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/slip.wav: ツルッ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/sneeze_temp.wav: くしゃみ（仮。差し替え推奨） / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/sparkle.wav: キラーン / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/tink.wav: チーン（涙） / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/waddle.wav: ペタペタ（足音） / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/water_rush.wav: ザバーッ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/whoosh.wav: ヒュッ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/wind_blizzard.wav: 吹雪の風 / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+- se/wood_crack.wav: 木がバキバキ / 自作（tools/make_sounds.py で合成） / このリポジトリ / 自作のため制限なし / 商用:OK / 表記:不要
+
+【動画の説明欄に書くクレジット】
+（表記が必要な素材はありません）

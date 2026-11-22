@@ -1,0 +1,133 @@
+bgm/bouncy_pizzicato.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: コミカルなピチカート（オリジナル曲）
+se/boing.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ビヨーン
+se/crash.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ドカーン
+se/drop_tiny.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ポトッ
+se/freeze.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ピキピキッ（凍る）
+se/gulp.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ゴクン
+se/ice_slide.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: 氷の上をシャーッ
+se/pat.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ポン
+se/pop.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: パクッ
+se/roll_rumble.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ゴロゴロ
+se/slip.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ツルッ
+se/sneeze_temp.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: くしゃみ（仮。差し替え推奨）
+se/sparkle.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: キラーン
+se/tink.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: チーン（涙）
+se/waddle.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ペタペタ（足音）
+se/water_rush.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ザバーッ
+se/whoosh.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: ヒュッ
+se/wind_blizzard.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: 吹雪の風
+se/wood_crack.wav:
+  author: 自作（tools/make_sounds.py で合成）
+  commercial_use: true
+  credit_required: false
+  license: 自作のため制限なし
+  source: このリポジトリ
+  title: 木がバキバキ
