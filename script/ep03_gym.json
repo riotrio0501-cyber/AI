@@ -14,7 +14,12 @@
    "ミサキ": {
     "color": "#e0457b",
     "engine": "sbv2",
-    "model": "jvnv-F1-jp"
+    "model": "aivis-sakurane",
+    "strength": 1.0,
+    "emotion_styles": {},
+    "credit": [
+     "音声モデル：桜音（AivisHub / ACML 1.0）"
+    ]
    },
    "ユウキ": {
     "color": "#f08a24",
