@@ -1,0 +1,56 @@
+{
+  "id": "01_haru_okinai",
+  "title_ja": "春なのに起きない",
+  "title_en": "Spring... Still Asleep",
+  "bgm": {"file": "assets/bgm/snow_pizzicato.wav", "volume": 0.30},
+  "cuts": [
+    {
+      "id": 1, "dur": 5, "type": "video", "src": "clips/c01.mp4",
+      "chars": ["gonta"],
+      "action": "Early spring, snow melting at the entrance of a cozy mountain cave, first green sprouts and tiny flowers outside, water dripping from icicles. Inside, Gonta sleeps on his back snoring loudly, a big shiny snot bubble inflating and deflating from his nose with each snore, belly rising and falling. Static camera, medium shot.",
+      "telop": {"text": "春なのに起きない", "sub": "Spring... still asleep", "start": 0.4, "end": 4.6},
+      "se": [
+        {"name": "snore", "at": 0.0, "vol": 0.9},
+        {"name": "snore", "at": 2.4, "vol": 0.9},
+        {"name": "pop_in", "at": 0.4, "vol": 0.6}
+      ]
+    },
+    {
+      "id": 2, "dur": 3, "type": "image", "src": "frames/c02.png", "motion": "punch_zoom",
+      "chars": ["piko", "gonta"],
+      "action": "Piko stands proudly with hands on hips and a smug confident grin, ten colorful old-fashioned twin-bell alarm clocks lined up neatly in a row on the cave floor next to the sleeping Gonta, whose big round belly is visible in the background",
+      "se": [{"name": "whoosh", "at": 0.0, "vol": 0.6}, {"name": "tada", "at": 0.15, "vol": 0.7}, {"name": "tick", "at": 1.2, "vol": 0.5}]
+    },
+    {
+      "id": 3, "dur": 5, "type": "video", "src": "clips/c03.mp4",
+      "chars": ["piko", "gonta"],
+      "action": "All ten alarm clocks on the cave floor ring at the same time, shaking and hopping wildly. Piko covers his ears with his paws and rolls around on the floor in panic, fur puffing up. Behind him the sleeping Gonta just lazily rolls over onto his side, scratches his belly and keeps sleeping peacefully. Static camera, medium wide shot.",
+      "se": [{"name": "alarm", "at": 0.0, "vol": 0.8}, {"name": "rustle_thud", "at": 3.3, "vol": 0.8}]
+    },
+    {
+      "id": 4, "dur": 3, "type": "image", "src": "frames/c04.png", "motion": "shake",
+      "chars": ["piko", "gonta"],
+      "action": "Piko completely exhausted, panting, holding a frying pan in one paw and a soup ladle in the other, droopy eyes, messy fur, knees wobbling, next to the still sleeping Gonta",
+      "se": [{"name": "clang", "at": 0.1, "vol": 0.8}, {"name": "clang", "at": 0.7, "vol": 0.6}, {"name": "clang", "at": 1.2, "vol": 0.4}, {"name": "deflate", "at": 1.8, "vol": 0.7}]
+    },
+    {
+      "id": 5, "dur": 3, "type": "image", "src": "frames/c05.png", "motion": "slow_push",
+      "chars": ["piko", "gonta"],
+      "action": "Piko has fallen asleep curled up like a small white ball on top of sleeping Gonta's big round belly, both sleeping peacefully together, frying pan and ladle dropped on the floor, warm soft spring light from the cave entrance",
+      "se": [{"name": "small_snore", "at": 0.3, "vol": 0.7}, {"name": "small_snore", "at": 1.8, "vol": 0.7}]
+    },
+    {
+      "id": 6, "dur": 5, "type": "video", "src": "clips/c06.mp4",
+      "chars": ["gonta", "piko"],
+      "action": "Gonta's eyes suddenly snap wide open, he sits up and stretches with a huge yawn, arms up. Piko, who was sleeping on his belly, tumbles off and rolls across the cave floor out of the cave into the melting snow. Static camera, medium shot.",
+      "se": [{"name": "eye_pop", "at": 0.2, "vol": 0.9}, {"name": "slide_down", "at": 1.0, "vol": 0.6}, {"name": "tumble", "at": 2.6, "vol": 0.8}, {"name": "snow_poof", "at": 3.8, "vol": 0.9}]
+    },
+    {
+      "id": 7, "dur": 4, "type": "image", "src": "frames/c07.png", "motion": "slow_push",
+      "chars": ["jii", "piko"],
+      "action": "Outside the cave on a sunny spring morning: in the background Jii sits calmly on his snowy rock holding one alarm clock up to his ear, listening with half-closed eyes. In the foreground Piko lies asleep on his back in the melting snow, a big shiny snot bubble from his nose",
+      "se": [{"name": "tick", "at": 0.3, "vol": 0.7}, {"name": "tick", "at": 1.3, "vol": 0.7}, {"name": "small_snore", "at": 2.4, "vol": 0.8}],
+      "bgm_stop": 0.2
+    }
+  ]
+}
