@@ -43,7 +43,11 @@
     "engine": "sbv2",
     "model": "jvnv-F2-jp"
    }
-  }
+  },
+  "duo": [
+   "タクヤ",
+   "ミサキ"
+  ]
  },
  "lines": [
   {
@@ -133,30 +137,35 @@
   {
    "speaker": "ミサキ",
    "text": "いつから",
-   "emotion": "嫌悪"
+   "emotion": "嫌悪",
+   "duo": true
   },
   {
    "speaker": "タクヤ",
    "text": "3か月前から。週3で",
    "emotion": "ふつう",
-   "yomi": "さんかげつまえから。しゅうさんで"
+   "yomi": "さんかげつまえから。しゅうさんで",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
    "text": "週3！？",
    "emotion": "驚き",
    "effect": "zoom",
-   "yomi": "しゅうさん！？"
+   "yomi": "しゅうさん！？",
+   "duo": true
   },
   {
    "speaker": "タクヤ",
    "text": "最初はきつくてさ。正直、泣いたこともある",
-   "emotion": "悲しみ"
+   "emotion": "悲しみ",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
    "text": "泣くほど！？",
-   "emotion": "驚き"
+   "emotion": "驚き",
+   "duo": true
   },
   {
    "speaker": "タクヤ",
@@ -190,28 +199,33 @@
   {
    "speaker": "タクヤ",
    "text": "駅前の、個室",
-   "emotion": "ふつう"
+   "emotion": "ふつう",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
    "text": "個室……",
-   "emotion": "悲しみ"
+   "emotion": "悲しみ",
+   "duo": true
   },
   {
    "speaker": "タクヤ",
    "text": "二人きりのほうが集中できるからって",
-   "emotion": "ふつう"
+   "emotion": "ふつう",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
    "text": "お金は？",
-   "emotion": "嫌悪"
+   "emotion": "嫌悪",
+   "duo": true
   },
   {
    "speaker": "タクヤ",
    "text": "月6万",
    "emotion": "ふつう",
-   "yomi": "つきろくまん"
+   "yomi": "つきろくまん",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
@@ -297,12 +311,14 @@
    "speaker": "ミサキ",
    "text": "……ユウキさんって、女の人？",
    "emotion": "おびえ",
-   "gap": 1.2
+   "gap": 1.2,
+   "duo": true
   },
   {
    "speaker": "タクヤ",
    "text": "え？ 男だよ",
-   "emotion": "ふつう"
+   "emotion": "ふつう",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
@@ -316,34 +332,40 @@
   {
    "speaker": "タクヤ",
    "text": "性別は関係ないだろ。プロなんだから",
-   "emotion": "ふつう"
+   "emotion": "ふつう",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
    "text": "プロ！？！？",
    "emotion": "驚き",
-   "effect": "zoom"
+   "effect": "zoom",
+   "duo": true
   },
   {
    "speaker": "タクヤ",
    "text": "プロだよ。資格も持ってるし",
-   "emotion": "ふつう"
+   "emotion": "ふつう",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
    "text": "資格があるの！？ そういうのって！？",
-   "emotion": "驚き"
+   "emotion": "驚き",
+   "duo": true
   },
   {
    "speaker": "タクヤ",
    "text": "あるよ、普通に",
-   "emotion": "ふつう"
+   "emotion": "ふつう",
+   "duo": true
   },
   {
    "speaker": "ミサキ",
    "text": "普通に！？",
    "emotion": "驚き",
-   "effect": "zoom"
+   "effect": "zoom",
+   "duo": true
   },
   {
    "speaker": "タクヤ",

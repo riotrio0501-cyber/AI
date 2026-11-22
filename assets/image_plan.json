@@ -347,6 +347,204 @@
     330
    ],
    "prompt": "1boy, short brown hair, tan skin, grin, big smile, teeth, closed eyes, sparkle, cheerful"
+  },
+  {
+   "name": "タクヤ/喜び_close",
+   "from": "タクヤ/close",
+   "mask": [
+    470,
+    0,
+    1000,
+    520
+   ],
+   "feather": 25,
+   "strength": 0.85,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "1boy, black hair, wet hair, happy, gentle smile, closed mouth, sparkling eyes"
+  },
+  {
+   "name": "タクヤ/喜び_open",
+   "from": "タクヤ/喜び_close",
+   "mask": [
+    668,
+    358,
+    778,
+    418
+   ],
+   "strength": 0.8,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "open mouth, talking, 1boy"
+  },
+  {
+   "name": "タクヤ/悲しみ_close",
+   "from": "タクヤ/close",
+   "mask": [
+    470,
+    0,
+    1000,
+    520
+   ],
+   "feather": 25,
+   "strength": 0.85,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "1boy, black hair, wet hair, sad, apologetic, downcast eyes, worried eyebrows, closed mouth, sweat"
+  },
+  {
+   "name": "タクヤ/悲しみ_open",
+   "from": "タクヤ/悲しみ_close",
+   "mask": [
+    668,
+    358,
+    778,
+    418
+   ],
+   "strength": 0.8,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "open mouth, talking, 1boy"
+  },
+  {
+   "name": "タクヤ/驚き_close",
+   "from": "タクヤ/close",
+   "mask": [
+    470,
+    0,
+    1000,
+    520
+   ],
+   "feather": 25,
+   "strength": 0.85,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "1boy, black hair, wet hair, surprised, wide-eyed, small pupils, closed mouth"
+  },
+  {
+   "name": "タクヤ/驚き_open",
+   "from": "タクヤ/驚き_close",
+   "mask": [
+    668,
+    358,
+    778,
+    418
+   ],
+   "strength": 0.8,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "open mouth, talking, 1boy"
+  },
+  {
+   "name": "ミサキ/悲しみ_close",
+   "from": "ミサキ/close",
+   "mask": [
+    460,
+    80,
+    830,
+    430
+   ],
+   "feather": 25,
+   "strength": 0.85,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "1girl, mature female, bob cut, dark brown hair, sad, teary eyes, tears, trembling lips, closed mouth"
+  },
+  {
+   "name": "ミサキ/悲しみ_open",
+   "from": "ミサキ/悲しみ_close",
+   "mask": [
+    568,
+    316,
+    658,
+    372
+   ],
+   "strength": 0.8,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "open mouth, talking, 1girl"
+  },
+  {
+   "name": "ミサキ/驚き_close",
+   "from": "ミサキ/close",
+   "mask": [
+    460,
+    80,
+    830,
+    430
+   ],
+   "feather": 25,
+   "strength": 0.85,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "1girl, mature female, bob cut, dark brown hair, surprised, wide-eyed, small pupils, closed mouth, sweat"
+  },
+  {
+   "name": "ミサキ/驚き_open",
+   "from": "ミサキ/驚き_close",
+   "mask": [
+    568,
+    316,
+    658,
+    372
+   ],
+   "strength": 0.8,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "open mouth, talking, 1girl"
+  },
+  {
+   "name": "ミサキ/怒り_close",
+   "from": "ミサキ/close",
+   "mask": [
+    460,
+    80,
+    830,
+    430
+   ],
+   "feather": 25,
+   "strength": 0.85,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "1girl, mature female, bob cut, dark brown hair, angry, glaring, v-shaped eyebrows, closed mouth, frown"
+  },
+  {
+   "name": "ミサキ/怒り_open",
+   "from": "ミサキ/怒り_close",
+   "mask": [
+    568,
+    316,
+    658,
+    372
+   ],
+   "strength": 0.8,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "open mouth, talking, 1girl"
   }
  ]
 }

@@ -233,9 +233,13 @@ class Shots:
         top = W > H  # 横長では顔アップの頭が切れないよう上をそろえる
         pname = None
         if kind == "char":
+            name, _, var = name.partition("|")   # var = 表情違い（例: 喜び）
             d = ROOT / "assets/characters" / name
-            im = load_img(d / f"{mouth}.png", top) or load_img(d / "close.png", top)
-            pname, ppath = f"{name}/close", d / "close.png"
+            pre = f"{var}_" if var and (d / f"{var}_close.png").exists() else ""
+            im = load_img(d / f"{pre}{mouth}.png", top) or load_img(d / f"{pre}close.png", top)
+            pname, ppath = f"{name}/{pre}close", d / f"{pre}close.png"
+        elif kind == "duo":
+            im = self.duo(name, mouth)
         elif kind == "phone":
             im = phone_screen(json.loads(name), self.get(("bg", None, None)))
         elif kind == "shot":
@@ -252,14 +256,41 @@ class Shots:
         return self.cache[key]
 
 
-def shot_key(ln, mouth_open):
+def _duo_half(self, name, var, mouth, dim):
+    """左右2分割用：キャラの顔を中心に半分の幅で切り出す"""
+    from PIL import ImageEnhance
+    full = self.get(("char", f"{name}|{var}", mouth))
+    fx, _ = self.focus.get(("char", f"{name}|{var}", mouth), (W / 2, 0))
+    x0 = int(min(max(fx - W / 4, 0), W - W / 2))
+    half = full.crop((x0, 0, x0 + W // 2, H))
+    return ImageEnhance.Brightness(half).enhance(0.6) if dim else half
+
+
+def _duo(self, spec, mouth):
+    left, right, speaker, var = spec.split("|")
+    im = Image.new("RGB", (W, H))
+    im.paste(self._duo_half(left, var if speaker == left else "", mouth if speaker == left else "close", speaker != left), (0, 0))
+    im.paste(self._duo_half(right, var if speaker == right else "", mouth if speaker == right else "close", speaker != right), (W // 2, 0))
+    ImageDraw.Draw(im).rectangle([W // 2 - 4, 0, W // 2 + 4, H], fill=(20, 20, 20))
+    return im
+
+
+Shots._duo_half = _duo_half
+Shots.duo = _duo
+
+
+def shot_key(ln, mouth_open, cast=None):
     if ln is None:
         return ("bg", None, None)
     if ln.get("phone"):
         return ("phone", json.dumps(ln["phone"], ensure_ascii=False, sort_keys=True), None)
     if ln.get("shot"):
         return ("shot", ln["shot"], None)
-    return ("char", ln["speaker"], "open" if mouth_open else "close")
+    mouth = "open" if mouth_open else "close"
+    if ln.get("duo") and cast and cast.get("duo"):
+        l, r = cast["duo"]
+        return ("duo", f"{l}|{r}|{ln['speaker']}|{ln.get('emotion', '')}", mouth)
+    return ("char", f"{ln['speaker']}|{ln.get('emotion', '')}", mouth)
 
 
 def wrap(text, font, maxw, d):
@@ -292,6 +323,24 @@ def subtitle_layer(speaker, text, color):
         d.text((x, y), r, font=f, fill="black", stroke_width=16, stroke_fill="black")
         d.text((x, y), r, font=f, fill="white", stroke_width=9, stroke_fill=hex2rgb(color))
     return layer
+
+
+_SL = {}
+
+
+def speed_lines():
+    """集中線（画面のふちから中心に向かう線）"""
+    if (W, H) not in _SL:
+        rng = np.random.default_rng(3)
+        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(layer)
+        cx, cy, R = W / 2, H / 2, (W ** 2 + H ** 2) ** 0.5
+        for a in rng.uniform(0, 2 * np.pi, 140):
+            r0 = rng.uniform(0.45, 0.6) * min(W, H); w = rng.uniform(0.004, 0.012)
+            pts = [(cx + np.cos(a) * r0, cy + np.sin(a) * r0), (cx + np.cos(a - w) * R, cy + np.sin(a - w) * R),
+                   (cx + np.cos(a + w) * R, cy + np.sin(a + w) * R)]
+            d.polygon(pts, fill=(255, 255, 255, 150))
+        _SL[(W, H)] = layer
+    return _SL[(W, H)]
 
 
 def title_card(title):
@@ -403,19 +452,32 @@ def render(lines, total, cast, audio, out):
     for f in range(nframes):
         i = cur[f]
         ln = lines[i] if i >= 0 else None
-        key = shot_key(ln, bool(mouths[i][f]) if ln else False)
+        key = shot_key(ln, bool(mouths[i][f]) if ln else False, cast)
         scene = shots.get(key)
         shot_id = key[:2]
         if shot_id != prev_shot:          # カットが変わったらカメラをリセット
             prev_shot, shot_start, z = shot_id, f, 1.0
         fx = effects(ln) if ln else set()
-        # ゆっくり寄っていく動き＋ズーム演出
-        drift = 1.0 + 0.0015 * (f - shot_start)
+        # カメラの動き：カットごとに「寄る／引く／左右に流す」を切り替える
+        el_shot = (f - shot_start) / FPS
+        move = (sum(map(ord, str(shot_id))) + i) % 4 if ln else 0
+        if key[0] in ("phone", "duo"):
+            move = 0
+        if move == 0:
+            drift = 1.0 + min(0.012 * el_shot, 0.08)          # ゆっくり寄る
+        elif move == 1:
+            drift = 1.08 - min(0.012 * el_shot, 0.07)         # ゆっくり引く
+        else:
+            drift = 1.07                                       # 左右に流す
         tz = 1.22 if "zoom" in fx else 1.0
         z += (tz - z) * 0.3
-        zz = max(1.0, min(z * min(drift, 1.08), 1.4))
-        cx, cy = shots.focus.get(key, (W / 2, H * 0.36))           # 顔のあたりに向かって寄る
+        zz = max(1.03, min(z * drift, 1.4))   # 少し余白を持たせて動かせるようにする
+        cx, cy = shots.focus.get(key, (W / 2, H * 0.36))
+        if move >= 2 and "zoom" not in fx:
+            cx += (1 if move == 2 else -1) * (min(el_shot, 6) / 6 - 0.5) * W * 0.06
         sx = sy = 0.0
+        if ln and key[0] in ("char", "duo") and 0 <= f / FPS - ln["start"] < 0.2:   # しゃべり始めにぴょこっと動く
+            sy = -14 * np.sin(np.pi * (f / FPS - ln["start"]) / 0.2)
         if "shake" in fx:
             el = f / FPS - ln["start"]
             if 0 <= el < 0.6:
@@ -430,10 +492,16 @@ def render(lines, total, cast, audio, out):
             ff.stdin.write(bytes(W * H * 3)); continue
         if not intro or ln is None:
             frame.alpha_composite(title)
+        if ln and "shake" in fx and 0 <= f / FPS - ln["start"] < 0.5:   # 衝撃：集中線とフラッシュ
+            el = f / FPS - ln["start"]
+            frame.alpha_composite(speed_lines())
+            if el < 0.1:
+                frame.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(150 * (1 - el / 0.1)))))
         if ln and ln.get("phone", {}).get("type") not in ("notify", "chat"):
             if i not in sub_cache:
                 sub_cache[i] = subtitle_layer(ln["speaker"], ln["text"], cast["characters"][ln["speaker"]]["color"])
-            frame.alpha_composite(sub_cache[i])
+            el = f / FPS - ln["start"]
+            frame.alpha_composite(sub_cache[i], (0, int(max(0, 1 - el / 0.13) * 24)))
         ff.stdin.write(frame.convert("RGB").tobytes())
         if f % 150 == 0:
             print(f"  映像 {f}/{nframes} フレーム", end="\r")
