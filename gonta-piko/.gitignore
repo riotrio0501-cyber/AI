@@ -1,2 +1,3 @@
 episodes/*/build/
 __pycache__/
+output/*_preview.mp4

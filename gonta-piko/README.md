@@ -6,7 +6,7 @@
 3. Higgsfield で生成し、`frames/cNN.png`（静止画）・`clips/cNN.mp4`（動画）として保存
 4. `python3 tools/episode.py build episodes/<番号_名前>` → `output/<番号_名前>.mp4` が完成
 
-素材がまだ無いカットは仮の絵で埋まるので、生成前でも尺・テロップ・音の確認ができる。
+素材がまだ無いカットは仮の絵で埋まるので、生成前でも尺・テロップ・音の確認ができる（そのときは `output/<番号_名前>_preview.mp4` になる）。
 
 ## ファイル
 - `CLAUDE.md` … 企画のルール（いちばん大事）

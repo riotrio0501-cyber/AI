@@ -299,7 +299,8 @@ def build(ep_dir):
     mix_audio(sb, starts, total, wav)
 
     os.makedirs(os.path.join(ROOT, "output"), exist_ok=True)
-    out = os.path.join(ROOT, "output", f"{sb['id']}.mp4")
+    # 仮の絵が残っているときは「_preview」付きで保存（確認用なので git には入れない）
+    out = os.path.join(ROOT, "output", f"{sb['id']}{'_preview' if missing else ''}.mp4")
     cmd = ["ffmpeg", "-y"] + inputs + ["-i", wav]
     if filters:
         cmd += ["-filter_complex", ";".join(filters), "-map", f"[{last}]"]
