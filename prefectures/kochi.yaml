@@ -11,8 +11,7 @@ hook:
 facts:
 - title: カツオのたたき
   post: カツオのたたきは塩で食べる
-  photo:
-    emoji: 🐟
+  photo: assets/photos/kochi/tataki.jpg
   narration: その1。高知のカツオのたたきは、わらで焼いて、塩で食べる。カツオにお金を使う額は、高知市が日本一の常連。
   reading: その1。高知のカツオのたたきは、わらで焼いて、しおで食べる。カツオにお金を使う額は、高知市が日本一の常連。
   captions:
@@ -25,8 +24,7 @@ facts:
     memo: 総務省「家計調査」のかつお購入数量・金額で高知市は1位の常連。わら焼き・塩たたきは高知の名物として知られる（タレで食べる店も多い）。
 - title: べく杯
   post: 置けない杯「べく杯」で飲む
-  photo:
-    emoji: 🍶
+  photo: assets/photos/kochi/bekuhai.jpg
   narration: その2。高知の宴会には、べく杯がある。底に穴があいていたり、丸かったりして、飲み干すまで置けない杯。
   reading: その2。高知の宴会には、べくはいがある。底に穴があいていたり、丸かったりして、飲み干すまで置けない杯。
   captions:

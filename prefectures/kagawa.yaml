@@ -11,8 +11,7 @@ hook:
 facts:
 - title: うどん
   post: うどんへの支出は日本一の常連
-  photo:
-    emoji: 🍜
+  photo: assets/photos/kagawa/udon.jpg
   narration: その1。香川県民は、うどんにお金を使う額が、日本一の常連。朝ごはんにも、お昼にも。うどんは毎日の食べもの。
   captions:
   - ①うどんへの支出は/[日本一]の常連
@@ -23,8 +22,7 @@ facts:
     memo: 総務省「家計調査」の生うどん・そば支出で高松市は全国1位の常連。「朝ごはんにも」は県民の声として紹介される（演出）。
 - title: 骨付鳥
   post: 丸亀の骨付鳥、おや派？ひな派？
-  photo:
-    emoji: 🍗
+  photo: assets/photos/kagawa/honetsuki.jpg
   narration: その2。丸亀の骨付鳥は、かための親鳥と、やわらかいひな鳥の2種類。どっちを頼むかで、好みが分かれる。
   reading: その2。まるがめのほねつきどりは、かための、おやどりと、やわらかい、ひなどりの2種類。どっちを頼むかで、好みが分かれる。
   captions:
