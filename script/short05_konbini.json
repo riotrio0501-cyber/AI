@@ -1,0 +1,133 @@
+{
+ "title": "コンビニ店員が、\n客の注文をすべて深読みする",
+ "cast": {
+  "background": "assets/backgrounds/store.png",
+  "duo": [
+   "店員",
+   "客"
+  ],
+  "characters": {
+   "店員": {
+    "color": "#2f9e57",
+    "engine": "sbv2",
+    "model": "jvnv-M2-jp"
+   },
+   "客": {
+    "engine": "sbv2",
+    "model": "aivis-rena",
+    "strength": 1.2,
+    "emotion_styles": {
+     "驚き": "odoroki_odoroki",
+     "悲しみ": "kanasimi_kanasimi",
+     "喜び": "uresii_uresii",
+     "ふつう": "ノーマル"
+    },
+    "credit": [
+     "音声モデル：れな（AivisHub / ACML 1.0）"
+    ],
+    "color": "#e0457b"
+   }
+  },
+  "bgm": "assets/bgm/bgm.wav",
+  "bgm_volume": 0.1
+ },
+ "lines": [
+  {
+   "speaker": "客",
+   "text": "からあげ、一つください",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "店員",
+   "text": "からあげ、一つ…。つまり、今夜はお一人なんですね",
+   "emotion": "悲しみ",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "客",
+   "text": "え？",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "店員",
+   "text": "レジ袋はご利用ですか？",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "客",
+   "text": "あ、いりません",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "店員",
+   "text": "…持ち帰る姿を、誰にも見られたくない…？",
+   "emotion": "おびえ",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "客",
+   "text": "全部聞こえてますけど",
+   "emotion": "嫌悪"
+  },
+  {
+   "speaker": "店員",
+   "text": "温めますか？",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "客",
+   "text": "お願いします",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "店員",
+   "text": "心も…温めますか？",
+   "emotion": "喜び",
+   "shot": "店員_キメ顔",
+   "effect": "zoom",
+   "gap": 0.4
+  },
+  {
+   "speaker": "客",
+   "text": "からあげだけで結構です",
+   "emotion": "嫌悪",
+   "effect": "shake"
+  },
+  {
+   "speaker": "店員",
+   "text": "お箸は、何膳お付けしますか",
+   "emotion": "ふつう",
+   "yomi": "お箸は、なんぜんお付けしますか"
+  },
+  {
+   "speaker": "客",
+   "text": "一膳で",
+   "emotion": "ふつう",
+   "yomi": "いちぜんで"
+  },
+  {
+   "speaker": "店員",
+   "text": "やっぱり…一人…！",
+   "emotion": "悲しみ",
+   "shot": "店員_号泣",
+   "effect": "shake"
+  },
+  {
+   "speaker": "客",
+   "text": "…二膳ください！ 見栄を張りました！",
+   "emotion": "怒り",
+   "effect": [
+    "zoom",
+    "shake"
+   ],
+   "yomi": "…にぜんください！ 見栄を張りました！"
+  },
+  {
+   "speaker": "店員",
+   "text": "ありがとうございました。またのご来店を、お待ちしております",
+   "emotion": "喜び",
+   "shot": "店員_キメ顔",
+   "se_after": "chan"
+  }
+ ]
+}

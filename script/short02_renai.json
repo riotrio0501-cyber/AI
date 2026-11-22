@@ -1,0 +1,131 @@
+{
+ "title": "彼女の「今夜は寝かせないから」の\n本当の意味",
+ "cast": {
+  "background": "assets/backgrounds/living_night.png",
+  "duo": [
+   "ケンタ",
+   "アヤ"
+  ],
+  "characters": {
+   "ケンタ": {
+    "color": "#2f9e57",
+    "engine": "sbv2",
+    "model": "jvnv-M1-jp"
+   },
+   "アヤ": {
+    "engine": "sbv2",
+    "model": "aivis-mao",
+    "strength": 1.2,
+    "emotion_styles": {
+     "ふつう": "ノーマル",
+     "喜び": "からかい",
+     "驚き": "ふつー",
+     "悲しみ": "せつなめ"
+    },
+    "credit": [
+     "音声モデル：まお（AivisHub / ACML 1.0）"
+    ],
+    "color": "#e0457b"
+   }
+  },
+  "bgm": "assets/bgm/bgm.wav",
+  "bgm_volume": 0.1
+ },
+ "lines": [
+  {
+   "speaker": "アヤ",
+   "text": "ねえケンタ…今夜は、寝かせないから♡",
+   "emotion": "喜び",
+   "yomi": "ねえケンタ。今夜は、寝かせないから"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "えっ！？",
+   "emotion": "驚き",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "（ついに…ついにこの日が来た…！）",
+   "emotion": "喜び",
+   "inner": true,
+   "shot": "ケンタ_期待"
+  },
+  {
+   "speaker": "アヤ",
+   "text": "ずっと準備してたんだ。心の準備、できてる？",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "も、もちろん！ シャワー浴びてくる！",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "お待たせ…！",
+   "emotion": "喜び",
+   "se": "door",
+   "gap": 1.0,
+   "shot": "ケンタ_期待"
+  },
+  {
+   "speaker": "アヤ",
+   "text": "じゃあ始めよっか。はい、これ",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "…コントローラー？",
+   "emotion": "驚き",
+   "shot": "ゲーム",
+   "gap": 0.4
+  },
+  {
+   "speaker": "アヤ",
+   "text": "新作のゲーム、朝までにクリアするよ！ 全百時間！",
+   "emotion": "喜び",
+   "shot": "アヤ_笑顔",
+   "yomi": "新作のゲーム、朝までにクリアするよ！ ぜんひゃくじかん！"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "百時間！？",
+   "emotion": "驚き",
+   "effect": [
+    "zoom",
+    "shake"
+   ],
+   "yomi": "ひゃくじかん！？"
+  },
+  {
+   "speaker": "アヤ",
+   "text": "寝かせないって言ったでしょ？",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "…そういう意味かぁ…",
+   "emotion": "悲しみ",
+   "shot": "ケンタ_絶望",
+   "gap": 0.6
+  },
+  {
+   "speaker": "アヤ",
+   "text": "あ、セーブもさせないから♡",
+   "emotion": "喜び",
+   "shot": "アヤ_笑顔",
+   "yomi": "あ、セーブもさせないから"
+  },
+  {
+   "speaker": "ケンタ",
+   "text": "鬼か！！",
+   "emotion": "怒り",
+   "effect": [
+    "zoom",
+    "shake"
+   ],
+   "se_after": "chan"
+  }
+ ]
+}

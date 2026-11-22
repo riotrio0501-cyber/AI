@@ -1,0 +1,150 @@
+{
+ "title": "嫁の実家に行ったら、\n全員が俺を別人だと思っていた件",
+ "cast": {
+  "background": "assets/backgrounds/living.png",
+  "duo": [
+   "義母",
+   "嫁"
+  ],
+  "characters": {
+   "イッチ": {
+    "color": "#444444",
+    "engine": "sbv2",
+    "model": "jvnv-M2-jp"
+   },
+   "義母": {
+    "color": "#8a5bc9",
+    "engine": "sbv2",
+    "model": "jvnv-F2-jp"
+   },
+   "義父": {
+    "engine": "sbv2",
+    "model": "aivis-tanaka",
+    "strength": 1.2,
+    "emotion_styles": {
+     "ふつう": "ノーマル",
+     "怒り": "Anger",
+     "喜び": "Happy",
+     "驚き": "surprise"
+    },
+    "credit": [
+     "音声モデル：TANAKA（AivisHub / ACML 1.0）"
+    ],
+    "color": "#6b4f2a"
+   },
+   "嫁": {
+    "color": "#e0457b",
+    "engine": "sbv2",
+    "model": "jvnv-F1-jp"
+   }
+  },
+  "bgm": "assets/bgm/bgm.wav",
+  "bgm_volume": 0.1
+ },
+ "lines": [
+  {
+   "speaker": "イッチ",
+   "text": "嫁の実家に、初めて挨拶に行った時の話をする",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "thread",
+    "title": "嫁の実家に行ったら全員が俺を別人だと思ってた件",
+    "text": "1：名無しさん\n嫁の実家に初めて挨拶に行った時の話をする"
+   }
+  },
+  {
+   "speaker": "イッチ",
+   "text": "玄関を開けた瞬間、義母が俺を見て泣き崩れた",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "thread",
+    "title": "嫁の実家に行ったら全員が俺を別人だと思ってた件",
+    "text": "1：名無しさん\n玄関を開けた瞬間、義母が俺を見て泣き崩れた"
+   }
+  },
+  {
+   "speaker": "義母",
+   "text": "タカシさん…！ 生きてたのね…！",
+   "emotion": "悲しみ",
+   "shot": "義母_号泣",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "イッチ",
+   "text": "俺の名前はタカシじゃない。ケイスケだ",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "thread",
+    "title": "嫁の実家に行ったら全員が俺を別人だと思ってた件",
+    "text": "1：名無しさん\n俺の名前はタカシじゃない。ケイスケだ"
+   }
+  },
+  {
+   "speaker": "義父",
+   "text": "タカシ君。あの時の借金、返しに来てくれたのか",
+   "emotion": "ふつう",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "イッチ",
+   "text": "誰だよタカシ",
+   "emotion": "驚き",
+   "phone": {
+    "type": "thread",
+    "title": "嫁の実家に行ったら全員が俺を別人だと思ってた件",
+    "text": "1：名無しさん\n誰だよタカシ\n\n2：名無しさん\n草"
+   },
+   "effect": "shake"
+  },
+  {
+   "speaker": "嫁",
+   "text": "…ごめん。言ってなかったんだけど",
+   "emotion": "悲しみ",
+   "gap": 0.6
+  },
+  {
+   "speaker": "嫁",
+   "text": "前の彼氏、タカシって言うの。あなたにそっくりなんだよね",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "嫁",
+   "text": "だから今日、みんなタカシが帰ってきたと思ってる",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "イッチ",
+   "text": "結局その日、俺は一日中タカシとして過ごした",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "thread",
+    "title": "嫁の実家に行ったら全員が俺を別人だと思ってた件",
+    "text": "1：名無しさん\n結局その日、俺は一日中タカシとして過ごした"
+   },
+   "gap": 0.6
+  },
+  {
+   "speaker": "イッチ",
+   "text": "借金は、なぜか俺が返すことになった",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "thread",
+    "title": "嫁の実家に行ったら全員が俺を別人だと思ってた件",
+    "text": "1：名無しさん\n借金は、なぜか俺が返すことになった\n\n3：名無しさん\nなんでだよｗｗｗ"
+   },
+   "effect": "shake"
+  },
+  {
+   "speaker": "イッチ",
+   "text": "タカシ、今どこにいる",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "thread",
+    "title": "嫁の実家に行ったら全員が俺を別人だと思ってた件",
+    "text": "1：名無しさん\nタカシ、今どこにいる"
+   },
+   "gap": 0.8,
+   "se_after": "chan"
+  }
+ ]
+}

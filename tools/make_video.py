@@ -405,6 +405,19 @@ def phone_screen(p, bg):
             for i, r in enumerate(rows):
                 d.text((x0 + 20 * sc, y + (12 + 36 * i) * sc), r, font=f, fill=(20, 20, 20))
             y += bh + 36 * sc
+    elif p["type"] == "thread":  # 掲示板（まとめ風）の画面
+        d.rounded_rectangle(scr, 56, fill=(239, 239, 239))
+        d.rectangle([px, py + 40 * sc, px + pw, py + 150 * sc], fill=(120, 30, 30))
+        for k, r in enumerate(wrap(p["title"], F(int(24 * sc)), pw - 60 * sc, d)[:2]):
+            d.text((px + 30 * sc, py + (60 + 36 * k) * sc), r, font=F(int(24 * sc)), fill="white")
+        y = py + 190 * sc
+        for para in p["text"].split("\n"):
+            if not para:
+                y += 24 * sc; continue
+            if "：" in para and para.split("：")[0].isdigit():
+                d.text((px + 30 * sc, y), para, font=F(int(22 * sc)), fill=(30, 130, 30)); y += 40 * sc; continue
+            for r in wrap(para, F(int(32 * sc)), pw - 70 * sc, d):
+                d.text((px + 34 * sc, y), r, font=F(int(32 * sc)), fill=(20, 20, 20)); y += 48 * sc
     else:  # 動画の再生画面
         d.rounded_rectangle(scr, 56, fill=(8, 8, 10))
         cx, cy = px + pw / 2, py + ph * 0.45
@@ -528,7 +541,7 @@ def render(lines, total, cast, audio, out):
             frame.alpha_composite(speed_lines())
             if el < 0.1:
                 frame.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(150 * (1 - el / 0.1)))))
-        if ln and ln.get("phone", {}).get("type") not in ("notify", "chat"):
+        if ln and ln.get("phone", {}).get("type") not in ("notify", "chat", "thread"):
             if i not in sub_cache:
                 sub_cache[i] = subtitle_layer(ln["speaker"], ln["text"], cast["characters"][ln["speaker"]]["color"])
             el = f / FPS - ln["start"]

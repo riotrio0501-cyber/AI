@@ -1,0 +1,129 @@
+{
+ "title": "マウントを取ってくるママ友の夫の、\n本当の上司",
+ "cast": {
+  "background": "assets/backgrounds/cafe.png",
+  "duo": [
+   "レイカ",
+   "ナツミ"
+  ],
+  "characters": {
+   "レイカ": {
+    "engine": "sbv2",
+    "model": "aivis-honoka",
+    "strength": 1.2,
+    "emotion_styles": {
+     "驚き": "odoroki_odoroki",
+     "悲しみ": "kanasimi_kanasimi",
+     "喜び": "uresii_uresii",
+     "ふつう": "ノーマル"
+    },
+    "credit": [
+     "音声モデル：ほのか（AivisHub / ACML 1.0）"
+    ],
+    "color": "#d4a017"
+   },
+   "ナツミ": {
+    "color": "#2f6fd6",
+    "engine": "sbv2",
+    "model": "jvnv-F2-jp"
+   },
+   "通知": {
+    "color": "#555555",
+    "voice_id": 30
+   }
+  },
+  "bgm": "assets/bgm/bgm.wav",
+  "bgm_volume": 0.1
+ },
+ "lines": [
+  {
+   "speaker": "レイカ",
+   "text": "ナツミさんのバッグ、それどこの？ 私のはね、海外で買った限定品なの",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ナツミ",
+   "text": "へえ、すごいですね",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "レイカ",
+   "text": "うちの旦那、みどり商事の部長でしょ？ 忙しくて大変なのよ〜",
+   "emotion": "喜び",
+   "yomi": "うちの旦那、みどり商事の部長でしょ？ 忙しくて大変なのよー"
+  },
+  {
+   "speaker": "レイカ",
+   "text": "ナツミさんの旦那さんは、何してるの？",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ナツミ",
+   "text": "うちは、普通の会社員です",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "レイカ",
+   "text": "あら〜、普通が一番よね〜",
+   "emotion": "喜び",
+   "shot": "レイカ_ドヤ",
+   "yomi": "あらー、普通が一番よねー"
+  },
+  {
+   "speaker": "ナツミ",
+   "text": "あ、夫から連絡です",
+   "emotion": "ふつう",
+   "se": "notify",
+   "phone": {
+    "type": "notify",
+    "from": "夫",
+    "text": "今日から来た部長さん、\n奥さんがナツミのママ友なんだって？\nよろしく伝えておいて"
+   },
+   "gap": 0.6
+  },
+  {
+   "speaker": "レイカ",
+   "text": "……え？",
+   "emotion": "驚き",
+   "gap": 0.8
+  },
+  {
+   "speaker": "ナツミ",
+   "text": "夫、みどり商事で社長をしてるんです",
+   "emotion": "ふつう",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "レイカ",
+   "text": "しゃ、社長！？",
+   "emotion": "驚き",
+   "shot": "レイカ_衝撃",
+   "effect": [
+    "zoom",
+    "shake"
+   ],
+   "se": "don"
+  },
+  {
+   "speaker": "ナツミ",
+   "text": "バッグ、素敵ですね。限定品なんですよね？",
+   "emotion": "喜び",
+   "shot": "ナツミ_笑顔"
+  },
+  {
+   "speaker": "レイカ",
+   "text": "…実はこれ、フリマで三千円でした",
+   "emotion": "悲しみ",
+   "shot": "レイカ_衝撃",
+   "gap": 0.8
+  },
+  {
+   "speaker": "ナツミ",
+   "text": "知ってます。私が出品したので",
+   "emotion": "喜び",
+   "shot": "ナツミ_笑顔",
+   "effect": "zoom",
+   "se_after": "chan"
+  }
+ ]
+}

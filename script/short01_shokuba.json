@@ -1,0 +1,147 @@
+{
+ "title": "定時で帰ろうとしたら、\n上司が全力で引き止めてくる理由が意外すぎた",
+ "cast": {
+  "background": "assets/backgrounds/office.png",
+  "duo": [
+   "部長",
+   "ユイ"
+  ],
+  "characters": {
+   "部長": {
+    "engine": "sbv2",
+    "model": "aivis-aida",
+    "strength": 1.5,
+    "emotion_styles": {
+     "ふつう": "ノーマル",
+     "怒り": "Shout",
+     "驚き": "Surprise",
+     "嫌悪": "Heavy",
+     "悲しみ": "Calm",
+     "おびえ": "Mid",
+     "喜び": "ノーマル"
+    },
+    "credit": [
+     "音声モデル：阿井田 茂（CV：古山キリヲ）AivisHub / ACML 1.0"
+    ],
+    "color": "#2f6fd6"
+   },
+   "ユイ": {
+    "engine": "sbv2",
+    "model": "aivis-wakana",
+    "strength": 1.2,
+    "emotion_styles": {
+     "驚き": "驚き",
+     "悲しみ": "悲しい",
+     "喜び": "嬉しい",
+     "ふつう": "普通"
+    },
+    "credit": [
+     "音声モデル：わかな（AivisHub / ACML 1.0）"
+    ],
+    "color": "#e0457b"
+   }
+  },
+  "bgm": "assets/bgm/bgm.wav",
+  "bgm_volume": 0.1
+ },
+ "lines": [
+  {
+   "speaker": "ユイ",
+   "text": "お疲れさまでした！ 定時なので失礼します！",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "部長",
+   "text": "待ちたまえ、ユイくん",
+   "emotion": "ふつう",
+   "effect": "zoom",
+   "gap": 0.3
+  },
+  {
+   "speaker": "ユイ",
+   "text": "…残業ですか？",
+   "emotion": "嫌悪"
+  },
+  {
+   "speaker": "部長",
+   "text": "違う。君にしか頼めないことがある",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ユイ",
+   "text": "えっ…",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "部長",
+   "text": "今夜…私と一緒に…",
+   "emotion": "悲しみ",
+   "gap": 0.3
+  },
+  {
+   "speaker": "ユイ",
+   "text": "（まさか…パワハラ…？）",
+   "emotion": "おびえ",
+   "inner": true
+  },
+  {
+   "speaker": "部長",
+   "text": "オフィスに残ってほしいんだ",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "ユイ",
+   "text": "それ残業ですよね！？",
+   "emotion": "怒り",
+   "effect": "shake"
+  },
+  {
+   "speaker": "部長",
+   "text": "違う！ 一人だと怖いんだ！ このビル、夜になると出るんだよ！",
+   "emotion": "おびえ",
+   "shot": "部長_おびえ",
+   "effect": "shake"
+  },
+  {
+   "speaker": "ユイ",
+   "text": "…何がですか",
+   "emotion": "嫌悪",
+   "gap": 0.6
+  },
+  {
+   "speaker": "部長",
+   "text": "警備のおじさんが…毎晩、話しかけてくるんだ…",
+   "emotion": "悲しみ",
+   "shot": "部長_おびえ"
+  },
+  {
+   "speaker": "ユイ",
+   "text": "幽霊じゃないんかい！",
+   "emotion": "怒り",
+   "effect": [
+    "zoom",
+    "shake"
+   ]
+  },
+  {
+   "speaker": "部長",
+   "text": "三時間だぞ！？ 毎晩、盆栽の話を三時間！",
+   "emotion": "怒り",
+   "effect": "shake"
+  },
+  {
+   "speaker": "ユイ",
+   "text": "…お先に失礼します",
+   "emotion": "ふつう",
+   "gap": 0.8
+  },
+  {
+   "speaker": "部長",
+   "text": "ユイくーーん！！",
+   "emotion": "悲しみ",
+   "shot": "部長_号泣",
+   "effect": "zoom",
+   "se_after": "chan"
+  }
+ ]
+}

@@ -1,0 +1,145 @@
+{
+ "title": "異世界転生したら、\n勇者パーティがブラック企業だった",
+ "cast": {
+  "background": "assets/backgrounds/castle.png",
+  "duo": [
+   "ハルト",
+   "リナ"
+  ],
+  "characters": {
+   "ハルト": {
+    "color": "#2f6fd6",
+    "engine": "sbv2",
+    "model": "jvnv-M1-jp"
+   },
+   "リナ": {
+    "engine": "sbv2",
+    "model": "aivis-el",
+    "strength": 1.2,
+    "emotion_styles": {
+     "ふつう": "ノーマル",
+     "喜び": "Happy",
+     "怒り": "Angry",
+     "悲しみ": "Sad",
+     "おびえ": "Fear"
+    },
+    "credit": [
+     "音声モデル：凛音エル（AivisHub / ACML 1.0）"
+    ],
+    "color": "#8a5bc9"
+   },
+   "王様": {
+    "engine": "sbv2",
+    "model": "aivis-tanaka",
+    "strength": 1.2,
+    "emotion_styles": {
+     "ふつう": "ノーマル",
+     "怒り": "Anger",
+     "喜び": "Happy",
+     "驚き": "surprise"
+    },
+    "credit": [
+     "音声モデル：TANAKA（AivisHub / ACML 1.0）"
+    ],
+    "color": "#b8860b"
+   }
+  },
+  "bgm": "assets/bgm/bgm.wav",
+  "bgm_volume": 0.1
+ },
+ "lines": [
+  {
+   "speaker": "ハルト",
+   "text": "目が覚めたら異世界だった。…やった！ これでブラック企業から解放だ！",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "リナ",
+   "text": "勇者様、ようこそ！ さっそくですが、本日のタスクです",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ハルト",
+   "text": "タスク？",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "リナ",
+   "text": "ドラゴン討伐、スライム百匹、あと王様への報告書を三十枚",
+   "emotion": "ふつう",
+   "yomi": "ドラゴン討伐、スライムひゃっぴき、あと王様への報告書をさんじゅうまい"
+  },
+  {
+   "speaker": "ハルト",
+   "text": "報告書！？",
+   "emotion": "驚き",
+   "effect": "shake"
+  },
+  {
+   "speaker": "リナ",
+   "text": "締め切りは本日の日没です。定時はありません",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ハルト",
+   "text": "異世界もブラックかよ！",
+   "emotion": "怒り",
+   "effect": [
+    "zoom",
+    "shake"
+   ]
+  },
+  {
+   "speaker": "リナ",
+   "text": "ご安心ください。回復魔法で、疲労をゼロにできます",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ハルト",
+   "text": "それ、休ませない理由になってるよね！？",
+   "emotion": "怒り"
+  },
+  {
+   "speaker": "王様",
+   "text": "勇者よ。魔王を倒したあかつきには…",
+   "emotion": "ふつう",
+   "gap": 0.6
+  },
+  {
+   "speaker": "ハルト",
+   "text": "倒したら…？",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "王様",
+   "text": "次の魔王討伐プロジェクトに、アサインしよう",
+   "emotion": "喜び",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "ハルト",
+   "text": "終わらないやつ！！",
+   "emotion": "悲しみ",
+   "shot": "ハルト_絶望",
+   "effect": "shake"
+  },
+  {
+   "speaker": "リナ",
+   "text": "ちなみに私、もう三百年働いてます",
+   "emotion": "喜び",
+   "shot": "リナ_死んだ目",
+   "gap": 0.6,
+   "yomi": "ちなみに私、もうさんびゃくねん働いてます"
+  },
+  {
+   "speaker": "ハルト",
+   "text": "エルフの労働時間えぐい！",
+   "emotion": "驚き",
+   "effect": [
+    "zoom",
+    "shake"
+   ],
+   "se_after": "chan"
+  }
+ ]
+}

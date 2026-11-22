@@ -554,6 +554,115 @@
     832
    ],
    "prompt": "1boy, 1girl, couple, sitting at dining table, facing each other, wide shot, from side, modern apartment, living room, night, warm lamp light, man with short black hair, wet hair, towel around neck, grey t-shirt, woman with dark brown bob cut, cream knit sweater, arms crossed, angry, smartphone on table, tense atmosphere"
+  },
+  {
+   "name": "bg/office",
+   "seed": 101,
+   "prompt": "no humans, scenery, indoors, japanese office, desks, computers, evening, sunset through windows, empty office"
+  },
+  {
+   "name": "部長/close",
+   "seed": 102,
+   "prompt": "1boy, solo, male focus, middle-aged man, 50s, japanese, short black hair with grey, glasses, business suit, necktie, serious, closed mouth, upper body, looking at viewer, blurry background, indoors, office, evening",
+   "negative": "female"
+  },
+  {
+   "name": "ユイ/close",
+   "seed": 103,
+   "prompt": "1girl, solo, adult, 23 years old, office lady, japanese, black hair, low ponytail, white blouse, navy cardigan, lanyard, cheerful, closed mouth, upper body, looking at viewer, blurry background, indoors, office, evening",
+   "negative": "child, loli"
+  },
+  {
+   "name": "ケンタ/close",
+   "seed": 104,
+   "prompt": "1boy, solo, male focus, young man, 25 years old, japanese, short brown hair, grey hoodie, nervous, blush, closed mouth, upper body, looking at viewer, blurry background, indoors, apartment, night",
+   "negative": "female"
+  },
+  {
+   "name": "アヤ/close",
+   "seed": 105,
+   "prompt": "1girl, solo, adult, 25 years old, japanese, long light brown hair, wavy hair, oversized pink sweater, playful smile, half-closed eyes, closed mouth, upper body, looking at viewer, blurry background, indoors, apartment, night",
+   "negative": "child, loli"
+  },
+  {
+   "name": "shots/ゲーム",
+   "seed": 106,
+   "prompt": "no humans, still life, living room table at night, two game controllers, snacks, potato chips, energy drink cans, tv screen glow, cozy"
+  },
+  {
+   "name": "義母/close",
+   "seed": 107,
+   "prompt": "1girl, solo, old woman, 60s, japanese, short grey hair, curly hair, cardigan, apron, gentle, closed mouth, upper body, looking at viewer, blurry background, indoors, japanese house, washitsu",
+   "negative": "child, loli"
+  },
+  {
+   "name": "義父/close",
+   "seed": 108,
+   "prompt": "1boy, solo, male focus, old man, 60s, japanese, bald, white mustache, polo shirt, stern, closed mouth, upper body, looking at viewer, blurry background, indoors, japanese house, washitsu",
+   "negative": "female"
+  },
+  {
+   "name": "嫁/close",
+   "seed": 109,
+   "prompt": "1girl, solo, adult, 28 years old, japanese, black hair, medium hair, beige blouse, awkward smile, sweat, closed mouth, upper body, looking at viewer, blurry background, indoors, japanese house",
+   "negative": "child, loli"
+  },
+  {
+   "name": "bg/cafe",
+   "seed": 110,
+   "prompt": "no humans, scenery, indoors, stylish cafe, daytime, wooden tables, plants, large windows, sunlight"
+  },
+  {
+   "name": "レイカ/close",
+   "seed": 111,
+   "prompt": "1girl, solo, mature female, 35 years old, japanese, long wavy brown hair, earrings, necklace, designer blouse, makeup, smug, haughty, closed mouth, upper body, looking at viewer, blurry background, indoors, cafe, daytime",
+   "negative": "child, loli"
+  },
+  {
+   "name": "ナツミ/close",
+   "seed": 112,
+   "prompt": "1girl, solo, mature female, 35 years old, japanese, black hair, straight shoulder-length hair, simple white shirt, gentle smile, closed mouth, upper body, looking at viewer, blurry background, indoors, cafe, daytime",
+   "negative": "child, loli"
+  },
+  {
+   "name": "bg/store",
+   "seed": 113,
+   "prompt": "no humans, scenery, indoors, convenience store, cash register counter, fried chicken display case, shelves, night, fluorescent lights"
+  },
+  {
+   "name": "店員/close",
+   "seed": 114,
+   "prompt": "1boy, solo, male focus, young man, 20s, japanese, messy black hair, striped work uniform, name tag, serious, closed mouth, upper body, looking at viewer, blurry background, indoors, convenience store, night",
+   "negative": "female"
+  },
+  {
+   "name": "客/close",
+   "seed": 115,
+   "prompt": "1girl, solo, adult, office lady, 27 years old, japanese, brown hair, shoulder-length hair, beige trench coat, tired, closed mouth, upper body, looking at viewer, blurry background, indoors, convenience store, night",
+   "negative": "child, loli"
+  },
+  {
+   "name": "bg/castle",
+   "seed": 116,
+   "prompt": "no humans, scenery, fantasy, castle interior, throne room, stone pillars, red carpet, banners, stained glass, daytime"
+  },
+  {
+   "name": "ハルト/close",
+   "seed": 117,
+   "prompt": "1boy, solo, male focus, young man, black hair, short hair, fantasy adventurer, leather armor, cape, tired eyes, eye bags, closed mouth, upper body, looking at viewer, blurry background, fantasy, castle",
+   "negative": "female"
+  },
+  {
+   "name": "リナ/close",
+   "seed": 118,
+   "prompt": "1girl, solo, elf, pointy ears, adult, mature female, long silver hair, wizard hat, robe, polite smile, closed mouth, upper body, looking at viewer, blurry background, fantasy, castle",
+   "negative": "child, loli"
+  },
+  {
+   "name": "王様/close",
+   "seed": 119,
+   "prompt": "1boy, solo, male focus, old man, king, crown, white beard, red royal cape, fur trim, smile, closed mouth, upper body, looking at viewer, blurry background, fantasy, throne room",
+   "negative": "female"
   }
  ]
 }
