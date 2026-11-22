@@ -1,0 +1,63 @@
+{
+  "id": "05_tenki_yohou",
+  "title_ja": "じいの天気予報",
+  "title_en": "Jii's Weather Forecast",
+  "season": "winter",
+  "note": "季節：冬。ゴンタの「ぼふっ」とピコの「2倍ふくらみ」が両方出る。オチはじいが氷像。最後に2匹がまた予報を聞きに座って、1カット目へループ。",
+  "bgm": {"file": "assets/bgm/snow_pizzicato.wav", "volume": 0.30},
+  "cuts": [
+    {
+      "id": 1, "dur": 3, "type": "image", "src": "frames/c01.png", "motion": "punch_zoom",
+      "desc": "岩の上のじいが、ひづめをなめて風にかざす。前でゴンタとピコが行儀よく座って聞いている",
+      "chars": ["jii", "gonta", "piko"],
+      "action": "Jii sits on his snowy rock with a wise serious expression, licking the tip of his hoof and holding it up into the wind to read the weather; in front of the rock Gonta and Piko sit politely side by side looking up at him with great respect",
+      "telop": {"text": "じいの天気予報", "sub": "Jii's weather forecast", "start": 0.2, "end": 2.8},
+      "se": [{"name": "whoosh", "at": 0.0, "vol": 0.5}]
+    },
+    {
+      "id": 2, "dur": 3, "type": "image", "src": "frames/c02.png", "motion": "slow_push",
+      "desc": "目を閉じて、自信たっぷりに空を指すじい",
+      "chars": ["jii"],
+      "action": "Jii with eyes closed confidently points one hoof up at the clear blue sky, his long white beard flowing, the sun shining behind him like a halo",
+      "telop": {"text": "明日は快晴じゃ", "sub": "Tomorrow: sunny!", "start": 0.2, "end": 2.8},
+      "se": [{"name": "tada", "at": 0.2, "vol": 0.8}]
+    },
+    {
+      "id": 3, "dur": 3, "type": "image", "src": "frames/c03.png", "motion": "punch_zoom",
+      "desc": "次の日。サングラスとレジャーシートでピクニック準備万端の2匹（空がちょっと暗い）",
+      "chars": ["gonta", "piko"],
+      "action": "Next morning, Gonta and Piko are ready for a sunny picnic in the snow, both wearing tiny sunglasses, sitting on a picnic blanket with a basket of rice balls, Gonta holding a beach umbrella, big excited smiles, the sky behind them suspiciously dark grey",
+      "telop": {"text": "次の日", "sub": "Next day", "start": 0.1, "end": 1.6},
+      "se": [{"name": "pop_in", "at": 0.1, "vol": 0.7}]
+    },
+    {
+      "id": 4, "dur": 5, "type": "video", "src": "clips/c04.mp4",
+      "desc": "急に猛吹雪！サングラスもかさも飛ぶ。ピコはゴンタの赤いマフラーにしがみついて旗みたいにはためく",
+      "chars": ["gonta", "piko"],
+      "action": "A sudden massive blizzard hits, strong wind blows snow sideways, sunglasses and the umbrella fly away, the picnic blanket flaps wildly, Piko clings to the end of Gonta's red scarf and flutters in the wind like a flag while Gonta squints and leans into the wind. Static camera, medium shot.",
+      "se": [{"name": "wind", "at": 0.0, "vol": 0.9}]
+    },
+    {
+      "id": 5, "dur": 3, "type": "image", "src": "frames/c05.png", "motion": "shake",
+      "desc": "吹雪のあと。ゴンタは雪に埋まって赤いマフラーだけ。ピコは毛が逆立って2倍にふくらむ",
+      "chars": ["gonta", "piko"],
+      "action": "After the blizzard: Gonta is completely buried in a snowdrift with only his red scarf sticking out, while Piko stands on top of the snowdrift furious, his white fur bristling and his body puffed up to twice its size",
+      "se": [{"name": "snow_poof", "at": 0.0, "vol": 0.9}, {"name": "puff_up", "at": 0.9, "vol": 0.9}]
+    },
+    {
+      "id": 6, "dur": 4, "type": "image", "src": "frames/c06.png", "motion": "slow_push",
+      "desc": "オチ：岩の上のじいが、空を指したポーズのまま氷の像になっている",
+      "chars": ["jii"],
+      "action": "Jii on his snowy rock frozen solid inside a clear block of ice, still in the exact same confident pose pointing one hoof at the sky, icicles hanging from his beard, calm sleepy expression inside the ice, grey sky after the blizzard",
+      "bgm_stop": 0.2,
+      "se": [{"name": "freeze", "at": 0.3, "vol": 0.9}]
+    },
+    {
+      "id": 7, "dur": 3, "type": "image", "src": "frames/c07.png", "motion": "slow_push",
+      "desc": "雪まみれの2匹が、凍ったじいの前にまた行儀よく座って予報を待つ（1カット目へループ）",
+      "chars": ["gonta", "piko", "jii"],
+      "action": "Gonta and Piko, covered in snow, sit politely side by side in front of the rock looking up with great respect again, exactly as before, while Jii on the rock is still frozen solid in a block of ice pointing at the sky",
+      "se": [{"name": "small_snore", "at": 1.0, "vol": 0.6}]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "04_jidori",
+  "title_ja": "自撮りチャレンジ",
+  "title_en": "Selfie Challenge",
+  "season": "winter",
+  "note": "季節：冬。ピコの「怒ると2倍にふくらむ」が初めて出る回。最後は雪から出たゴンタの鼻をスマホが撮って、1カット目（鼻のドアップ）へループ。",
+  "bgm": {"file": "assets/bgm/snow_pizzicato.wav", "volume": 0.30},
+  "cuts": [
+    {
+      "id": 1, "dur": 2, "type": "image", "src": "frames/c01.png", "motion": "punch_zoom",
+      "desc": "画面いっぱいのゴンタの鼻（スマホの自撮り写真）",
+      "chars": ["gonta"],
+      "action": "Extreme close-up selfie photo filling the entire frame with Gonta's big shiny black nose and a bit of his tan muzzle, slightly blurry, as seen from a smartphone front camera",
+      "telop": {"text": "自撮りチャレンジ", "sub": "Selfie challenge", "start": 0.3, "end": 2.0},
+      "se": [{"name": "shutter", "at": 0.0, "vol": 0.9}]
+    },
+    {
+      "id": 2, "dur": 3, "type": "image", "src": "frames/c02.png", "motion": "slow_push",
+      "desc": "雪山の絶景で自撮り棒を顔の真ん前に構えるゴンタ。肩の上でピコが「もっと離して！」",
+      "chars": ["gonta", "piko"],
+      "action": "On top of a snowy mountain peak with a breathtaking view, Gonta holds a selfie stick with a smartphone much too close to his own face, Piko stands on Gonta's shoulder pointing and coaching him to hold it farther away",
+      "se": [{"name": "whoosh", "at": 0.0, "vol": 0.6}]
+    },
+    {
+      "id": 3, "dur": 2, "type": "image", "src": "frames/c03.png", "motion": "punch_zoom",
+      "desc": "また鼻のドアップ（今度は鼻の穴）。すみっこにピコの小さな手",
+      "chars": ["gonta", "piko"],
+      "action": "Extreme close-up selfie photo of Gonta's huge black nostrils filling the frame, one sleepy eye visible at the top edge, a tiny white paw of Piko in the corner",
+      "se": [{"name": "shutter", "at": 0.0, "vol": 0.9}]
+    },
+    {
+      "id": 4, "dur": 5, "type": "video", "src": "clips/c04.mp4",
+      "desc": "ピコの毛が逆立って体が2倍に！自撮り棒を奪って完璧な位置にセット、2匹でにっこり",
+      "chars": ["piko", "gonta"],
+      "action": "Piko gets angry, his white fur bristles and his body puffs up to twice its size, he snatches the selfie stick from Gonta, extends it to the perfect distance and angle, then both pose together with big happy smiles. Snowy mountain peak, static camera, medium shot.",
+      "se": [{"name": "puff_up", "at": 0.5, "vol": 0.9}, {"name": "whoosh", "at": 1.8, "vol": 0.6}, {"name": "tada", "at": 3.8, "vol": 0.6}]
+    },
+    {
+      "id": 5, "dur": 4, "type": "image", "src": "frames/c05.png", "motion": "zoom_out",
+      "desc": "やっと撮れた最高の1枚…の後ろに巨大な雪崩",
+      "chars": ["gonta", "piko"],
+      "action": "A perfect smartphone selfie photo: Gonta and Piko smiling happily cheek to cheek in the foreground, majestic snowy mountains behind them, and a gigantic avalanche thundering down the slope right behind them, which they have not noticed",
+      "telop": {"text": "やっと撮れた！", "sub": "Finally!", "start": 0.3, "end": 2.2},
+      "se": [{"name": "shutter", "at": 0.0, "vol": 0.9}, {"name": "rumble", "at": 2.0, "vol": 0.8}]
+    },
+    {
+      "id": 6, "dur": 5, "type": "video", "src": "clips/c06.mp4",
+      "desc": "振り向いた2匹。ゴンタは驚いて雪に「ぼふっ」、そのまま雪崩にのまれる",
+      "chars": ["gonta", "piko"],
+      "action": "Gonta and Piko slowly turn around and see the huge avalanche, Gonta jumps in surprise and dives into the snow with a big poof, then the avalanche of powder snow sweeps over them and everything turns white. Static camera, medium shot.",
+      "se": [{"name": "eye_pop", "at": 0.6, "vol": 0.9}, {"name": "snow_poof", "at": 1.2, "vol": 0.9}, {"name": "rumble", "at": 1.6, "vol": 1.0}]
+    },
+    {
+      "id": 7, "dur": 4, "type": "image", "src": "frames/c07.png", "motion": "slow_push",
+      "desc": "静かな雪原に自撮り棒だけ。スマホの前にゴンタの鼻がぽこっ→カシャッ（1カット目へループ）",
+      "chars": ["gonta"],
+      "action": "A quiet flat snowfield after the avalanche, only a selfie stick with a smartphone sticks out of the snow, and Gonta's black nose pops out of the snow right in front of the phone camera",
+      "bgm_stop": 0.2,
+      "se": [{"name": "pop_in", "at": 1.0, "vol": 0.7}, {"name": "shutter", "at": 3.6, "vol": 0.9}]
+    }
+  ]
+}

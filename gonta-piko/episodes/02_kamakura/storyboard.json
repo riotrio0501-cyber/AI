@@ -1,0 +1,62 @@
+{
+  "id": "02_kamakura",
+  "title_ja": "かまくら完成！",
+  "title_en": "The Perfect Snow Hut",
+  "season": "winter",
+  "note": "季節：冬。最初と最後が同じ絵（雪から顔だけ出たピコ）で、結果→「30分前」→また結果、とループする。",
+  "bgm": {"file": "assets/bgm/snow_pizzicato.wav", "volume": 0.30},
+  "cuts": [
+    {
+      "id": 1, "dur": 2, "type": "image", "src": "frames/c01.png", "motion": "punch_zoom",
+      "desc": "崩れた雪の山から顔だけ出したピコ（無表情）。上でゴンタがすやすや寝ている",
+      "chars": ["piko", "gonta"],
+      "action": "A big messy pile of collapsed snow where a snow hut used to be. Only Piko's small white head sticks out of the snow with a blank deadpan stare, snowflakes on his head. Gonta sleeps happily belly-up on top of the snow pile",
+      "telop": {"text": "30分前…", "sub": "30 minutes earlier...", "start": 0.7, "end": 2.0},
+      "se": [{"name": "snow_poof", "at": 0.0, "vol": 0.8}]
+    },
+    {
+      "id": 2, "dur": 5, "type": "video", "src": "clips/c02.mp4",
+      "desc": "ピコが小さなスコップで、せっせとかまくらを作る",
+      "chars": ["piko"],
+      "action": "Piko works very hard building a dome-shaped Japanese snow hut (kamakura), quickly piling and patting snow with a tiny shovel, running around it, wiping sweat from his forehead. Snowy clearing in a mountain forest, sunny winter day. Static camera, medium wide shot.",
+      "se": [{"name": "pat", "at": 0.3, "vol": 0.7}, {"name": "pat", "at": 1.8, "vol": 0.7}, {"name": "whoosh", "at": 2.8, "vol": 0.5}, {"name": "pat", "at": 3.4, "vol": 0.7}]
+    },
+    {
+      "id": 3, "dur": 3, "type": "image", "src": "frames/c03.png", "motion": "punch_zoom",
+      "desc": "ピカピカのかまくらの前で、腰に手を当ててドヤ顔のピコ",
+      "chars": ["piko"],
+      "action": "Piko stands proudly with hands on hips and a huge smug grin in front of a perfect, smooth, beautifully rounded snow dome hut (kamakura) with a neat arched entrance, sparkling in the sunshine",
+      "telop": {"text": "完成！", "sub": "Done!", "start": 0.2, "end": 2.8},
+      "se": [{"name": "tada", "at": 0.1, "vol": 0.8}]
+    },
+    {
+      "id": 4, "dur": 3, "type": "image", "src": "frames/c04.png", "motion": "slow_push",
+      "desc": "ゴンタがのそのそ歩いてきて、かまくらの壁を「いい枕」みたいに見つめる",
+      "chars": ["gonta", "piko"],
+      "action": "Gonta trudges slowly through deep snow toward the snow hut, yawning, his sleepy eyes fixed on the hut's smooth round wall as if it were a comfy pillow; Piko's small head peeks happily out of the hut's entrance",
+      "se": [{"name": "crunch_steps", "at": 0.1, "vol": 0.7}]
+    },
+    {
+      "id": 5, "dur": 3, "type": "image", "src": "frames/c05.png", "motion": "slow_push",
+      "desc": "かまくらの中でお茶を飲んでうっとりのピコ。入口の外にゴンタの大きな背中",
+      "chars": ["piko", "gonta"],
+      "action": "Inside the cozy snow hut: Piko sits on a tiny cushion sipping hot tea from a small cup with blissful closed eyes, warm glow. Through the arched entrance, Gonta's big black furry back and red scarf can be seen leaning against the outside of the hut",
+      "se": [{"name": "creak", "at": 1.6, "vol": 0.7}]
+    },
+    {
+      "id": 6, "dur": 5, "type": "video", "src": "clips/c06.mp4",
+      "desc": "ゴンタが寄りかかって、かまくらが全壊。そのまま上で寝る",
+      "chars": ["gonta", "piko"],
+      "action": "Gonta leans his whole heavy back against the snow hut to take a nap, the hut cracks and completely collapses under his weight in a big burst of powder snow, Gonta flops onto the snow pile and immediately falls asleep. Static camera, medium wide shot.",
+      "se": [{"name": "creak", "at": 0.4, "vol": 0.8}, {"name": "crumble", "at": 1.4, "vol": 0.9}, {"name": "snow_poof", "at": 1.8, "vol": 0.8}, {"name": "snore", "at": 3.6, "vol": 0.6}]
+    },
+    {
+      "id": 7, "dur": 3, "type": "image", "src": "frames/c01.png", "motion": "slow_push",
+      "desc": "1カット目と同じ絵。顔だけ出たピコ、無言（ループ）",
+      "chars": ["piko", "gonta"],
+      "action": "(same image as cut 1)",
+      "bgm_stop": 0.2,
+      "se": [{"name": "small_snore", "at": 0.8, "vol": 0.5}]
+    }
+  ]
+}

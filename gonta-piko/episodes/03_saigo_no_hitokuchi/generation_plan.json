@@ -1,0 +1,105 @@
+{
+  "episode": "03_saigo_no_hitokuchi",
+  "total_credits": 35,
+  "remaining_credits": 35,
+  "items": [
+    {
+      "cut": 1,
+      "model": "minimax_h3",
+      "duration": 5,
+      "aspect_ratio": "9:16",
+      "save_as": "clips/c01.mp4",
+      "prompt": "Gonta sits in the snow holding the last steaming roasted sweet potato, opens his mouth very wide to take a big bite, then suddenly lets out a huge sneeze and the sweet potato shoots out of his paws and flies away down the snowy slope. Piko sits next to him holding a small empty plate. Static camera, medium shot.. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. Piko, an original small slender stoat in pure white winter fur, only the tip of the tail is black, shiny round black eyes, tiny pink nose, small round ears, energetic and expressive, about one fifth the size of Gonta. high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat.",
+      "reference_job_ids": [
+        null,
+        null
+      ],
+      "credits": 10,
+      "done": false
+    },
+    {
+      "cut": 2,
+      "model": "minimax_h3_image",
+      "resolution": "1k",
+      "aspect_ratio": "9:16",
+      "save_as": "frames/c02.png",
+      "prompt": "Close-up of Gonta staring at his empty paws in total shock, eyes wide, mouth hanging open; Piko beside him covers his face with one paw in disbelief. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. Piko, an original small slender stoat in pure white winter fur, only the tip of the tail is black, shiny round black eyes, tiny pink nose, small round ears, energetic and expressive, about one fifth the size of Gonta. high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat.",
+      "reference_job_ids": [
+        null,
+        null
+      ],
+      "credits": 3,
+      "done": false
+    },
+    {
+      "cut": 3,
+      "model": "minimax_h3",
+      "duration": 5,
+      "aspect_ratio": "9:16",
+      "save_as": "clips/c03.mp4",
+      "prompt": "Gonta chases after the sweet potato down a steep snowy slope, trips and starts rolling, quickly turning into a giant rolling snowball with only his legs and red scarf sticking out, Piko desperately clinging to the top of the rolling snowball. Camera follows down the slope.. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. Piko, an original small slender stoat in pure white winter fur, only the tip of the tail is black, shiny round black eyes, tiny pink nose, small round ears, energetic and expressive, about one fifth the size of Gonta. high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat.",
+      "reference_job_ids": [
+        null,
+        null
+      ],
+      "credits": 10,
+      "done": false
+    },
+    {
+      "cut": 4,
+      "model": "minimax_h3_image",
+      "resolution": "1k",
+      "aspect_ratio": "9:16",
+      "save_as": "frames/c04.png",
+      "prompt": "A giant snowball rolling at high speed down the mountainside, snow spraying everywhere, Gonta's legs and red scarf sticking out of it, Piko on top hanging on with his fur standing on end and mouth wide open in panic. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. Piko, an original small slender stoat in pure white winter fur, only the tip of the tail is black, shiny round black eyes, tiny pink nose, small round ears, energetic and expressive, about one fifth the size of Gonta. high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat.",
+      "reference_job_ids": [
+        null,
+        null
+      ],
+      "credits": 3,
+      "done": false
+    },
+    {
+      "cut": 5,
+      "model": "minimax_h3_image",
+      "resolution": "1k",
+      "aspect_ratio": "9:16",
+      "save_as": "frames/c05.png",
+      "prompt": "At the foot of the mountain the giant snowball has crashed into a huge burst of snow, Gonta is buried head-first in the deep snow with only his round bottom and legs sticking up, red scarf trailing on the snow. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat.",
+      "reference_job_ids": [
+        null
+      ],
+      "credits": 3,
+      "done": false
+    },
+    {
+      "cut": 6,
+      "model": "minimax_h3_image",
+      "resolution": "1k",
+      "aspect_ratio": "9:16",
+      "save_as": "frames/c06.png",
+      "prompt": "Jii sits calmly on his snowy rock at the foot of the mountain, peacefully eating the roasted sweet potato with half-closed sleepy eyes, steam rising. Behind him Gonta's head pops out of the snow with teary eyes and trembling lips. Jii, an original elderly Japanese serow with brown shaggy fur, short dark horns, a long white beard, sleepy wise eyes, always sitting calmly on the same snowy rock. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat.",
+      "reference_job_ids": [
+        null,
+        null
+      ],
+      "credits": 3,
+      "done": false
+    },
+    {
+      "cut": 7,
+      "model": "minimax_h3_image",
+      "resolution": "1k",
+      "aspect_ratio": "9:16",
+      "save_as": "frames/c07.png",
+      "prompt": "Jii calmly holds out one tiny last crumb of the sweet potato toward Gonta, who opens his mouth very wide with sparkling hopeful eyes; Piko lies exhausted face-down in the snow nearby. Jii, an original elderly Japanese serow with brown shaggy fur, short dark horns, a long white beard, sleepy wise eyes, always sitting calmly on the same snowy rock. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. Piko, an original small slender stoat in pure white winter fur, only the tip of the tail is black, shiny round black eyes, tiny pink nose, small round ears, energetic and expressive, about one fifth the size of Gonta. high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat.",
+      "reference_job_ids": [
+        null,
+        null,
+        null
+      ],
+      "credits": 3,
+      "done": false
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "03_saigo_no_hitokuchi",
+  "title_ja": "最後のひと口",
+  "title_en": "The Last Bite",
+  "season": "winter",
+  "note": "季節：冬。ゴンタの「雪にぼふっ」とじいの「全部持っていく」が初めてそろう回。最後にゴンタがまた大口を開けて1カット目へループ。",
+  "bgm": {"file": "assets/bgm/snow_pizzicato.wav", "volume": 0.30},
+  "cuts": [
+    {
+      "id": 1, "dur": 5, "type": "video", "src": "clips/c01.mp4",
+      "desc": "最後の焼き芋に大口を開けるゴンタ→特大くしゃみで芋が飛んでいく",
+      "chars": ["gonta", "piko"],
+      "action": "Gonta sits in the snow holding the last steaming roasted sweet potato, opens his mouth very wide to take a big bite, then suddenly lets out a huge sneeze and the sweet potato shoots out of his paws and flies away down the snowy slope. Piko sits next to him holding a small empty plate. Static camera, medium shot.",
+      "telop": {"text": "最後のひと口", "sub": "The last bite", "start": 0.2, "end": 2.4},
+      "se": [{"name": "sneeze", "at": 1.2, "vol": 0.9}, {"name": "whoosh", "at": 2.4, "vol": 0.7}]
+    },
+    {
+      "id": 2, "dur": 3, "type": "image", "src": "frames/c02.png", "motion": "punch_zoom",
+      "desc": "空っぽの手を見つめて目が点のゴンタ。横でピコが顔をおおう",
+      "chars": ["gonta", "piko"],
+      "action": "Close-up of Gonta staring at his empty paws in total shock, eyes wide, mouth hanging open; Piko beside him covers his face with one paw in disbelief",
+      "se": [{"name": "eye_pop", "at": 0.1, "vol": 0.9}]
+    },
+    {
+      "id": 3, "dur": 5, "type": "video", "src": "clips/c03.mp4",
+      "desc": "芋を追って坂を転がるゴンタが、巨大な雪玉に。上にピコがしがみつく",
+      "chars": ["gonta", "piko"],
+      "action": "Gonta chases after the sweet potato down a steep snowy slope, trips and starts rolling, quickly turning into a giant rolling snowball with only his legs and red scarf sticking out, Piko desperately clinging to the top of the rolling snowball. Camera follows down the slope.",
+      "se": [{"name": "tumble", "at": 0.6, "vol": 0.8}, {"name": "rumble", "at": 1.6, "vol": 0.8}]
+    },
+    {
+      "id": 4, "dur": 3, "type": "image", "src": "frames/c04.png", "motion": "shake",
+      "desc": "巨大な雪玉が爆走。上のピコは毛が逆立って大口（声なし）",
+      "chars": ["gonta", "piko"],
+      "action": "A giant snowball rolling at high speed down the mountainside, snow spraying everywhere, Gonta's legs and red scarf sticking out of it, Piko on top hanging on with his fur standing on end and mouth wide open in panic",
+      "se": [{"name": "rumble", "at": 0.0, "vol": 0.9}]
+    },
+    {
+      "id": 5, "dur": 3, "type": "image", "src": "frames/c05.png", "motion": "punch_zoom",
+      "desc": "ふもとで雪玉が大爆発。ゴンタは頭から雪に埋まって足だけ出ている",
+      "chars": ["gonta"],
+      "action": "At the foot of the mountain the giant snowball has crashed into a huge burst of snow, Gonta is buried head-first in the deep snow with only his round bottom and legs sticking up, red scarf trailing on the snow",
+      "se": [{"name": "snow_poof", "at": 0.05, "vol": 1.0}]
+    },
+    {
+      "id": 6, "dur": 4, "type": "image", "src": "frames/c06.png", "motion": "slow_push",
+      "desc": "岩の上のじいが、その焼き芋をのんびり食べている。後ろでゴンタが雪から顔を出して涙目",
+      "chars": ["jii", "gonta"],
+      "action": "Jii sits calmly on his snowy rock at the foot of the mountain, peacefully eating the roasted sweet potato with half-closed sleepy eyes, steam rising. Behind him Gonta's head pops out of the snow with teary eyes and trembling lips",
+      "bgm_stop": 0.3,
+      "se": [{"name": "munch", "at": 0.6, "vol": 0.8}, {"name": "munch", "at": 2.2, "vol": 0.8}]
+    },
+    {
+      "id": 7, "dur": 3, "type": "image", "src": "frames/c07.png", "motion": "punch_zoom",
+      "desc": "じいが最後のひとかけらを差し出す。ゴンタがまた大口（1カット目へループ）",
+      "chars": ["jii", "gonta", "piko"],
+      "action": "Jii calmly holds out one tiny last crumb of the sweet potato toward Gonta, who opens his mouth very wide with sparkling hopeful eyes; Piko lies exhausted face-down in the snow nearby",
+      "se": [{"name": "pop_in", "at": 0.2, "vol": 0.7}, {"name": "tada", "at": 0.4, "vol": 0.5}]
+    }
+  ]
+}

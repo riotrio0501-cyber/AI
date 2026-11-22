@@ -49,8 +49,11 @@ def build_prompt(cut, ch):
 
 def plan(ep_dir):
     sb, ch = load(ep_dir)
-    items, total = [], 0
+    items, total, seen = [], 0, set()
     for cut in sb["cuts"]:
+        if cut["src"] in seen:          # 同じ絵の使い回し（ループ用など）はお金がかからない
+            continue
+        seen.add(cut["src"])
         refs = [ch["reference_images"].get(c) for c in cut["chars"]]
         if cut["type"] == "video":
             cost = COST_VIDEO_PER_SEC * cut["dur"]
@@ -68,12 +71,44 @@ def plan(ep_dir):
     out = {"episode": sb["id"], "total_credits": total, "remaining_credits": todo, "items": items}
     with open(os.path.join(ep_dir, "generation_plan.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
+    write_md(ep_dir, sb, total)
     for i in items:
         mark = "済" if i["done"] else "未"
         print(f"[{mark}] カット{i['cut']}: {i['model']:16s} {i['credits']:>3} クレジット")
     print(f"合計 {total} クレジット（未生成ぶん {todo}）")
     if any(r is None for i in items for r in i["reference_job_ids"]):
         print("※ キャラの参照画像がまだ決まっていません（characters/prompts.json）")
+
+
+MOTION_JA = {"static": "動かない", "slow_push": "ゆっくり寄る", "zoom_in": "寄る", "zoom_out": "引く",
+             "punch_zoom": "ドンッと寄る", "shake": "揺れる"}
+
+
+def write_md(ep_dir, sb, total):
+    """storyboard.json から人が読む用のカット割り表を作る"""
+    srcs, rows, sec = {}, [], 0
+    for c in sb["cuts"]:
+        how = "動画" if c["type"] == "video" else "静止画＋" + MOTION_JA.get(c.get("motion", "static"), "")
+        if c["src"] in srcs:
+            how += f"（カット{srcs[c['src']]}の絵を使い回し）"
+        srcs.setdefault(c["src"], c["id"])
+        tel = c.get("telop")
+        desc = c.get("desc", c["action"][:60])
+        if tel:
+            desc += f"<br>テロップ「{tel['text']}／{tel.get('sub', '')}」"
+        se = "・".join(x["name"] for x in c.get("se", []))
+        if "bgm_stop" in c:
+            se = "BGM止まる・" + se
+        rows.append(f"| {c['id']} | {c['dur']} | {desc} | {how} | {se} |")
+        sec += c["dur"]
+    md = [f"# {sb['id'][:2]}「{sb['title_ja']}」/ {sb['title_en']}（{sec}秒）", ""]
+    if sb.get("note"):
+        md += [sb["note"], ""]
+    md += ["中身の正本は `storyboard.json`（ここは自動で作られる表。直接書きかえない）", "",
+           "| # | 秒 | 内容 | 作り方 | 効果音 |", "|---|---|---|---|---|"] + rows
+    md += ["", f"クレジット：**{total}**"]
+    with open(os.path.join(ep_dir, "storyboard.md"), "w", encoding="utf-8") as f:
+        f.write("\n".join(md) + "\n")
 
 
 # ------------------------------------------------------------------ 映像
@@ -94,6 +129,8 @@ def motion_params(kind, t, dur):
     p = t / dur
     if kind == "slow_push":
         return 1.0 + 0.08 * p, 0, 0
+    if kind == "zoom_out":     # 寄りから引いて全体を見せる（オチの種明かし）
+        return 1.2 - 0.2 * ease_out(p), 0, 0
     if kind == "zoom_in":
         return 1.0 + 0.2 * ease_out(p), 0, 0
     if kind == "punch_zoom":   # ドンッと寄ってから、ゆっくり
@@ -214,13 +251,17 @@ def build(ep_dir):
     work = os.path.join(ep_dir, "build")
     os.makedirs(work, exist_ok=True)
     segs, starts, t, missing, jobs = [], [], 0.0, [], []
+    first_use = {}
+    for cut in sb["cuts"]:
+        first_use.setdefault(cut["src"], cut["id"])
     for cut in sb["cuts"]:
         src = os.path.join(ep_dir, cut["src"])
         seg = os.path.join(work, f"seg{cut['id']:02d}.mp4")
         if not os.path.exists(src):
             missing.append(cut["id"])
-            src = os.path.join(work, f"placeholder{cut['id']:02d}.png")
-            placeholder(cut, src)
+            src = os.path.join(work, "ph_" + cut["src"].replace("/", "_") + ".png")
+            if not os.path.exists(src) or cut["id"] == first_use[cut["src"]]:
+                placeholder(cut, src)   # 使い回しのカットは、最初のカットの仮の絵をそのまま使う
             jobs.append((render_still, src, cut.get("motion", "slow_push"), cut["dur"], seg))
         elif cut["type"] == "video":
             jobs.append((render_video, src, cut["dur"], seg))
