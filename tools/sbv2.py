@@ -47,8 +47,13 @@ def _load(name):
 
 def synth(text, model, emotion="Neutral", strength=2.0, speed=1.0, volume=1.0, intonation=1.2, pitch=1.0):
     """(sr, float32 配列) を返す"""
+    m = _load(model)
+    styles = m.hyper_parameters.data.style2id if hasattr(m, "hyper_parameters") else {}
     emotion = EMOTIONS.get(emotion, emotion)
-    sr, x = _load(model).infer(text=text, style=emotion, style_weight=strength if emotion != "Neutral" else 1.0,
+    if styles and emotion not in styles:  # そのモデルに無い感情は「ふつう」にする
+        emotion = next(iter(styles))
+    neutral = emotion in ("Neutral", "ノーマル")
+    sr, x = m.infer(text=text, style=emotion, style_weight=strength if not neutral else 1.0,
                                sdp_ratio=0.4, length=1.0 / speed, intonation_scale=intonation, pitch_scale=pitch)
     x = np.asarray(x, np.float32)
     if np.abs(x).max() > 2:

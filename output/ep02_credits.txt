@@ -1,4 +1,5 @@
 【概要欄用クレジット】
+音声モデル：阿井田 茂（CV：古山キリヲ）AivisHub / ACML 1.0
 VOICEVOX:もち子(cv 明日葉よもぎ)
 音声合成：Style-Bert-VITS2
 音声モデル：JVNV (CC BY-SA 4.0) https://sites.google.com/site/shinnosuketakamichi/research-topics/jvnv_corpus

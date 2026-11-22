@@ -63,8 +63,10 @@ def make_voices(lines, cast):
         speed = ln.get("speed", c.get("speed", cast.get("speed", 1.0)))
         volume = ln.get("volume", 1.0)
         if c.get("engine") == "sbv2":
-            ln["engine"] = "sbv2"
-            opts = ["sbv2", c["model"], ln.get("emotion", c.get("emotion", "ふつう")),
+            ln["engine"] = "sbv2"; ln["credit"] = c.get("credit")
+            emo = ln.get("emotion", c.get("emotion", "ふつう"))
+            emo = c.get("emotion_styles", {}).get(emo, emo)  # モデルごとの感情名に置き換え
+            opts = ["sbv2", c["model"], emo,
                     ln.get("strength", c.get("strength", 2.0)), speed, volume]
         else:
             emo = ln.get("emotion", c.get("emotion", "ふつう"))
@@ -328,7 +330,13 @@ def write_credits(lines, out):
         idname = {}
     for ln in lines:
         if ln.get("engine") == "sbv2":
-            sbv = True; continue
+            if ln.get("credit"):
+                for cr in ([ln["credit"]] if isinstance(ln["credit"], str) else ln["credit"]):
+                    if cr not in names:
+                        names.append(cr)
+            else:
+                sbv = True
+            continue
         n = idname.get(ln.get("voice_id"))
         if not n:
             continue
