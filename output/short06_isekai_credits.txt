@@ -1,0 +1,7 @@
+【概要欄用クレジット】
+音声モデル：凛音エル（AivisHub / ACML 1.0）
+音声モデル：TANAKA（AivisHub / ACML 1.0）
+音声合成：Style-Bert-VITS2
+音声モデル：JVNV (CC BY-SA 4.0) https://sites.google.com/site/shinnosuketakamichi/research-topics/jvnv_corpus
+画像生成：Animagine XL 4.0
+効果音・BGM：自作
