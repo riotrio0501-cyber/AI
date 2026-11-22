@@ -564,25 +564,41 @@
    "name": "部長/close",
    "seed": 102,
    "prompt": "1boy, solo, male focus, middle-aged man, 50s, japanese, short black hair with grey, glasses, business suit, necktie, serious, closed mouth, upper body, looking at viewer, blurry background, indoors, office, evening",
-   "negative": "female"
+   "negative": "female",
+   "face": [
+    380,
+    574
+   ]
   },
   {
    "name": "ユイ/close",
    "seed": 103,
    "prompt": "1girl, solo, adult, 23 years old, office lady, japanese, black hair, low ponytail, white blouse, navy cardigan, lanyard, cheerful, closed mouth, upper body, looking at viewer, blurry background, indoors, office, evening",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    378,
+    400
+   ]
   },
   {
    "name": "ケンタ/close",
    "seed": 104,
    "prompt": "1boy, solo, male focus, young man, 25 years old, japanese, short brown hair, grey hoodie, nervous, blush, closed mouth, upper body, looking at viewer, blurry background, indoors, apartment, night",
-   "negative": "female"
+   "negative": "female",
+   "face": [
+    400,
+    330
+   ]
   },
   {
    "name": "アヤ/close",
    "seed": 105,
    "prompt": "1girl, solo, adult, 25 years old, japanese, long light brown hair, wavy hair, oversized pink sweater, playful smile, half-closed eyes, closed mouth, upper body, looking at viewer, blurry background, indoors, apartment, night",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    423,
+    462
+   ]
   },
   {
    "name": "shots/ゲーム",
@@ -593,19 +609,31 @@
    "name": "義母/close",
    "seed": 107,
    "prompt": "1girl, solo, old woman, 60s, japanese, short grey hair, curly hair, cardigan, apron, gentle, closed mouth, upper body, looking at viewer, blurry background, indoors, japanese house, washitsu",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    458,
+    472
+   ]
   },
   {
    "name": "義父/close",
    "seed": 108,
    "prompt": "1boy, solo, male focus, old man, 60s, japanese, bald, white mustache, polo shirt, stern, closed mouth, upper body, looking at viewer, blurry background, indoors, japanese house, washitsu",
-   "negative": "female"
+   "negative": "female",
+   "face": [
+    443,
+    386
+   ]
   },
   {
    "name": "嫁/close",
    "seed": 109,
    "prompt": "1girl, solo, adult, 28 years old, japanese, black hair, medium hair, beige blouse, awkward smile, sweat, closed mouth, upper body, looking at viewer, blurry background, indoors, japanese house",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    415,
+    324
+   ]
   },
   {
    "name": "bg/cafe",
@@ -616,13 +644,21 @@
    "name": "レイカ/close",
    "seed": 111,
    "prompt": "1girl, solo, mature female, 35 years old, japanese, long wavy brown hair, earrings, necklace, designer blouse, makeup, smug, haughty, closed mouth, upper body, looking at viewer, blurry background, indoors, cafe, daytime",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    430,
+    355
+   ]
   },
   {
    "name": "ナツミ/close",
    "seed": 112,
    "prompt": "1girl, solo, mature female, 35 years old, japanese, black hair, straight shoulder-length hair, simple white shirt, gentle smile, closed mouth, upper body, looking at viewer, blurry background, indoors, cafe, daytime",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    370,
+    424
+   ]
   },
   {
    "name": "bg/store",
@@ -633,13 +669,21 @@
    "name": "店員/close",
    "seed": 114,
    "prompt": "1boy, solo, male focus, young man, 20s, japanese, messy black hair, striped work uniform, name tag, serious, closed mouth, upper body, looking at viewer, blurry background, indoors, convenience store, night",
-   "negative": "female"
+   "negative": "female",
+   "face": [
+    400,
+    430
+   ]
   },
   {
    "name": "客/close",
    "seed": 115,
    "prompt": "1girl, solo, adult, office lady, 27 years old, japanese, brown hair, shoulder-length hair, beige trench coat, tired, closed mouth, upper body, looking at viewer, blurry background, indoors, convenience store, night",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    322,
+    518
+   ]
   },
   {
    "name": "bg/castle",
@@ -650,19 +694,476 @@
    "name": "ハルト/close",
    "seed": 117,
    "prompt": "1boy, solo, male focus, young man, black hair, short hair, fantasy adventurer, leather armor, cape, tired eyes, eye bags, closed mouth, upper body, looking at viewer, blurry background, fantasy, castle",
-   "negative": "female"
+   "negative": "female",
+   "face": [
+    392,
+    478
+   ]
   },
   {
    "name": "リナ/close",
    "seed": 118,
    "prompt": "1girl, solo, elf, pointy ears, adult, mature female, long silver hair, wizard hat, robe, polite smile, closed mouth, upper body, looking at viewer, blurry background, fantasy, castle",
-   "negative": "child, loli"
+   "negative": "child, loli",
+   "face": [
+    460,
+    490
+   ]
   },
   {
    "name": "王様/close",
    "seed": 119,
    "prompt": "1boy, solo, male focus, old man, king, crown, white beard, red royal cape, fur trim, smile, closed mouth, upper body, looking at viewer, blurry background, fantasy, throne room",
-   "negative": "female"
+   "negative": "female",
+   "face": [
+    350,
+    380
+   ]
+  },
+  {
+   "name": "部長/open",
+   "from": "部長/close",
+   "mask": [
+    330,
+    654,
+    430,
+    716
+   ],
+   "strength": 0.8,
+   "face": [
+    380,
+    574
+   ],
+   "prompt": "1boy, open mouth, talking"
+  },
+  {
+   "name": "ユイ/open",
+   "from": "ユイ/close",
+   "mask": [
+    328,
+    480,
+    428,
+    542
+   ],
+   "strength": 0.8,
+   "face": [
+    378,
+    400
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "ケンタ/open",
+   "from": "ケンタ/close",
+   "mask": [
+    350,
+    410,
+    450,
+    472
+   ],
+   "strength": 0.8,
+   "face": [
+    400,
+    330
+   ],
+   "prompt": "1boy, open mouth, talking"
+  },
+  {
+   "name": "アヤ/open",
+   "from": "アヤ/close",
+   "mask": [
+    373,
+    542,
+    473,
+    604
+   ],
+   "strength": 0.8,
+   "face": [
+    423,
+    462
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "義母/open",
+   "from": "義母/close",
+   "mask": [
+    408,
+    552,
+    508,
+    614
+   ],
+   "strength": 0.8,
+   "face": [
+    458,
+    472
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "義父/open",
+   "from": "義父/close",
+   "mask": [
+    393,
+    466,
+    493,
+    528
+   ],
+   "strength": 0.8,
+   "face": [
+    443,
+    386
+   ],
+   "prompt": "1boy, open mouth, talking"
+  },
+  {
+   "name": "嫁/open",
+   "from": "嫁/close",
+   "mask": [
+    365,
+    404,
+    465,
+    466
+   ],
+   "strength": 0.8,
+   "face": [
+    415,
+    324
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "レイカ/open",
+   "from": "レイカ/close",
+   "mask": [
+    380,
+    435,
+    480,
+    497
+   ],
+   "strength": 0.8,
+   "face": [
+    430,
+    355
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "ナツミ/open",
+   "from": "ナツミ/close",
+   "mask": [
+    320,
+    504,
+    420,
+    566
+   ],
+   "strength": 0.8,
+   "face": [
+    370,
+    424
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "店員/open",
+   "from": "店員/close",
+   "mask": [
+    350,
+    510,
+    450,
+    572
+   ],
+   "strength": 0.8,
+   "face": [
+    400,
+    430
+   ],
+   "prompt": "1boy, open mouth, talking"
+  },
+  {
+   "name": "客/open",
+   "from": "客/close",
+   "mask": [
+    272,
+    598,
+    372,
+    660
+   ],
+   "strength": 0.8,
+   "face": [
+    322,
+    518
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "ハルト/open",
+   "from": "ハルト/close",
+   "mask": [
+    342,
+    558,
+    442,
+    620
+   ],
+   "strength": 0.8,
+   "face": [
+    392,
+    478
+   ],
+   "prompt": "1boy, open mouth, talking"
+  },
+  {
+   "name": "リナ/open",
+   "from": "リナ/close",
+   "mask": [
+    410,
+    570,
+    510,
+    632
+   ],
+   "strength": 0.8,
+   "face": [
+    460,
+    490
+   ],
+   "prompt": "1girl, open mouth, talking"
+  },
+  {
+   "name": "王様/open",
+   "from": "王様/close",
+   "mask": [
+    300,
+    460,
+    400,
+    522
+   ],
+   "strength": 0.8,
+   "face": [
+    350,
+    380
+   ],
+   "prompt": "1boy, open mouth, talking"
+  },
+  {
+   "name": "shots/部長_おびえ",
+   "from": "部長/close",
+   "mask": [
+    180,
+    354,
+    580,
+    754
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    380,
+    574
+   ],
+   "prompt": "1boy, middle-aged man, glasses, black hair, scared, terrified, pale face, shaded face, sweat, trembling, wavy mouth, comedy"
+  },
+  {
+   "name": "shots/部長_号泣",
+   "from": "部長/close",
+   "mask": [
+    180,
+    354,
+    580,
+    754
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    380,
+    574
+   ],
+   "prompt": "1boy, middle-aged man, glasses, black hair, crying, streaming tears, open mouth, wailing, comedy"
+  },
+  {
+   "name": "shots/ケンタ_期待",
+   "from": "ケンタ/close",
+   "mask": [
+    200,
+    110,
+    600,
+    510
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    400,
+    330
+   ],
+   "prompt": "1boy, brown hair, excited, sparkling eyes, blush, hopeful smile, closed mouth, heavy breathing"
+  },
+  {
+   "name": "shots/ケンタ_絶望",
+   "from": "ケンタ/close",
+   "mask": [
+    200,
+    110,
+    600,
+    510
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    400,
+    330
+   ],
+   "prompt": "1boy, brown hair, despair, pale face, shaded face, blank eyes, open mouth, tears, comedy"
+  },
+  {
+   "name": "shots/アヤ_笑顔",
+   "from": "アヤ/close",
+   "mask": [
+    223,
+    242,
+    623,
+    642
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    423,
+    462
+   ],
+   "prompt": "1girl, long wavy blonde hair, grin, big smile, closed eyes, happy, cheerful, ^_^"
+  },
+  {
+   "name": "shots/義母_号泣",
+   "from": "義母/close",
+   "mask": [
+    258,
+    252,
+    658,
+    652
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    458,
+    472
+   ],
+   "prompt": "old woman, grey hair, crying, streaming tears, open mouth, wailing, comedy"
+  },
+  {
+   "name": "shots/レイカ_ドヤ",
+   "from": "レイカ/close",
+   "mask": [
+    230,
+    135,
+    630,
+    535
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    430,
+    355
+   ],
+   "prompt": "1girl, mature female, long brown hair, smug, haughty, proud smile, half-closed eyes, closed mouth"
+  },
+  {
+   "name": "shots/レイカ_衝撃",
+   "from": "レイカ/close",
+   "mask": [
+    230,
+    135,
+    630,
+    535
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    430,
+    355
+   ],
+   "prompt": "1girl, mature female, long brown hair, shocked, white eyes, blank eyes, pale face, shaded face, sweat, open mouth, comedy"
+  },
+  {
+   "name": "shots/ナツミ_笑顔",
+   "from": "ナツミ/close",
+   "mask": [
+    170,
+    204,
+    570,
+    604
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    370,
+    424
+   ],
+   "prompt": "1girl, long black hair, gentle smile, closed eyes, happy, calm"
+  },
+  {
+   "name": "shots/店員_キメ顔",
+   "from": "店員/close",
+   "mask": [
+    200,
+    210,
+    600,
+    610
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    400,
+    430
+   ],
+   "prompt": "1boy, black hair, cool, serious, sharp eyes, confident smirk, closed mouth, sparkle"
+  },
+  {
+   "name": "shots/店員_号泣",
+   "from": "店員/close",
+   "mask": [
+    200,
+    210,
+    600,
+    610
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    400,
+    430
+   ],
+   "prompt": "1boy, black hair, crying, streaming tears, open mouth, wailing, comedy"
+  },
+  {
+   "name": "shots/ハルト_絶望",
+   "from": "ハルト/close",
+   "mask": [
+    192,
+    258,
+    592,
+    658
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    392,
+    478
+   ],
+   "prompt": "1boy, black hair, despair, pale face, shaded face, blank eyes, open mouth, tears, comedy"
+  },
+  {
+   "name": "shots/リナ_死んだ目",
+   "from": "リナ/close",
+   "mask": [
+    260,
+    270,
+    660,
+    670
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    460,
+    490
+   ],
+   "prompt": "1girl, elf, pointy ears, long white hair, empty eyes, dead eyes, half-closed eyes, expressionless, unamused, closed mouth"
   }
  ]
 }
