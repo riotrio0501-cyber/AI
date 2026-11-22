@@ -443,6 +443,15 @@ def render(lines, total, cast, audio, out):
     black_from = int((lines[-1]["end"] + 0.25) * FPS) if cast.get("end") == "blackout" else nframes + 1
     rng = np.random.default_rng(1)
     z, prev_shot, shot_start = 1.0, None, 0
+    last_scene, trans_until, cuts = None, -1, 0
+    duo_chars = cast.get("duo") or []
+
+    def listener_of(ln):
+        """聞き手（リアクションを映す相手）"""
+        if ln.get("listener"):
+            return ln["listener"]
+        others = [c for c in duo_chars if c != ln["speaker"]]
+        return others[0] if others else None
 
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
                            "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", str(audio),
@@ -453,9 +462,23 @@ def render(lines, total, cast, audio, out):
         i = cur[f]
         ln = lines[i] if i >= 0 else None
         key = shot_key(ln, bool(mouths[i][f]) if ln else False, cast)
+        if ln:
+            el_line = f / FPS - ln["start"]; dur = ln["end"] - ln["start"]
+            # 場面の頭は「二人の引きの絵」から入る
+            if ln.get("establish") and cast.get("wide") and el_line < min(1.6, 0.5 * dur):
+                key = ("shot", cast["wide"], None)
+            # 長いセリフの後半は、聞いている相手のリアクションに切り替える
+            elif (key[0] == "char" and not ln.get("no_react") and dur >= 2.0 and el_line > 0.55 * dur
+                  and listener_of(ln)):
+                react = ln.get("react") or ("悲しみ" if ln.get("emotion") == "悲しみ" else "驚き")
+                key = ("char", f"{listener_of(ln)}|{react}", "close")
         scene = shots.get(key)
         shot_id = key[:2]
         if shot_id != prev_shot:          # カットが変わったらカメラをリセット
+            cuts += 1
+            # 3回に1回くらい、横にシュッと流れる切り替えにする
+            if last_scene is not None and cuts % 3 == 0 and key[0] in ("char", "shot", "duo"):
+                trans_until = f + 5; trans_from = last_scene
             prev_shot, shot_start, z = shot_id, f, 1.0
         fx = effects(ln) if ln else set()
         # カメラの動き：カットごとに「寄る／引く／左右に流す」を切り替える
@@ -464,17 +487,17 @@ def render(lines, total, cast, audio, out):
         if key[0] in ("phone", "duo"):
             move = 0
         if move == 0:
-            drift = 1.0 + min(0.012 * el_shot, 0.08)          # ゆっくり寄る
+            drift = 1.0 + min(0.025 * el_shot, 0.14)          # 寄る
         elif move == 1:
-            drift = 1.08 - min(0.012 * el_shot, 0.07)         # ゆっくり引く
+            drift = 1.14 - min(0.025 * el_shot, 0.12)         # 引く
         else:
-            drift = 1.07                                       # 左右に流す
-        tz = 1.22 if "zoom" in fx else 1.0
+            drift = 1.12                                       # 左右に流す
+        tz = 1.3 if "zoom" in fx else 1.0
         z += (tz - z) * 0.3
         zz = max(1.03, min(z * drift, 1.4))   # 少し余白を持たせて動かせるようにする
         cx, cy = shots.focus.get(key, (W / 2, H * 0.36))
         if move >= 2 and "zoom" not in fx:
-            cx += (1 if move == 2 else -1) * (min(el_shot, 6) / 6 - 0.5) * W * 0.06
+            cx += (1 if move == 2 else -1) * (min(el_shot, 4) / 4 - 0.5) * W * 0.1
         sx = sy = 0.0
         if ln and key[0] in ("char", "duo") and 0 <= f / FPS - ln["start"] < 0.2:   # しゃべり始めにぴょこっと動く
             sy = -14 * np.sin(np.pi * (f / FPS - ln["start"]) / 0.2)
@@ -487,6 +510,14 @@ def render(lines, total, cast, audio, out):
         bw, bh = W / zz, H / zz
         x0 = min(max(cx - bw / 2 + sx, 0), W - bw); y0 = min(max(cy - bh / 2 + sy, 0), H - bh)
         frame = scene.resize((W, H), Image.BILINEAR, box=(x0, y0, x0 + bw, y0 + bh)) if zz > 1.001 else scene
+        last_scene = frame
+        if f < trans_until:   # 横に流れる切り替え（前の絵が左へ、新しい絵が右から）
+            t = 1 - (trans_until - f) / 5
+            blur = lambda im: im.resize((W // 16, H)).resize((W, H), Image.BILINEAR)
+            canvas = Image.new("RGB", (W, H))
+            canvas.paste(blur(trans_from), (int(-W * t), 0))
+            canvas.paste(blur(frame) if t < 0.8 else frame, (int(W * (1 - t)), 0))
+            frame = canvas
         frame = frame.convert("RGBA")
         if f >= black_from:  # 暗転
             ff.stdin.write(bytes(W * H * 3)); continue

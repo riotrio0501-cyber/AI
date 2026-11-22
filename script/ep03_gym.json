@@ -14,12 +14,7 @@
    "ミサキ": {
     "color": "#e0457b",
     "engine": "sbv2",
-    "model": "aivis-sakurane",
-    "strength": 1.0,
-    "emotion_styles": {},
-    "credit": [
-     "音声モデル：桜音（AivisHub / ACML 1.0）"
-    ]
+    "model": "jvnv-F1-jp"
    },
    "ユウキ": {
     "color": "#f08a24",
@@ -52,7 +47,8 @@
   "duo": [
    "タクヤ",
    "ミサキ"
-  ]
+  ],
+  "wide": "二人_引き"
  },
  "lines": [
   {
@@ -115,7 +111,8 @@
    "text": "ユウキって、誰？",
    "emotion": "嫌悪",
    "effect": "zoom",
-   "gap": 0.8
+   "gap": 0.8,
+   "establish": true
   },
   {
    "speaker": "タクヤ",
@@ -199,7 +196,8 @@
    "speaker": "ミサキ",
    "text": "……どこで会ってるの",
    "emotion": "悲しみ",
-   "gap": 0.8
+   "gap": 0.8,
+   "establish": true
   },
   {
    "speaker": "タクヤ",
@@ -271,7 +269,8 @@
    "speaker": "ミサキ",
    "text": "……なんで、私じゃだめだったの",
    "emotion": "悲しみ",
-   "gap": 1.4
+   "gap": 1.4,
+   "establish": true
   },
   {
    "speaker": "タクヤ",
@@ -317,7 +316,8 @@
    "text": "……ユウキさんって、女の人？",
    "emotion": "おびえ",
    "gap": 1.2,
-   "duo": true
+   "duo": true,
+   "establish": true
   },
   {
    "speaker": "タクヤ",
@@ -375,7 +375,8 @@
   {
    "speaker": "タクヤ",
    "text": "信じてないな。じゃあ証拠見せるよ。昨日ユウキさんに撮ってもらった動画",
-   "emotion": "ふつう"
+   "emotion": "ふつう",
+   "establish": true
   },
   {
    "speaker": "ミサキ",
@@ -401,7 +402,8 @@
     "type": "video"
    },
    "filter": "phone",
-   "yomi": "まだいけますよタクヤさん！ あとじゅっかい！"
+   "yomi": "まだいけますよタクヤさん！ あとじゅっかい！",
+   "listener": "ミサキ"
   },
   {
    "speaker": "タクヤ",
@@ -526,7 +528,8 @@
    "emotion": "喜び",
    "se": "doorbell",
    "gap": 1.2,
-   "yomi": "夜分にすみませーん！ タクヤさん、ジムにプロテイン忘れてましたよー！"
+   "yomi": "夜分にすみませーん！ タクヤさん、ジムにプロテイン忘れてましたよー！",
+   "listener": "ミサキ"
   },
   {
    "speaker": "ミサキ",
@@ -538,7 +541,8 @@
    "speaker": "ユウキ",
    "text": "はい！ 駅前のパーソナルジムです！ 奥さんですか？ いつもタクヤさんを担当してます、トレーナーのユウキです！",
    "emotion": "喜び",
-   "shot": "ユウキ_笑顔"
+   "shot": "ユウキ_笑顔",
+   "listener": "ミサキ"
   },
   {
    "speaker": "ミサキ",
@@ -575,7 +579,8 @@
    "speaker": "ユウキ",
    "text": "奥さんもぜひ体験に来てください！ 初回は優しくしますから！",
    "emotion": "喜び",
-   "shot": "ユウキ_笑顔"
+   "shot": "ユウキ_笑顔",
+   "listener": "ミサキ"
   },
   {
    "speaker": "ミサキ",
@@ -592,7 +597,8 @@
    "emotion": "ふつう",
    "se": "notify",
    "gap": 1.0,
-   "yomi": "あ、かぞくグループにおかあさんから"
+   "yomi": "あ、かぞくグループにおかあさんから",
+   "establish": true
   },
   {
    "speaker": "義母",
@@ -626,7 +632,8 @@
    "emotion": "喜び",
    "shot": "ユウキ_笑顔",
    "gap": 1.2,
-   "yomi": "あ、おかあさま、僕が担当してます！"
+   "yomi": "あ、おかあさま、僕が担当してます！",
+   "listener": "ミサキ"
   },
   {
    "speaker": "ミサキ",

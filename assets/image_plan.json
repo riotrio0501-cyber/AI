@@ -545,6 +545,15 @@
     240
    ],
    "prompt": "open mouth, talking, 1girl"
+  },
+  {
+   "name": "shots/二人_引き",
+   "seed": 51,
+   "size": [
+    1216,
+    832
+   ],
+   "prompt": "1boy, 1girl, couple, sitting at dining table, facing each other, wide shot, from side, modern apartment, living room, night, warm lamp light, man with short black hair, wet hair, towel around neck, grey t-shirt, woman with dark brown bob cut, cream knit sweater, arms crossed, angry, smartphone on table, tense atmosphere"
   }
  ]
 }
