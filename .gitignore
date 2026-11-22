@@ -3,3 +3,4 @@ output/_audio.wav
 __pycache__/
 output/_catalog/
 output/*.mp4
+output/_log_*
