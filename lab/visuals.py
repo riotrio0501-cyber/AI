@@ -347,7 +347,9 @@ class CompareVisual(Visual):
         d.rounded_rectangle([0, 0, w * s - 1, h * s - 1], radius=36 * s,
                             fill=(GREEN + (255,)) if hi else (255, 255, 255, 46))
         d.text((w * s / 2, 64 * s), label, font=_font(40 * s), fill=WHITE, anchor="mm")
-        size = 92 if len(value) <= 5 else 72
+        size = 92
+        while size > 40 and _font(size * s).getlength(value) > (w - 50) * s:
+            size -= 2
         d.text((w * s / 2, 180 * s), value, font=_font(size * s), fill=GOLD if hi else WHITE, anchor="mm",
                stroke_width=(6 if hi else 0) * s, stroke_fill=NAVY)
         if not hi:
