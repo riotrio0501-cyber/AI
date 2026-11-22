@@ -106,6 +106,7 @@ def _person(d, cx, top, s, body=GREEN, cap=False, tie=False, hair=True):
 
 def icon(name, text=None, size=300):
     """アイコン1つ（size四方くらい）"""
+    text = None if text is None else str(text)
     s = size * SS
     im, d = _canvas(size, size)
     c = s / 2
@@ -246,7 +247,7 @@ class IconVisual(Visual):
     def setup(self):
         sp = self.spec
         self.img = _shadow(icon(sp["name"], sp.get("text"), size=sp.get("size", 400)))
-        self.cap = _caption(sp["caption"]) if sp.get("caption") else None
+        self.cap = _caption(str(sp["caption"])) if sp.get("caption") else None
 
     def frame(self, lt):
         im = self.canvas()

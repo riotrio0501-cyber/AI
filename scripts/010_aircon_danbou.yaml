@@ -27,7 +27,7 @@ scenes:
   - role: point
     telop: "年間[[約1,650円]]の節約"
     narration: 21度から20度にすると、年間で約1650円の節約という国の試算も。
-    visual: {type: icon, name: coin, text: 1,650}
+    visual: {type: icon, name: coin, text: "1,650"}
     check: 要確認  # 外気温6℃・2.2kW・1日9時間の条件。電気料金単価で変わる
   - role: point
     telop: "[[フィルター掃除]]も\n月1〜2回"
