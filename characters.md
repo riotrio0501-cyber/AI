@@ -16,7 +16,7 @@
 ## 共通：絵のタッチ
 
 ```prompt:style
-3D animated feature film still, stylized CG cartoon, soft rounded shapes, soft fluffy fur and feathers with subsurface scattering, big glossy expressive eyes, exaggerated squash-and-stretch facial expressions, prehistoric frozen world of snow and blue ice, soft cinematic lighting with cool blue shadows and warm golden highlights, shallow depth of field, vertical 9:16 composition, family-friendly slapstick comedy, highly detailed
+high-end 3D animated feature film still, highly detailed realistic rendering with stylized cartoon proportions, dense realistic individual fur strands with natural clumping and soft backlit rim light, detailed moist nose, highly detailed glossy eyes with textured irises and wet reflections, tactile textures on claws, skin and shell, exaggerated squash-and-stretch facial expressions, prehistoric frozen world of crisp white snow and translucent blue ice under a vivid saturated blue sky, bright cinematic sunlight with cool blue shadows, slight wide-angle lens close to the subject, shallow depth of field, vertical 9:16 composition, family-friendly slapstick comedy
 ```
 
 ## 共通：入れてほしくないもの（ネガティブ）
