@@ -586,8 +586,8 @@
    "prompt": "1boy, solo, male focus, young man, 25 years old, japanese, short brown hair, grey hoodie, nervous, blush, closed mouth, upper body, looking at viewer, blurry background, indoors, apartment, night",
    "negative": "female",
    "face": [
-    400,
-    330
+    380,
+    290
    ]
   },
   {
@@ -756,15 +756,15 @@
    "name": "ケンタ/open",
    "from": "ケンタ/close",
    "mask": [
-    350,
-    410,
-    450,
-    472
+    333,
+    370,
+    427,
+    430
    ],
    "strength": 0.8,
    "face": [
-    400,
-    330
+    380,
+    290
    ],
    "prompt": "1boy, open mouth, talking"
   },
@@ -982,18 +982,20 @@
    "name": "shots/ケンタ_期待",
    "from": "ケンタ/close",
    "mask": [
-    200,
-    110,
-    600,
-    510
+    180,
+    68,
+    580,
+    468
    ],
    "feather": 25,
    "strength": 0.9,
    "face": [
-    400,
-    330
+    380,
+    290
    ],
-   "prompt": "1boy, brown hair, excited, sparkling eyes, blush, hopeful smile, closed mouth, heavy breathing"
+   "prompt": "1boy, male focus, young man, short brown hair, excited, sparkling eyes, blush, hopeful smile, closed mouth",
+   "negative": "female, 1girl",
+   "seed": 7
   },
   {
    "name": "shots/ケンタ_絶望",
@@ -1007,8 +1009,8 @@
    "feather": 25,
    "strength": 0.9,
    "face": [
-    400,
-    330
+    380,
+    290
    ],
    "prompt": "1boy, brown hair, despair, pale face, shaded face, blank eyes, open mouth, tears, comedy"
   },
