@@ -146,6 +146,45 @@
    "feather": 25,
    "strength": 0.9,
    "prompt": "1boy, old man, grey hair, buzz cut, embarrassed, full-face blush, red face, looking away, sweat, wavy mouth, closed mouth, comedy"
+  },
+  {
+   "name": "bg/living_night",
+   "seed": 31,
+   "size": [
+    1216,
+    832
+   ],
+   "prompt": "no humans, scenery, indoors, modern apartment, living room, night, sofa, dining table, smartphone on table, warm lamp light, window, city lights"
+  },
+  {
+   "name": "タクヤ/close",
+   "seed": 32,
+   "size": [
+    1216,
+    832
+   ],
+   "negative": "female",
+   "prompt": "1boy, solo, male focus, adult, 30s, japanese, short black hair, wet hair, towel around neck, grey t-shirt, gentle droopy eyes, slightly blank expression, closed mouth, upper body, looking at viewer, indoors, modern apartment, living room, night, blurry background"
+  },
+  {
+   "name": "ミサキ/close",
+   "seed": 33,
+   "size": [
+    1216,
+    832
+   ],
+   "negative": "child, loli",
+   "prompt": "1girl, solo, mature female, 30s, japanese, dark brown hair, bob cut, sharp eyes, serious, suspicious, closed mouth, cream knit sweater, upper body, looking at viewer, indoors, modern apartment, living room, night, blurry background"
+  },
+  {
+   "name": "ユウキ/close",
+   "seed": 34,
+   "size": [
+    1216,
+    832
+   ],
+   "negative": "female",
+   "prompt": "1boy, solo, male focus, young man, muscular, broad shoulders, tan skin, short brown hair, bright eyes, confident smile, closed mouth, black tank top, sportswear, upper body, looking at viewer, indoors, apartment entrance, night, blurry background"
   }
  ]
 }

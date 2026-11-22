@@ -122,6 +122,32 @@ def make_sounds():
         a = (tone(784, 0.18, "square") + tone(1047, 0.18, "square")) * env(int(0.18 * SR), r=0.1)
         b = (tone(784, 0.5, "square") + tone(1047, 0.5, "square")) * env(int(0.5 * SR), r=0.2)
         save_wav(p, np.concatenate([a, np.zeros(int(0.07 * SR)), b]) * 0.35)
+    p = ROOT / "assets/se/notify.wav"       # 通知音（ポロン）※既存アプリの音は使わない
+    if need(p):
+        a = tone(1318, 0.12) * env(int(0.12 * SR), r=0.08)
+        b = tone(1760, 0.35) * env(int(0.35 * SR), r=0.15)
+        save_wav(p, np.concatenate([a, b]) * 0.5)
+    p = ROOT / "assets/se/glass.wav"        # ガラスが割れる音
+    if need(p):
+        n = int(1.2 * SR); t = np.arange(n) / SR; x = np.zeros(n)
+        for k in range(40):
+            s0 = int(rng.uniform(0, 0.5) * SR); m = int(0.25 * SR)
+            f0 = rng.uniform(2500, 7000); tt = np.arange(min(m, n - s0)) / SR
+            x[s0:s0 + len(tt)] += np.sin(2 * np.pi * f0 * tt) * np.exp(-tt / 0.04) * rng.uniform(0.2, 0.6)
+        hp = rng.normal(0, 1, n); hp = hp - np.convolve(hp, np.ones(8) / 8, "same")
+        x += hp * np.exp(-t / 0.08) * 0.8
+        save_wav(p, x / np.abs(x).max() * 0.8)
+    p = ROOT / "assets/se/doorbell.wav"     # ピンポーン
+    if need(p):
+        a = (tone(659, 0.5) + 0.3 * tone(1318, 0.5)) * env(int(0.5 * SR), r=0.35)
+        b = (tone(523, 1.0) + 0.3 * tone(1046, 1.0)) * env(int(1.0 * SR), r=0.5)
+        save_wav(p, np.concatenate([a[:int(0.4 * SR)], b]) * 0.45)
+    p = ROOT / "assets/se/door.wav"         # ドアが開く音（ガチャ）
+    if need(p):
+        n = int(0.5 * SR); t = np.arange(n) / SR
+        x = rng.normal(0, 1, n) * (np.exp(-t / 0.01) + 0.6 * np.exp(-np.maximum(t - 0.12, 0) / 0.015) * (t > 0.12))
+        x += np.sin(2 * np.pi * 180 * t) * np.exp(-t / 0.05) * 0.5
+        save_wav(p, x / np.abs(x).max() * 0.6)
     p = ROOT / "assets/bgm/bgm.wav"         # のんきなループBGM
     if need(p):
         bpm = 112; beat = 60 / bpm

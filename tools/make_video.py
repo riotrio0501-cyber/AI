@@ -74,12 +74,10 @@ def make_voices(lines, cast):
             ln["voice_id"] = vid
             opts = ["vv", vid, speed, volume, ln.get("pitch", 0.0)]
         key = hashlib.md5(json.dumps([text, opts], ensure_ascii=False).encode()).hexdigest()[:8]
-        out = vdir / f"{i + 1:02d}_{ln['speaker']}_{key}.wav"
+        out = vdir / f"{ln['speaker']}_{key}.wav"   # 同じセリフ・同じ声なら作り直さない
         ln["wav"] = out
         if out.exists():
             continue
-        for old in vdir.glob(f"{i + 1:02d}_*.wav"):
-            old.unlink()
         if opts[0] == "sbv2":
             import sbv2, soundfile as sf
             sr, x = sbv2.synth(text, opts[1], opts[2], opts[3], speed, volume)
@@ -98,17 +96,37 @@ def effects(ln):
     return set([e] if isinstance(e, str) else e)
 
 
-def build_timeline(lines):
-    t = 1.2  # 最初はタイトルと背景だけ見せる
+def phone_filter(x):
+    """スマホのスピーカーから出たような音（低音と高音を削る）"""
+    k = np.ones(6) / 6
+    lo = np.convolve(x, k, "same")
+    hp = lo - np.convolve(lo, np.ones(60) / 60, "same")
+    return np.clip(hp * 2.2, -0.9, 0.9) * 0.8
+
+
+def inner_voice(x):
+    """心の声（少し響かせる）"""
+    y = x.copy()
+    for d, g in ((int(0.07 * SR), 0.35), (int(0.14 * SR), 0.2), (int(0.21 * SR), 0.1)):
+        y[d:] += x[:-d] * g
+    return y * 0.8
+
+
+def build_timeline(lines, intro=1.2):
+    t = intro  # 最初はタイトルと背景だけ見せる
     for ln in lines:
         fx = effects(ln)
-        t += GAP + (PAUSE if "pause" in fx else 0)
+        t += GAP + (PAUSE if "pause" in fx else 0) + ln.get("gap", 0)
         ln["start"] = t
         if ln["wav"]:
             ln["audio"] = read_wav(ln["wav"])
             if ln.get("muffle"):  # 壁ごしの声（こもった音）
                 k = np.ones(14) / 14
                 ln["audio"] = np.convolve(np.convolve(ln["audio"], k, "same"), k, "same") * 0.9
+            if ln.get("filter") == "phone":
+                ln["audio"] = phone_filter(ln["audio"])
+            if ln.get("inner"):
+                ln["audio"] = inner_voice(ln["audio"])
             dur = len(ln["audio"]) / SR
         else:
             ln["audio"] = None
@@ -176,8 +194,9 @@ def hex2rgb(h):
     h = h.lstrip("#"); return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 
-def cover(im, w=W, h=H):
+def cover(im, w=None, h=None):
     """画面いっぱいに拡大して中央を切り抜く"""
+    w, h = w or W, h or H
     s = max(w / im.width, h / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
     x, y = (im.width - w) // 2, (im.height - h) // 2
@@ -200,6 +219,8 @@ class Shots:
         if kind == "char":
             d = ROOT / "assets/characters" / name
             im = load_img(d / f"{mouth}.png") or load_img(d / "close.png")
+        elif kind == "phone":
+            im = phone_screen(json.loads(name), self.get(("bg", None, None)))
         elif kind == "shot":
             im = load_img(ROOT / "assets/shots" / f"{name}.png")
         else:
@@ -211,6 +232,8 @@ class Shots:
 def shot_key(ln, mouth_open):
     if ln is None:
         return ("bg", None, None)
+    if ln.get("phone"):
+        return ("phone", json.dumps(ln["phone"], ensure_ascii=False, sort_keys=True), None)
     if ln.get("shot"):
         return ("shot", ln["shot"], None)
     return ("char", ln["speaker"], "open" if mouth_open else "close")
@@ -236,14 +259,88 @@ def subtitle_layer(speaker, text, color):
     """白い文字＋話者の色のふち＋黒いふち"""
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    f = ImageFont.truetype(FONT, 80)
-    rows = wrap(text, f, W - 100, d)
-    lh = 104; top = 1560 - lh * len(rows)
+    land = W > H
+    f = ImageFont.truetype(FONT, 66 if land else 80)
+    rows = wrap(text, f, W - (360 if land else 100), d)
+    lh = 86 if land else 104
+    top = (H - 50 if land else 1560) - lh * len(rows)
     for i, r in enumerate(rows):
         tw = d.textlength(r, font=f); x, y = (W - tw) / 2, top + i * lh
         d.text((x, y), r, font=f, fill="black", stroke_width=16, stroke_fill="black")
         d.text((x, y), r, font=f, fill="white", stroke_width=9, stroke_fill=hex2rgb(color))
     return layer
+
+
+def title_card(title):
+    """長編用：最初に出す大きなタイトル"""
+    layer = Image.new("RGBA", (W, H), (0, 0, 0, 120))
+    d = ImageDraw.Draw(layer)
+    f = ImageFont.truetype(FONT, 76)
+    rows = wrap(title, f, W - 240, d)
+    top = H / 2 - 50 * len(rows)
+    for i, r in enumerate(rows):
+        tw = d.textlength(r, font=f)
+        d.text(((W - tw) / 2, top + i * 100), r, font=f, fill=(255, 236, 120), stroke_width=7, stroke_fill="black")
+    return layer
+
+
+def phone_screen(p, bg):
+    """スマホの画面（通知・トーク・動画再生）を描く。本物のアプリのロゴやデザインは使わない"""
+    from PIL import ImageFilter
+    im = bg.filter(ImageFilter.GaussianBlur(18)).convert("RGBA")
+    im.alpha_composite(Image.new("RGBA", im.size, (0, 0, 0, 110)))
+    pw, ph = (600, 1040) if W > H else (820, 1460)
+    px, py = (W - pw) // 2, (H - ph) // 2
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([px - 14, py - 14, px + pw + 14, py + ph + 14], 70, fill=(20, 20, 24))
+    scr = [px, py, px + pw, py + ph]
+    F = lambda n: ImageFont.truetype(FONT, n)
+    sc = pw / 480
+    if p["type"] == "notify":
+        d.rounded_rectangle(scr, 56, fill=(32, 44, 78))
+        d.text((px + pw / 2, py + 170 * sc), "23:14", font=F(int(110 * sc)), fill="white", anchor="mm")
+        d.text((px + pw / 2, py + 255 * sc), "11月21日 金曜日", font=F(int(26 * sc)), fill=(220, 225, 240), anchor="mm")
+        cx0, cy0, cx1 = px + 24 * sc, py + 330 * sc, px + pw - 24 * sc
+        rows = []
+        for para in p["text"].split("\n"):
+            rows += wrap(para, F(int(27 * sc)), cx1 - cx0 - 40 * sc, d)
+        cy1 = cy0 + (145 + 40 * len(rows)) * sc
+        d.rounded_rectangle([cx0, cy0, cx1, cy1], 28 * sc, fill=(245, 245, 248))
+        d.rounded_rectangle([cx0 + 20 * sc, cy0 + 20 * sc, cx0 + 64 * sc, cy0 + 64 * sc], 10 * sc, fill=(46, 170, 140))
+        d.text((cx0 + 78 * sc, cy0 + 42 * sc), "メッセージ ・ 今", font=F(int(22 * sc)), fill=(120, 120, 130), anchor="lm")
+        d.text((cx0 + 22 * sc, cy0 + 80 * sc), p["from"], font=F(int(30 * sc)), fill=(20, 20, 20))
+        for i, r in enumerate(rows):
+            d.text((cx0 + 22 * sc, cy0 + (122 + 40 * i) * sc), r, font=F(int(27 * sc)), fill=(40, 40, 40))
+    elif p["type"] == "chat":
+        d.rounded_rectangle(scr, 56, fill=(214, 224, 236))
+        d.rectangle([px, py + 40 * sc, px + pw, py + 130 * sc], fill=(48, 62, 92))
+        d.text((px + pw / 2, py + 85 * sc), p["title"] + " (4)", font=F(int(28 * sc)), fill="white", anchor="mm")
+        y = py + 170 * sc
+        for m in p["messages"]:
+            f = F(int(26 * sc)); rows = wrap(m["text"], f, 330 * sc, d)
+            bw = max(d.textlength(r, font=f) for r in rows) + 40 * sc; bh = (24 + 36 * len(rows)) * sc
+            if m.get("mine"):
+                x1 = px + pw - 24 * sc; x0 = x1 - bw
+                d.rounded_rectangle([x0, y, x1, y + bh], 22 * sc, fill=(140, 220, 120))
+                lab = (f"既読{m['read']}\n" if m.get("read") else "") + "23:20"
+                d.multiline_text((x0 - 10 * sc, y + bh), lab, font=F(int(18 * sc)), fill=(90, 90, 100), anchor="rd", align="right")
+            else:
+                d.ellipse([px + 20 * sc, y, px + 72 * sc, y + 52 * sc], fill=(150, 160, 180))
+                d.text((px + 86 * sc, y - 4 * sc), m["from"], font=F(int(20 * sc)), fill=(70, 70, 80))
+                y += 26 * sc
+                x0 = px + 86 * sc; x1 = x0 + bw
+                d.rounded_rectangle([x0, y, x1, y + bh], 22 * sc, fill="white")
+            for i, r in enumerate(rows):
+                d.text((x0 + 20 * sc, y + (12 + 36 * i) * sc), r, font=f, fill=(20, 20, 20))
+            y += bh + 36 * sc
+    else:  # 動画の再生画面
+        d.rounded_rectangle(scr, 56, fill=(8, 8, 10))
+        cx, cy = px + pw / 2, py + ph * 0.45
+        d.polygon([(cx - 40 * sc, cy - 50 * sc), (cx - 40 * sc, cy + 50 * sc), (cx + 50 * sc, cy)], fill=(230, 230, 230))
+        d.rectangle([px + 40 * sc, py + ph - 140 * sc, px + pw - 40 * sc, py + ph - 132 * sc], fill=(90, 90, 90))
+        d.rectangle([px + 40 * sc, py + ph - 140 * sc, px + pw * 0.45, py + ph - 132 * sc], fill=(230, 60, 60))
+        d.text((px + 40 * sc, py + ph - 110 * sc), "0:18 / 0:42", font=F(int(22 * sc)), fill=(200, 200, 200))
+    return im.convert("RGB")
 
 
 def title_layer(title):
@@ -269,7 +366,9 @@ def render(lines, total, cast, audio, out):
             cur[f] = i
     mouths = [mouth_track(ln, nframes) for ln in lines]
     sub_cache = {}
-    title = title_layer(cast["title"])
+    intro = cast.get("title_mode") == "intro"
+    title = title_card(cast["title"]) if intro else title_layer(cast["title"])
+    black_from = int((lines[-1]["end"] + 0.25) * FPS) if cast.get("end") == "blackout" else nframes + 1
     rng = np.random.default_rng(1)
     z, prev_shot, shot_start = 1.0, None, 0
 
@@ -292,7 +391,7 @@ def render(lines, total, cast, audio, out):
         tz = 1.22 if "zoom" in fx else 1.0
         z += (tz - z) * 0.3
         zz = max(1.0, min(z * min(drift, 1.08), 1.4))
-        cx, cy = W / 2, H * 0.36           # 顔のあたりに向かって寄る
+        cx, cy = W / 2, H * (0.36 if H > W else 0.4)           # 顔のあたりに向かって寄る
         sx = sy = 0.0
         if "shake" in fx:
             el = f / FPS - ln["start"]
@@ -304,8 +403,11 @@ def render(lines, total, cast, audio, out):
         x0 = min(max(cx - bw / 2 + sx, 0), W - bw); y0 = min(max(cy - bh / 2 + sy, 0), H - bh)
         frame = scene.resize((W, H), Image.BILINEAR, box=(x0, y0, x0 + bw, y0 + bh)) if zz > 1.001 else scene
         frame = frame.convert("RGBA")
-        frame.alpha_composite(title)
-        if ln:
+        if f >= black_from:  # 暗転
+            ff.stdin.write(bytes(W * H * 3)); continue
+        if not intro or ln is None:
+            frame.alpha_composite(title)
+        if ln and ln.get("phone", {}).get("type") not in ("notify", "chat"):
             if i not in sub_cache:
                 sub_cache[i] = subtitle_layer(ln["speaker"], ln["text"], cast["characters"][ln["speaker"]]["color"])
             frame.alpha_composite(sub_cache[i])
@@ -360,16 +462,24 @@ def write_credits(lines, out):
 
 
 def main():
-    script = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "script/script.json"
-    out = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "output/video.mp4"
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    script = Path(args[0]) if args else ROOT / "script/script.json"
+    out = Path(args[1]) if len(args) > 1 else ROOT / "output/video.mp4"
     cast = json.loads((ROOT / "script/cast.json").read_text())
     data = json.loads(Path(script).read_text())
     if isinstance(data, dict):  # {"title": ..., "lines": [...]} 形式（回ごとにタイトルを持てる）
         cast["title"] = data.get("title", cast["title"]); lines = data["lines"]
+        if data.get("cast"):  # 回ごとの配役・背景・画面の向き
+            cast.update(data["cast"])
     else:
         lines = data
+    global W, H
+    if cast.get("format") == "landscape":
+        W, H = 1920, 1080
     print("① 音声を作成"); make_voices(lines, cast)
-    total = build_timeline(lines)
+    if "--voices-only" in sys.argv:
+        return
+    total = build_timeline(lines, 3.0 if cast.get("title_mode") == "intro" else 1.2)
     print(f"② 音を合成（長さ {total:.1f} 秒）"); audio = mix_audio(lines, total, cast)
     print("③ 映像を合成"); render(lines, total, cast, audio, out)
     print("④ クレジット"); print(write_credits(lines, out.with_name(out.stem + "_credits.txt")))

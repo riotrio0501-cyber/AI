@@ -1,0 +1,655 @@
+{
+ "title": "夫のスマホに『明日はもっと激しくいきましょう♡』と届いていた",
+ "cast": {
+  "format": "landscape",
+  "title_mode": "intro",
+  "end": "blackout",
+  "background": "assets/backgrounds/living_night.png",
+  "characters": {
+   "タクヤ": {
+    "color": "#2f6fd6",
+    "engine": "sbv2",
+    "model": "jvnv-M1-jp"
+   },
+   "ミサキ": {
+    "color": "#e0457b",
+    "engine": "sbv2",
+    "model": "jvnv-F1-jp"
+   },
+   "ユウキ": {
+    "color": "#f08a24",
+    "engine": "sbv2",
+    "model": "jvnv-M2-jp"
+   },
+   "通知": {
+    "color": "#555555",
+    "voice_id": 30
+   },
+   "義父": {
+    "color": "#6b4f2a",
+    "engine": "sbv2",
+    "model": "aivis-tanaka",
+    "strength": 1.2,
+    "emotion_styles": {
+     "ふつう": "ノーマル",
+     "怒り": "Anger"
+    },
+    "credit": [
+     "音声モデル：TANAKA（AivisHub / ACML 1.0）"
+    ]
+   },
+   "義母": {
+    "color": "#8a5bc9",
+    "engine": "sbv2",
+    "model": "jvnv-F2-jp"
+   }
+  }
+ },
+ "lines": [
+  {
+   "speaker": "通知",
+   "text": "ユウキ：今日もお疲れさまでした♡ 明日はもっと激しくいきましょう。奥さんにはまだ内緒ですよね？",
+   "emotion": "ふつう",
+   "yomi": "ユウキ。今日もお疲れさまでした。明日はもっと激しくいきましょう。奥さんにはまだ内緒ですよね？",
+   "phone": {
+    "type": "notify",
+    "from": "ユウキ",
+    "text": "今日もお疲れさまでした♡\n明日はもっと激しくいきましょう。\n奥さんにはまだ内緒ですよね？"
+   },
+   "se": "notify",
+   "gap": 0.6
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "……は？",
+   "emotion": "驚き",
+   "gap": 0.6
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "……はぁ！？",
+   "emotion": "怒り",
+   "effect": [
+    "shake",
+    "zoom"
+   ],
+   "se": "don",
+   "gap": 1.0
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "あ〜、いいお湯だった。……ミサキ？ 顔こわいよ？",
+   "emotion": "喜び",
+   "se": "door",
+   "gap": 0.8
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "座って",
+   "emotion": "嫌悪",
+   "gap": 0.5
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "え",
+   "emotion": "おびえ"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "座って",
+   "emotion": "怒り",
+   "effect": "zoom",
+   "gap": 0.6
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "ユウキって、誰？",
+   "emotion": "嫌悪",
+   "effect": "zoom",
+   "gap": 0.8
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "……バレたか",
+   "emotion": "悲しみ",
+   "gap": 1.2
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "（ジムのこと、ついにバレた……）",
+   "emotion": "悲しみ",
+   "inner": true
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "否定しないんだ",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "ごめん。ずっと言おうと思ってたんだけど、言えなくて",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "いつから",
+   "emotion": "嫌悪"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "3か月前から。週3で",
+   "emotion": "ふつう",
+   "yomi": "さんかげつまえから。しゅうさんで"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "週3！？",
+   "emotion": "驚き",
+   "effect": "zoom",
+   "yomi": "しゅうさん！？"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "最初はきつくてさ。正直、泣いたこともある",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "泣くほど！？",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "でもユウキさんが優しくリードしてくれて。『初めてなら、ゆっくりでいいですよ』って",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "聞きたくない聞きたくない",
+   "emotion": "嫌悪"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "今は自分から『もっと』って言えるようになった",
+   "emotion": "喜び",
+   "shot": "タクヤ_ドヤ"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "一番聞きたくないやつ！",
+   "emotion": "怒り",
+   "effect": "shake",
+   "shot": "ミサキ_激怒"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "……どこで会ってるの",
+   "emotion": "悲しみ",
+   "gap": 0.8
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "駅前の、個室",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "個室……",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "二人きりのほうが集中できるからって",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "お金は？",
+   "emotion": "嫌悪"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "月6万",
+   "emotion": "ふつう",
+   "yomi": "つきろくまん"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "払ってんの！？ あなたが！？",
+   "emotion": "驚き",
+   "effect": [
+    "zoom",
+    "shake"
+   ]
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "安くはないけど、それだけの価値はあるよ。ユウキさん、すごいんだ。体の隅々まで見てくれて",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "…………",
+   "emotion": "ふつう",
+   "shot": "ミサキ_衝撃",
+   "pause": 1.5
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "『今日は下半身いきましょう』とか、その日の俺に合わせてくれるし",
+   "emotion": "喜び",
+   "yomi": "今日はかはんしんいきましょうとか、その日の俺に合わせてくれるし"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "もう黙って！！",
+   "emotion": "怒り",
+   "effect": "shake",
+   "shot": "ミサキ_激怒",
+   "se": "glass"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "……なんで、私じゃだめだったの",
+   "emotion": "悲しみ",
+   "gap": 1.4
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "だってミサキ、最近俺の体に全然興味なさそうだったじゃん",
+   "emotion": "悲しみ"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "…………",
+   "emotion": "ふつう",
+   "shot": "ミサキ_図星",
+   "pause": 1.6
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "だから見返したかったんだよ。来月の結婚記念日に、生まれ変わった俺を見せたくて",
+   "emotion": "喜び"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "何を見せる気！？",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "全部",
+   "emotion": "ふつう",
+   "shot": "タクヤ_ドヤ",
+   "effect": "zoom",
+   "gap": 0.6
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "全部！？",
+   "emotion": "驚き",
+   "effect": [
+    "zoom",
+    "shake"
+   ]
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "……ユウキさんって、女の人？",
+   "emotion": "おびえ",
+   "gap": 1.2
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "え？ 男だよ",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "…………そっち！？",
+   "emotion": "驚き",
+   "effect": "shake",
+   "shot": "ミサキ_衝撃",
+   "se": "shock",
+   "gap": 2.2
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "性別は関係ないだろ。プロなんだから",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "プロ！？！？",
+   "emotion": "驚き",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "プロだよ。資格も持ってるし",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "資格があるの！？ そういうのって！？",
+   "emotion": "驚き"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "あるよ、普通に",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "普通に！？",
+   "emotion": "驚き",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "信じてないな。じゃあ証拠見せるよ。昨日ユウキさんに撮ってもらった動画",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "見せなくていい！ 絶対見せなくていい！！",
+   "emotion": "怒り",
+   "effect": "shake"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "んっ……もう無理……っ！",
+   "emotion": "悲しみ",
+   "phone": {
+    "type": "video"
+   },
+   "filter": "phone",
+   "gap": 0.6
+  },
+  {
+   "speaker": "ユウキ",
+   "text": "まだいけますよタクヤさん！ あと10回！",
+   "emotion": "喜び",
+   "phone": {
+    "type": "video"
+   },
+   "filter": "phone",
+   "yomi": "まだいけますよタクヤさん！ あとじゅっかい！"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "あぁっ……！",
+   "emotion": "悲しみ",
+   "phone": {
+    "type": "video"
+   },
+   "filter": "phone"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "出てって！！！",
+   "emotion": "怒り",
+   "effect": "shake",
+   "shot": "ミサキ_激怒",
+   "se": "don"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "いや、この動画を記念日にミサキに送ろうと思って……あれ？",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "……送信済みになってる",
+   "emotion": "おびえ",
+   "phone": {
+    "type": "chat",
+    "title": "ミサキ家 家族グループ",
+    "messages": [
+     {
+      "from": "タクヤ",
+      "text": "▶ 動画（0:42）",
+      "mine": true
+     }
+    ]
+   },
+   "gap": 1.2
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "誰に",
+   "emotion": "嫌悪"
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "……『ミサキ家 家族グループ』",
+   "emotion": "おびえ",
+   "phone": {
+    "type": "chat",
+    "title": "ミサキ家 家族グループ",
+    "messages": [
+     {
+      "from": "タクヤ",
+      "text": "▶ 動画（0:42）",
+      "mine": true
+     }
+    ]
+   },
+   "yomi": "ミサキけ、かぞくグループ"
+  },
+  {
+   "speaker": "通知",
+   "text": "既読3",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "chat",
+    "title": "ミサキ家 家族グループ",
+    "messages": [
+     {
+      "from": "タクヤ",
+      "text": "▶ 動画（0:42）",
+      "mine": true,
+      "read": 3
+     }
+    ]
+   },
+   "se": "notify",
+   "gap": 2.0,
+   "yomi": "きどくさん"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "お父さんもお母さんもいるやつ！！",
+   "emotion": "怒り",
+   "effect": "shake",
+   "shot": "ミサキ_衝撃"
+  },
+  {
+   "speaker": "義父",
+   "text": "タクヤ君。話がある",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "chat",
+    "title": "ミサキ家 家族グループ",
+    "messages": [
+     {
+      "from": "タクヤ",
+      "text": "▶ 動画（0:42）",
+      "mine": true,
+      "read": 3
+     },
+     {
+      "from": "お父さん",
+      "text": "タクヤ君。話がある"
+     }
+    ]
+   },
+   "se": "notify",
+   "gap": 0.6
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "終わった……",
+   "emotion": "悲しみ",
+   "shot": "タクヤ_絶望"
+  },
+  {
+   "speaker": "ユウキ",
+   "text": "夜分にすみませ〜ん！ タクヤさん、ジムにプロテイン忘れてましたよ〜！",
+   "emotion": "喜び",
+   "se": "doorbell",
+   "gap": 1.2,
+   "yomi": "夜分にすみませーん！ タクヤさん、ジムにプロテイン忘れてましたよー！"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "……ジム？",
+   "emotion": "驚き",
+   "gap": 0.8
+  },
+  {
+   "speaker": "ユウキ",
+   "text": "はい！ 駅前のパーソナルジムです！ 奥さんですか？ いつもタクヤさんを担当してます、トレーナーのユウキです！",
+   "emotion": "喜び",
+   "shot": "ユウキ_笑顔"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "パーソナル……ジム……",
+   "emotion": "驚き",
+   "gap": 1.0
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "そうだよ。何だと思ってたの？",
+   "emotion": "ふつう"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "…………",
+   "emotion": "ふつう",
+   "shot": "ミサキ_図星",
+   "pause": 1.3
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "ねえ、何だと思ってたの？",
+   "emotion": "ふつう",
+   "effect": "zoom"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "うるさい！！",
+   "emotion": "怒り",
+   "effect": "shake",
+   "shot": "ミサキ_激怒"
+  },
+  {
+   "speaker": "ユウキ",
+   "text": "奥さんもぜひ体験に来てください！ 初回は優しくしますから！",
+   "emotion": "喜び",
+   "shot": "ユウキ_笑顔"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "言い方！！",
+   "emotion": "怒り",
+   "effect": [
+    "zoom",
+    "shake"
+   ]
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "あ、家族グループにお義母さんから……",
+   "emotion": "ふつう",
+   "se": "notify",
+   "gap": 1.0,
+   "yomi": "あ、かぞくグループにおかあさんから"
+  },
+  {
+   "speaker": "義母",
+   "text": "ミサキには内緒にしてたけど、お母さんもユウキ先生に週3で激しくしてもらってます♡",
+   "emotion": "喜び",
+   "phone": {
+    "type": "chat",
+    "title": "ミサキ家 家族グループ",
+    "messages": [
+     {
+      "from": "タクヤ",
+      "text": "▶ 動画（0:42）",
+      "mine": true,
+      "read": 3
+     },
+     {
+      "from": "お父さん",
+      "text": "タクヤ君。話がある"
+     },
+     {
+      "from": "お母さん",
+      "text": "ミサキには内緒にしてたけど、お母さんもユウキ先生に週3で激しくしてもらってます♡"
+     }
+    ]
+   },
+   "yomi": "ミサキには内緒にしてたけど、お母さんもユウキ先生にしゅうさんで激しくしてもらってます"
+  },
+  {
+   "speaker": "ユウキ",
+   "text": "あ、お義母さま、僕が担当してます！",
+   "emotion": "喜び",
+   "shot": "ユウキ_笑顔",
+   "gap": 1.2,
+   "yomi": "あ、おかあさま、僕が担当してます！"
+  },
+  {
+   "speaker": "ミサキ",
+   "text": "お母さん！？",
+   "emotion": "驚き",
+   "effect": [
+    "zoom",
+    "shake"
+   ]
+  },
+  {
+   "speaker": "義父",
+   "text": "母さん。話がある",
+   "emotion": "ふつう",
+   "phone": {
+    "type": "chat",
+    "title": "ミサキ家 家族グループ",
+    "messages": [
+     {
+      "from": "タクヤ",
+      "text": "▶ 動画（0:42）",
+      "mine": true,
+      "read": 3
+     },
+     {
+      "from": "お父さん",
+      "text": "タクヤ君。話がある"
+     },
+     {
+      "from": "お母さん",
+      "text": "ミサキには内緒にしてたけど、お母さんもユウキ先生に週3で激しくしてもらってます♡"
+     },
+     {
+      "from": "お父さん",
+      "text": "母さん。話がある"
+     }
+    ]
+   },
+   "se": "notify",
+   "gap": 0.6
+  },
+  {
+   "speaker": "タクヤ",
+   "text": "矛先変わった！！",
+   "emotion": "驚き",
+   "effect": [
+    "zoom",
+    "shake"
+   ],
+   "se": "don"
+  }
+ ]
+}
