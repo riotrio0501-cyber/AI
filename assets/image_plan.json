@@ -158,13 +158,17 @@
   },
   {
    "name": "タクヤ/close",
-   "seed": 32,
+   "seed": 42,
    "size": [
     1216,
     832
    ],
    "negative": "female",
-   "prompt": "1boy, solo, male focus, adult, 30s, japanese, short black hair, wet hair, towel around neck, grey t-shirt, gentle droopy eyes, slightly blank expression, closed mouth, upper body, looking at viewer, indoors, modern apartment, living room, night, blurry background"
+   "prompt": "1boy, solo, male focus, adult, 30s, japanese, short black hair, wet hair, towel around neck, grey t-shirt, gentle droopy eyes, slightly blank expression, closed mouth, portrait, head and shoulders, centered, face focus, looking at viewer, indoors, modern apartment, living room, night, blurry background",
+   "face": [
+    720,
+    260
+   ]
   },
   {
    "name": "ミサキ/close",
@@ -174,7 +178,11 @@
     832
    ],
    "negative": "child, loli",
-   "prompt": "1girl, solo, mature female, 30s, japanese, dark brown hair, bob cut, sharp eyes, serious, suspicious, closed mouth, cream knit sweater, upper body, looking at viewer, indoors, modern apartment, living room, night, blurry background"
+   "prompt": "1girl, solo, mature female, 30s, japanese, dark brown hair, bob cut, sharp eyes, serious, suspicious, closed mouth, cream knit sweater, upper body, looking at viewer, indoors, modern apartment, living room, night, blurry background",
+   "face": [
+    640,
+    240
+   ]
   },
   {
    "name": "ユウキ/close",
@@ -184,7 +192,161 @@
     832
    ],
    "negative": "female",
-   "prompt": "1boy, solo, male focus, young man, muscular, broad shoulders, tan skin, short brown hair, bright eyes, confident smile, closed mouth, black tank top, sportswear, upper body, looking at viewer, indoors, apartment entrance, night, blurry background"
+   "prompt": "1boy, solo, male focus, young man, muscular, broad shoulders, tan skin, short brown hair, bright eyes, confident smile, closed mouth, black tank top, sportswear, upper body, looking at viewer, indoors, apartment entrance, night, blurry background",
+   "face": [
+    590,
+    330
+   ]
+  },
+  {
+   "name": "タクヤ/open",
+   "from": "タクヤ/close",
+   "mask": [
+    668,
+    358,
+    778,
+    418
+   ],
+   "strength": 0.8,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "1boy, open mouth, talking"
+  },
+  {
+   "name": "ミサキ/open",
+   "from": "ミサキ/close",
+   "mask": [
+    568,
+    316,
+    658,
+    372
+   ],
+   "strength": 0.8,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "1girl, open mouth, talking, annoyed"
+  },
+  {
+   "name": "ユウキ/open",
+   "from": "ユウキ/close",
+   "mask": [
+    532,
+    408,
+    632,
+    465
+   ],
+   "strength": 0.8,
+   "face": [
+    590,
+    330
+   ],
+   "prompt": "1boy, open mouth, smile, talking, teeth"
+  },
+  {
+   "name": "shots/ミサキ_激怒",
+   "from": "ミサキ/close",
+   "mask": [
+    460,
+    80,
+    830,
+    430
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "1girl, mature female, bob cut, dark brown hair, furious, angry, shouting, open mouth, teeth, anger vein, v-shaped eyebrows, wide-eyed"
+  },
+  {
+   "name": "shots/ミサキ_衝撃",
+   "from": "ミサキ/close",
+   "mask": [
+    460,
+    80,
+    830,
+    430
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "1girl, mature female, bob cut, dark brown hair, shocked, white eyes, blank eyes, pale face, shaded face, sweat, open mouth, comedy"
+  },
+  {
+   "name": "shots/ミサキ_図星",
+   "from": "ミサキ/close",
+   "mask": [
+    460,
+    80,
+    830,
+    430
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    640,
+    240
+   ],
+   "prompt": "1girl, mature female, bob cut, dark brown hair, flustered, embarrassed, full-face blush, sweat, looking away, wavy mouth, comedy"
+  },
+  {
+   "name": "shots/タクヤ_ドヤ",
+   "from": "タクヤ/close",
+   "mask": [
+    470,
+    0,
+    1000,
+    520
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "1boy, black hair, wet hair, smug, confident, proud smile, closed mouth, half-closed eyes, sparkle"
+  },
+  {
+   "name": "shots/タクヤ_絶望",
+   "from": "タクヤ/close",
+   "mask": [
+    470,
+    0,
+    1000,
+    520
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    720,
+    260
+   ],
+   "prompt": "1boy, black hair, wet hair, despair, pale face, shaded face, blank eyes, tears, open mouth, trembling, comedy"
+  },
+  {
+   "name": "shots/ユウキ_笑顔",
+   "from": "ユウキ/close",
+   "mask": [
+    420,
+    190,
+    770,
+    530
+   ],
+   "feather": 25,
+   "strength": 0.9,
+   "face": [
+    590,
+    330
+   ],
+   "prompt": "1boy, short brown hair, tan skin, grin, big smile, teeth, closed eyes, sparkle, cheerful"
   }
  ]
 }

@@ -194,38 +194,61 @@ def hex2rgb(h):
     h = h.lstrip("#"); return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 
-def cover(im, w=None, h=None):
-    """画面いっぱいに拡大して中央を切り抜く"""
-    w, h = w or W, h or H
-    s = max(w / im.width, h / im.height)
+def cover_params(iw, ih, top=False):
+    """画面いっぱいに拡大するときの倍率と切り抜き位置（top=True なら上をそろえて頭が切れないように）"""
+    s = max(W / iw, H / ih)
+    x = (round(iw * s) - W) // 2
+    y = 0 if top else (round(ih * s) - H) // 2
+    return s, x, y
+
+
+def cover(im, top=False):
+    s, x, y = cover_params(im.width, im.height, top)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
-    x, y = (im.width - w) // 2, (im.height - h) // 2
-    return im.crop((x, y, x + w, y + h))
+    return im.crop((x, y, x + W, y + H))
 
 
-def load_img(path):
-    return cover(Image.open(path).convert("RGB")) if path.exists() else None
+def load_img(path, top=False):
+    return cover(Image.open(path).convert("RGB"), top) if path.exists() else None
+
+
+def face_points():
+    """画像ごとの顔の位置（assets/image_plan.json の "face"）"""
+    try:
+        plan = json.loads((ROOT / "assets/image_plan.json").read_text())
+        return {it["name"]: it["face"] for it in plan["images"] if "face" in it}
+    except Exception:
+        return {}
 
 
 class Shots:
     """カット（場面）ごとの絵を読み込んでおく"""
     def __init__(self, cast):
-        self.cast = cast; self.cache = {}
+        self.cast = cast; self.cache = {}; self.faces = face_points(); self.focus = {}
 
     def get(self, key):
         if key in self.cache:
             return self.cache[key]
         kind, name, mouth = key
+        top = W > H  # 横長では顔アップの頭が切れないよう上をそろえる
+        pname = None
         if kind == "char":
             d = ROOT / "assets/characters" / name
-            im = load_img(d / f"{mouth}.png") or load_img(d / "close.png")
+            im = load_img(d / f"{mouth}.png", top) or load_img(d / "close.png", top)
+            pname, ppath = f"{name}/close", d / "close.png"
         elif kind == "phone":
             im = phone_screen(json.loads(name), self.get(("bg", None, None)))
         elif kind == "shot":
-            im = load_img(ROOT / "assets/shots" / f"{name}.png")
+            ppath = ROOT / "assets/shots" / f"{name}.png"
+            im = load_img(ppath, top)
+            pname = f"shots/{name}"
         else:
             im = load_img(ROOT / self.cast["background"])
         self.cache[key] = im or Image.new("RGB", (W, H), (60, 60, 60))
+        if pname in self.faces:  # ズームで寄る位置
+            fx, fy = self.faces[pname]
+            sc, ox, oy = cover_params(*Image.open(ppath).size, top)
+            self.focus[key] = (fx * sc - ox, fy * sc - oy)
         return self.cache[key]
 
 
@@ -391,7 +414,7 @@ def render(lines, total, cast, audio, out):
         tz = 1.22 if "zoom" in fx else 1.0
         z += (tz - z) * 0.3
         zz = max(1.0, min(z * min(drift, 1.08), 1.4))
-        cx, cy = W / 2, H * (0.36 if H > W else 0.4)           # 顔のあたりに向かって寄る
+        cx, cy = shots.focus.get(key, (W / 2, H * 0.36))           # 顔のあたりに向かって寄る
         sx = sy = 0.0
         if "shake" in fx:
             el = f / FPS - ln["start"]
