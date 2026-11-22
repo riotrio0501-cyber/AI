@@ -226,6 +226,7 @@ def build_timeline(script: Script, workdir: Path):
         snd = audio.whoosh() if i == 0 else p
         sfx[k:k + len(snd)] += snd[: n - k]
     music = audio.bgm(n / tts.SR, seed=int(script.id) if script.id.isdigit() else 0)
+    music = np.pad(music, (0, max(0, n - len(music))))[:n]  # 丸め誤差で1サンプルずれることがあるので長さをそろえる
     # 声がある間はBGMを下げる（簡易ダッキング）
     env = np.convolve((np.abs(voice) > 0.02).astype(np.float32), np.ones(4800) / 4800, mode="same")
     music *= audio.db(config.BGM_GAIN_DB) * (1 - 0.45 * np.clip(env * 3, 0, 1))
