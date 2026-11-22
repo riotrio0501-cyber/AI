@@ -1,5 +1,6 @@
 【概要欄用クレジット】
 VOICEVOX:No.7
+音声モデル：桜音（AivisHub / ACML 1.0）
 音声モデル：TANAKA（AivisHub / ACML 1.0）
 音声合成：Style-Bert-VITS2
 音声モデル：JVNV (CC BY-SA 4.0) https://sites.google.com/site/shinnosuketakamichi/research-topics/jvnv_corpus
