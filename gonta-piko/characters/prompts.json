@@ -6,14 +6,31 @@
   "style": "high-end 3D animated feature film still, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, exaggerated squash-and-stretch facial expressions, snowy Japanese mountain forest, bright cinematic light, vivid colors, vertical 9:16 composition, family-friendly slapstick comedy, no text",
   "negative": "text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat",
   "reference_images": {
-    "_note": "顔アップがOKになったら、Higgsfield の job_id をここに書く。以降の生成はこれを参照画像にする。",
-    "gonta": null,
-    "piko": null,
-    "jii": null
+    "_note": "OKが出た画像の Higgsfield job_id。以降の生成はこれを参照画像にする。",
+    "gonta": {
+      "face_front": null,
+      "body_front": null,
+      "body_back": null
+    },
+    "piko": {
+      "face_front": null,
+      "body_front": null,
+      "body_back": null
+    },
+    "jii": {
+      "face_front": null,
+      "body_front": null,
+      "body_back": null
+    }
   },
-  "face_closeups": {
-    "gonta": "Character portrait, head and shoulders close-up, facing camera at a slight three-quarter angle, sleepy content smile, plain soft snowy forest background slightly blurred",
-    "piko": "Character portrait, close-up of the whole small body sitting upright on a snowy log, looking at camera with a proud determined grin, black tail tip clearly visible, plain soft snowy forest background slightly blurred",
-    "jii": "Character portrait, head and shoulders close-up, sitting on a snowy rock, half-closed sleepy wise eyes, long white beard, plain soft snowy forest background slightly blurred"
+  "reference_sheet": {
+    "_note": "キャラ設定画（参照用）。見た目の文章(gonta/piko/jii)はそのまま使い、背景だけ無地にする（白いピコが雪に溶けないように）。",
+    "style": "high-end 3D animated feature film character design, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, vivid colors, plain light grey-blue studio background, even soft light, no text",
+    "views": {
+      "face_front": "Character reference image: front view head-and-shoulders portrait, facing the camera straight on, calm natural expression",
+      "body_front": "Character reference image: full body front view, facing the camera straight on, the whole body visible from the top of the head to the feet including the tail, relaxed natural pose",
+      "body_back": "Character reference image: full body back view seen from directly behind, the whole body visible from the top of the head to the feet including the back of the head and the tail, relaxed natural pose"
+    },
+    "files": "characters/<名前>/face_front.png, body_front.png, body_back.png"
   }
 }

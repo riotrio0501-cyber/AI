@@ -54,7 +54,7 @@ def plan(ep_dir):
         if cut["src"] in seen:          # 同じ絵の使い回し（ループ用など）はお金がかからない
             continue
         seen.add(cut["src"])
-        refs = [ch["reference_images"].get(c) for c in cut["chars"]]
+        refs = [v for c in cut["chars"] for v in ch["reference_images"][c].values()]
         if cut["type"] == "video":
             cost = COST_VIDEO_PER_SEC * cut["dur"]
             item = {"cut": cut["id"], "model": "minimax_h3", "duration": cut["dur"],
