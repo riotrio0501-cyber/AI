@@ -1,0 +1,42 @@
+{
+  "step": "1/2 顔の正面",
+  "total_credits": 9,
+  "requests": [
+    {
+      "index": 0,
+      "name": "gonta",
+      "save_as": "characters/gonta/face_front.png",
+      "credits": 3,
+      "params": {
+        "model": "minimax_h3_image",
+        "resolution": "1k",
+        "aspect_ratio": "1:1",
+        "prompt": "Character reference image: front view head-and-shoulders portrait, facing the camera straight on, calm natural expression. Gonta, an original chubby round Asian black bear character, thick fluffy black fur, a cream-white crescent mark on the chest, sleepy half-closed eyes, small tan muzzle, a bright red knitted scarf, big and slow, very expressive face. high-end 3D animated feature film character design, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, vivid colors, plain light grey-blue studio background, even soft light, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat."
+      }
+    },
+    {
+      "index": 1,
+      "name": "piko",
+      "save_as": "characters/piko/face_front.png",
+      "credits": 3,
+      "params": {
+        "model": "minimax_h3_image",
+        "resolution": "1k",
+        "aspect_ratio": "1:1",
+        "prompt": "Character reference image: front view head-and-shoulders portrait, facing the camera straight on, calm natural expression. Piko, an original small slender stoat in pure white winter fur, only the tip of the tail is black, shiny round black eyes, tiny pink nose, small round ears, energetic and expressive, about one fifth the size of Gonta. high-end 3D animated feature film character design, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, vivid colors, plain light grey-blue studio background, even soft light, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat."
+      }
+    },
+    {
+      "index": 2,
+      "name": "jii",
+      "save_as": "characters/jii/face_front.png",
+      "credits": 3,
+      "params": {
+        "model": "minimax_h3_image",
+        "resolution": "1k",
+        "aspect_ratio": "1:1",
+        "prompt": "Character reference image: front view head-and-shoulders portrait, facing the camera straight on, calm natural expression. Jii, an original elderly Japanese serow with brown shaggy fur, short dark horns, a long white beard, sleepy wise eyes, always sitting calmly on the same snowy rock. high-end 3D animated feature film character design, stylized cartoon proportions, detailed soft fur, glossy expressive eyes, vivid colors, plain light grey-blue studio background, even soft light, no text. Avoid: text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, squirrel, acorn, mammoth, sloth, saber-toothed cat."
+      }
+    }
+  ]
+}
