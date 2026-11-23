@@ -64,7 +64,8 @@ text, letters, subtitles, logo, watermark, humans, extra limbs, deformed face, s
 - **【例外】Higgsfield 3日間無料お試し中だけ**（ユーザー了承済み 2026-11-23）：
   無制限の対象モデルを使ってよい。画像＝Nano Banana Pro（なければ GPT Image / Seedream 5 Pro）、動画＝Seedance 2.5（720p、生成音声はオフ）。
   キャラの見た目・絵のタッチの文章は変えない。お試しが終わったら MiniMax H3 に戻す。
-  お試しは終了前にキャンセルしないと自動で Ultra（初月$75→$129/月）になる。終了前に必ずユーザーに知らせる
+  お試しは終了前にキャンセルしないと自動で Ultra（初月$75→$129/月）になる。終了前に必ずユーザーに知らせる（11/25 21:00 JST にお知らせ予約済み）
+  ※ 無制限生成は Claude Code からは使えない（Claude チャット／Cowork からのみ）。指示文は `characters/trial_prompts_for_claude_chat.md`
 - **編集**：ffmpeg（Pythonも可）。効果音・BGMは自作するか、商用利用可でクレジット条件がはっきりした素材だけ使う
 - 毎回の作業は `tools/` にスクリプトとして残し、次からは「カット割りを差し替えてコマンド1つで動画ができる」状態にする
 
